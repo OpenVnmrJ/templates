@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!--
+ ! @(#)proc_action.xml 1.7 08/17/02 Copyright (c) 1998-2002 Varian,Inc. All Rights Reserved
+ !
+ ! Varian,Inc. All Rights Reserved.
+ ! This software contains proprietary and confidential
+ ! information of Varian, Inc. and its contributors.
+ ! Use, disclosure and reproduction is prohibited without
+ ! prior consent.
+ !
+ -->
+
+<actionpanel>
+  <group size="580 20" fg="PlainText" bg="transparent" border="None" side="Top"
+    justify="Left" tab="no" reference="proc_action" useref="no" >
+    <button loc="0 0" size="90 20" value="Transform" 
+     vc="if acqdim&lt;1.5 then wft elseif acqdim=2 then if (ni&lt;arraydim) then wft2da else wft2d endif else wft(1) endif"
+        style="Plain" fg="black" bg="cyan" point="12" font="Dialog" />
+    <button loc="90 0" size="90 20" value="Autoprocess" vc="process"
+        style="Plain" fg="black" bg="green" point="12" font="Dialog" />
+    <button loc="180 0" size="110 20" value="Display Spectrum" vc="getdim:$d if $d>1.5 then dconi('again') else ds endif"
+        style="Plain" fg="black" point="12" font="Dialog" />
+    <button loc="290 0" size="110 20" value="Clear Screen" vc="clear(2) menu('main')"
+        style="Plain" fg="black" point="12" font="Dialog" />
+    <button loc="380 0" size="90 20" value="Cancel" vc="M@cancel"
+        style="Plain" fg="white" bg="brown" point="12" font="Dialog" />
+    <button loc="470 0" size="90 20" value="Weighting" vc="wti"
+        style="Plain" fg="black" bg="yellow" point="12" font="Dialog" />
+  </group>
+</actionpanel>

@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<template name="StarsData" element="pages" type="processing" >
+  <group size="800 224" style="Label4" label="STARS Data"
+    bg="transparent"
+    border="None"
+    side="Top"
+    justify="Left"
+    tab="yes"
+    reference="StarsData"
+    useref="no"
+    expanded="yes"
+    >
+    <menu loc="200 192" size="56 24" style="Label3"
+      vq="mqf1val"
+      vc="settype('mqf1val','frequency') parunits('set','mqf1val','$VALUE')"
+      set="parunits('get','mqf1val'):$VALUE"
+      show="on('mqf1val'):$VALUE if ($VALUE=0) then $VALUE=1 endif"
+      >
+      <mlabel label="ppm" chval="ppm1"/>
+      <mlabel label="Hz" chval="Hz"/>
+      <mlabel label="kHz" chval="kHz"/>
+      <mlabel label="MHz" chval="MHz"/>
+      <mlabel />
+    </menu>
+    <group loc="528 0" size="264 144" label="mygroup"
+      bg="transparent"
+      border="None"
+      side="Top"
+      justify="Left"
+      tab="no"
+      reference="mygroup"
+      useref="no"
+      expanded="yes"
+      >
+      <button loc="0 120" size="80 24" style="PlainText"
+        label="Plot"
+        vc="STplotstars"
+        />
+      <label loc="24 48" size="40 24" style="Label4"
+        label="Expt#"
+        justify="Left"
+        />
+      <textmessage loc="64 48" size="24 24" style="Label4"
+        label="4"
+        vq="data_exp"
+        set="on('data_exp'):$data_expon if ($data_expon&gt;0) then  $VALUE=4 else $VALUE='' endif"
+        />
+      <label loc="24 24" size="40 24" style="Label4"
+        label="Expt#"
+        justify="Left"
+        />
+      <textmessage loc="64 24" size="24 24" style="Label4"
+        label="2"
+        vq="data_exp"
+        set="on('data_exp'):$data_expon if ($data_expon&gt;0) then  $VALUE=data_exp else $VALUE='' endif"
+        />
+      <button loc="176 0" size="80 24" style="Label4"
+        label="Zero SS"
+        vc="cz"
+        />
+      <button loc="176 120" size="80 24" style="PlainText"
+        label="Iterate"
+        vc="STiterate"
+        />
+      <button loc="176 96" size="80 24" style="Label4"
+        label="Edit SS"
+        vc="STviint"
+        />
+      <button loc="176 72" size="80 24" style="Label4"
+        label="Save SS"
+        vc="STgetint"
+        />
+      <button loc="176 48" size="80 24" style="Label4"
+        label="Del SS"
+        vc="STremove"
+        />
+      <button loc="88 120" size="80 24" style="PlainText"
+        label="Simulate"
+        vc="STsimulate"
+        />
+      <button loc="88 96" size="80 24" style="Label4"
+        label="Result"
+        vc="edit(curexp + '/resfile')"
+        />
+      <button loc="88 24" size="80 24" style="PlainText"
+        label="Data"
+        vc="STdata"
+        />
+      <button loc="88 0" size="80 24" style="Label4"
+        label="STARS"
+        vc="STaddstars"
+        />
+      <button loc="88 48" size="80 24" style="PlainText"
+        label="Sim"
+        vc="STsim"
+        />
+      <button loc="88 72" size="80 24" style="Label4"
+        label="Compare"
+        vc="STcompare"
+        />
+      <button loc="176 24" size="80 24" style="Label4"
+        label="Set SS"
+        vc="STsetss"
+        />
+    </group>
+    <textmessage loc="400 192" size="64 24" style="Label3"
+      label="-0"
+      vq="viso2 csa2 etas2cq2 etaq2 mqf1val2"
+      set="on('ival'):$ivalon if ($ivalon&gt;0) then STmqf1shift2 endif on('mqf1val2'):$mqf1val2on if ($mqf1val2on&gt;-1) then parunits('get','mqf1val2'):$mqf1val2units vnmrunits('get','mqf1val2'):$VALUE if ($mqf1val2units='ppm1') then $VALUE = $VALUE*sfrq else $VALUE=$VALUE*reffrq endif else $VALUE='' endif"
+      />
+    <menu loc="464 192" size="56 24" style="Label3"
+      vq="mqf1val2"
+      vc="settype('mqf1val2','frequency') parunits('set','mqf1val2','$VALUE')"
+      set="parunits('get','mqf1val2'):$VALUE"
+      show="on('mqf1val2'):$VALUE if ($VALUE=0) then $VALUE=1 endif"
+      >
+      <mlabel label="ppm" chval="ppm1"/>
+      <mlabel label="Hz" chval="Hz"/>
+      <mlabel label="kHz" chval="kHz"/>
+      <mlabel label="MHz" chval="MHz"/>
+      <mlabel />
+    </menu>
+    <textmessage loc="136 192" size="64 24" style="Label3"
+      label="1.12558"
+      vq="viso csa etas cq etaq mqf1val"
+      set="on('ival'):$ivalon if ($ivalon&gt;0) then STmqf1shift endif on('mqf1val'):$mqf1valon if ($mqf1valon&gt;-1) then parunits('get','mqf1val'):$mqf1valunits vnmrunits('get','mqf1val'):$VALUE if ($mqf1valunits='ppm1')  then $VALUE = $VALUE*sfrq else $VALUE=$VALUE*reffrq endif else $VALUE='' endif"
+      />
+    <label loc="280 192" size="120 24" style="Label3"
+      label="MQMAS F1 shift:"
+      justify="Left"
+      />
+    <label loc="16 192" size="120 24" style="Label3"
+      label="MQMAS F1 shift:"
+      justify="Left"
+      />
+    <label loc="760 152" size="32 24" style="Label4"
+      label="Deg"
+      justify="Left"
+      />
+    <menu loc="616 176" size="88 24" style="Label3"
+      vq="sites amp amp2"
+      vc="sites=$VALUE if ($VALUE=1.0) then setvalue('amp',1.0) setvalue('amp2',0.0) endif"
+      set="$VALUE=sites"
+      show="onparams('sites','amp','amp2'):$VALUE if ($VALUE=0) then $VALUE=1 endif"
+      >
+      <mlabel label="1 site" chval="1"/>
+      <mlabel label="2 sites" chval="2"/>
+      <mlabel />
+    </menu>
+    <menu loc="616 152" size="88 24" style="Label4"
+      vq="theta"
+      vc="if ($VALUE=0) then theta=-54.7536 srate=sw on('downsamp'):$downsamp if ($downsamp&gt;0) then srate=srate/downsamp endif else theta=0.0 endif"
+      set="if ((theta&lt;-54.7535) and (theta&gt;-54.7537)) then $VALUE=0 else $VALUE=1 endif"
+      show="on('theta'):$VALUE  if ($VALUE=0) then $VALUE=1 endif"
+      >
+      <mlabel label="STATIC" chval="0"/>
+      <mlabel label="MAS/VAS" chval="1"/>
+      <mlabel />
+    </menu>
+    <entry loc="704 152" size="56 24" style="Label4"
+      vq="theta"
+      vc="theta=$VALUE"
+      set="$VALUE=theta"
+      show="on('theta'):$VALUE if ($VALUE&gt;-1) then if ((theta&lt;-54.7535) and (theta&gt;-54.7537)) then $VALUE=-1 else $VALUE=1 endif endif "
+      disable="Grayed out"
+      />
+    <label loc="528 152" size="88 24" style="Label4"
+      label="Rotor angle:"
+      justify="Left"
+      />
+    <label loc="760 176" size="32 24" style="Label3"
+      label=" %"
+      justify="Left"
+      />
+    <entry loc="704 176" size="56 24" style="Label3"
+      vq="amp amp2 sites"
+      vc="$amp2val=$VALUE/100  if (sites&gt;1) then if ($amp2val&lt;0) then $amp2val=0.0 endif  if ($amp2val&gt;1.0) then $amp2val=1.0 endif amp2 = $amp2val setvalue('amp',1.0-$amp2val) endif"
+      set="$VALUE=amp2*100"
+      show="onparams('amp','amp2','sites'):$VALUE if $VALUE&gt;-1 then if (sites&gt;1) then $VALUE=1 else $VALUE=-1 endif endif"
+      disable="Grayed out"
+      />
+    <label loc="528 176" size="88 24" style="Label3"
+      label="Percent site 2:"
+      justify="Left"
+      />
+    <group loc="272 0" size="256 192" bg="transparent"
+      border="None"
+      side="Top"
+      justify="Left"
+      tab="no"
+      useref="no"
+      >
+      <entry loc="128 72" size="64 24" style="Label3"
+        vq="cq2 sfrq reffrq sites"
+        vc="parunits('get','cq2'):$cq2units $cq2val = $VALUE if (($cq2units='ppm1') and (sfrq&lt;&gt;0)) then $cq2val = $cq2val*(reffrq/sfrq)/1e6 else $cq2val = $cq2val/1.0e6 endif vnmrunits('set','cq2',$cq2val)"
+        set="parunits('get','cq2'):$cq2units vnmrunits('get','cq2'):$VALUE if (($cq2units='ppm1') and (reffrq&lt;&gt;0)) then $VALUE = $VALUE*(sfrq/reffrq)*1e6 else $VALUE=$VALUE*1e6 endif "
+        show="onparams('cq2','sfrq','reffrq','sites'):$VALUE  if ($VALUE&gt;-1) then if (sites=2) then $VALUE=1 else $VALUE=0 endif endif"
+        disable="Grayed out"
+        />
+      <entry loc="128 24" size="64 24" style="Label4"
+        vq="csa2 sfrq reffrq sites"
+        vc="parunits('get','csa2'):$csa2units $csa2val = $VALUE if ($csa2units='ppm1') then if (sfrq&lt;&gt;0) then $csa2val = $csa2val/sfrq endif else if (reffrq&lt;&gt;0) then $csa2val = $csa2val/reffrq endif endif vnmrunits('set','csa2',$csa2val)"
+        set="parunits('get','csa2'):$csa2units vnmrunits('get','csa2'):$VALUE if ($csa2units='ppm1') then $VALUE = $VALUE*sfrq else $VALUE=$VALUE*reffrq endif "
+        show="onparams('csa2','sfrq','reffrq','sites'):$VALUE  if ($VALUE&gt;-1) then if (sites=2) then $VALUE=1 else $VALUE=0 endif endif"
+        disable="Grayed out"
+        />
+      <label loc="96 0" size="32 24" style="Label4"
+        label="viso2"
+        justify="Left"
+        />
+      <button loc="8 0" size="88 24" style="Label4"
+        label="Chemical Shift"
+        vc="STviso2"
+        />
+      <entry loc="128 168" size="64 24" style="Label4"
+        vq="xi2 sites"
+        vc="vnmrunits('set','xi2',$VALUE)"
+        set="vnmrunits('get','xi2'):$VALUE"
+        show="on('xi2'):$VALUE if ($VALUE&gt;-1) then if (sites=2) then $VALUE=1 else $VALUE=0 endif endif"
+        disable="Grayed out"
+        />
+      <entry loc="128 144" size="64 24" style="Label4"
+        vq="chi2 sites"
+        vc="vnmrunits('set','chi2',$VALUE)"
+        set="vnmrunits('get','chi2'):$VALUE"
+        show="on('chi2'):$VALUE if ($VALUE&gt;-1) then if (sites=2) then $VALUE=1 else $VALUE=0 endif endif"
+        disable="Grayed out"
+        />
+      <entry loc="128 120" size="64 24" style="Label4"
+        vq="psi2 sites"
+        vc="vnmrunits('set','psi2',$VALUE)"
+        set="vnmrunits('get','psi2'):$VALUE"
+        show="on('psi2'):$VALUE if ($VALUE&gt;-1) then if (sites=2) then $VALUE=1 else $VALUE=0 endif endif"
+        disable="Grayed out"
+        />
+      <entry loc="128 96" size="64 24" style="Label3"
+        vq="etaq2 sites"
+        vc="vnmrunits('set','etaq2',$VALUE)"
+        set="vnmrunits('get','etaq2'):$VALUE"
+        show="on('etaq2'):$VALUE if ($VALUE&gt;-1) then if (sites=2) then $VALUE=1 else $VALUE=0 endif endif"
+        disable="Grayed out"
+        />
+      <entry loc="128 48" size="64 24" style="Label4"
+        vq="etas2 sites"
+        vc="vnmrunits('set','etas2',$VALUE)"
+        set="vnmrunits('get','etas2'):$VALUE"
+        show="on('etas2'):$VALUE if ($VALUE&gt;-1) then if (sites=2) then $VALUE=1 else $VALUE=0 endif endif"
+        disable="Grayed out"
+        />
+      <menu loc="192 72" size="56 24" style="Label3"
+        vq="cq2"
+        vc="settype('cq2','frequency') parunits('set','cq2','$VALUE')"
+        set="parunits('get','cq2'):$VALUE"
+        show="on('cq2'):$VALUE if ($VALUE=0) then $VALUE=1 endif"
+        >
+        <mlabel label="ppm" chval="ppm1"/>
+        <mlabel label="Hz" chval="Hz"/>
+        <mlabel label="kHz" chval="kHz"/>
+        <mlabel label="MHz" chval="MHz"/>
+        <mlabel />
+      </menu>
+      <menu loc="192 24" size="56 24" style="Label4"
+        vq="csa2"
+        vc="settype('csa2','frequency') parunits('set','csa2','$VALUE')"
+        set="parunits('get','csa2'):$VALUE"
+        show="on('csa2'):$VALUE if ($VALUE=0) then $VALUE=1 endif"
+        >
+        <mlabel label="ppm" chval="ppm1"/>
+        <mlabel label="Hz" chval="Hz"/>
+        <mlabel label="kHz" chval="kHz"/>
+        <mlabel label="MHz" chval="MHz"/>
+        <mlabel />
+      </menu>
+      <menu loc="192 0" size="56 24" style="Label4"
+        vq="viso2"
+        vc="settype('viso2','frequency') parunits('set','viso2','$VALUE')"
+        set="parunits('get','viso2'):$VALUE"
+        show="on('viso2'):$VALUE if ($VALUE=0) then $VALUE=1 endif"
+        >
+        <mlabel label="ppm" chval="ppm1"/>
+        <mlabel label="Hz" chval="Hz"/>
+        <mlabel label="kHz" chval="kHz"/>
+        <mlabel label="MHz" chval="MHz"/>
+        <mlabel />
+      </menu>
+      <entry loc="128 0" size="64 24" style="Label4"
+        vq="viso2 sites reffrq sfrq"
+        vc="parunits('get','viso2'):$viso2units $viso2val = $VALUE if (($viso2units='ppm1') and (sfrq&lt;&gt;0)) then $viso2val = $viso2val*(reffrq/sfrq) endif vnmrunits('set','viso2',$viso2val)"
+        set="parunits('get','viso2'):$viso2units vnmrunits('get','viso2'):$VALUE if (($viso2units='ppm1') and (reffrq&lt;&gt;0)) then $VALUE = $VALUE*(sfrq/reffrq) endif "
+        show="onparams('viso2','sites','sfrq','reffrq'):$VALUE if ($VALUE&gt; -1) then if (sites=2.0) then $VALUE=1 else $VALUE=0 endif endif "
+        disable="Grayed out"
+        />
+      <label loc="8 24" size="120 24" style="Label4"
+        label="Anisotropy (csa2)"
+        justify="Left"
+        />
+      <label loc="8 96" size="120 24" style="Label3"
+        label="  Asymmetry (etaq2)"
+        justify="Left"
+        />
+      <label loc="192 168" size="56 24" style="Heading4"
+        label="Site 2: "
+        justify="Left"
+        />
+      <label loc="8 168" size="120 24" style="Label4"
+        label="Euler Angle (xi2)"
+        justify="Left"
+        />
+      <label loc="8 144" size="120 24" style="Label4"
+        label="Euler Angle (chi2)"
+        justify="Left"
+        />
+      <label loc="8 120" size="120 24" style="Label4"
+        label="Euler Angle (psi2)"
+        justify="Left"
+        />
+      <label loc="8 72" size="120 24" style="Label3"
+        label="Quad coupling (cq2)"
+        justify="Left"
+        />
+      <label loc="8 48" size="120 24" style="Label4"
+        label="  Asymmetry (etas2)"
+        justify="Left"
+        />
+    </group>
+    <group loc="8 0" size="256 192" bg="transparent"
+      border="None"
+      side="Top"
+      justify="Left"
+      tab="no"
+      reference="IsotropicShft(viso)"
+      useref="no"
+      expanded="yes"
+      >
+      <entry loc="128 72" size="64 24" style="Label3"
+        vq="cq sfrq reffrq"
+        vc="parunits('get','cq'):$cqunits $cqval = $VALUE if (($cqunits='ppm1') and (sfrq&lt;&gt;0)) then $cqval = $cqval*(reffrq/sfrq)/1e6 else $cqval = $cqval/1.0e6 endif vnmrunits('set','cq',$cqval)"
+        set="parunits('get','cq'):$cqunits vnmrunits('get','cq'):$VALUE if (($cqunits='ppm1') and (reffrq&lt;&gt;0)) then $VALUE = $VALUE*(sfrq/reffrq)*1e6 else $VALUE=$VALUE*1e6 endif "
+        show="onparams('cq','sfrq','reffrq'):$VALUE "
+        disable="Grayed out"
+        />
+      <entry loc="128 24" size="64 24" style="Label4"
+        vq="csa sfrq reffrq"
+        vc="parunits('get','csa'):$csaunits $csaval = $VALUE if ($csaunits='ppm1') then if (sfrq&lt;&gt;0) then $csaval = $csaval/sfrq endif else if (reffrq&lt;&gt;0) then $csaval = $csaval/reffrq endif endif vnmrunits('set','csa',$csaval)"
+        set="parunits('get','csa'):$csaunits vnmrunits('get','csa'):$VALUE if ($csaunits='ppm1') then $VALUE = $VALUE*sfrq else $VALUE=$VALUE*reffrq endif "
+        show="onparams('csa','sfrq','reffrq'):$VALUE "
+        disable="Grayed out"
+        />
+      <label loc="96 0" size="32 24" style="Label4"
+        label="viso"
+        justify="Left"
+        />
+      <button loc="8 0" size="88 24" style="Label4"
+        label="Chemical Shift"
+        vc="STviso1"
+        />
+      <entry loc="128 168" size="64 24" style="Label4"
+        vq="xi"
+        vc="vnmrunits('set','xi',$VALUE)"
+        set="vnmrunits('get','xi'):$VALUE"
+        show="on('xi'):$VALUE"
+        disable="Grayed out"
+        />
+      <entry loc="128 144" size="64 24" style="Label4"
+        vq="chi"
+        vc="vnmrunits('set','chi',$VALUE)"
+        set="vnmrunits('get','chi'):$VALUE"
+        show="on('chi'):$VALUE"
+        disable="Grayed out"
+        />
+      <entry loc="128 120" size="64 24" style="Label4"
+        vq="psi"
+        vc="vnmrunits('set','psi',$VALUE)"
+        set="vnmrunits('get','psi'):$VALUE"
+        show="on('psi'):$VALUE"
+        disable="Grayed out"
+        />
+      <entry loc="128 96" size="64 24" style="Label3"
+        vq="etaq"
+        vc="vnmrunits('set','etaq',$VALUE)"
+        set="vnmrunits('get','etaq'):$VALUE"
+        show="on('etaq'):$VALUE"
+        disable="Grayed out"
+        />
+      <entry loc="128 48" size="64 24" style="Label4"
+        vq="etas"
+        vc="vnmrunits('set','etas',$VALUE)"
+        set="vnmrunits('get','etas'):$VALUE"
+        show="onparams('etas'):$VALUE"
+        disable="Grayed out"
+        />
+      <menu loc="192 72" size="56 24" style="Label3"
+        vq="cq"
+        vc="settype('cq','frequency') parunits('set','cq','$VALUE')"
+        set="parunits('get','cq'):$VALUE"
+        show="on('cq'):$VALUE if ($VALUE=0) then $VALUE=1 endif"
+        >
+        <mlabel label="ppm" chval="ppm1"/>
+        <mlabel label="Hz" chval="Hz"/>
+        <mlabel label="kHz" chval="kHz"/>
+        <mlabel label="MHz" chval="MHz"/>
+        <mlabel />
+      </menu>
+      <menu loc="192 24" size="56 24" style="Label4"
+        vq="csa"
+        vc="settype('csa','frequency') parunits('set','csa','$VALUE')"
+        set="parunits('get','csa'):$VALUE"
+        show="on('csa'):$VALUE if ($VALUE=0) then $VALUE=1 endif"
+        >
+        <mlabel label="ppm" chval="ppm1"/>
+        <mlabel label="Hz" chval="Hz"/>
+        <mlabel label="kHz" chval="kHz"/>
+        <mlabel label="MHz" chval="MHz"/>
+        <mlabel />
+      </menu>
+      <entry loc="128 0" size="64 24" style="Label4"
+        vq="viso sfrq reffrq"
+        vc="parunits('get','viso'):$visounits $visoval = $VALUE if (($visounits='ppm1') and (sfrq&lt;&gt;0)) then $visoval = $visoval*(reffrq/sfrq) endif vnmrunits('set','viso',$visoval)"
+        set="parunits('get','viso'):$visounits vnmrunits('get','viso'):$VALUE if (($visounits='ppm1') and (reffrq&lt;&gt;0)) then $VALUE = $VALUE*(sfrq/reffrq) endif "
+        show="onparams('viso','sfrq','reffrq'):$VALUE "
+        disable="Grayed out"
+        />
+      <label loc="192 168" size="56 24" style="Heading4"
+        label="Site 1: "
+        justify="Left"
+        />
+      <label loc="8 168" size="120 24" style="Label4"
+        label="Euler Angle (xi)"
+        justify="Left"
+        />
+      <label loc="8 144" size="120 24" style="Label4"
+        label="Euler Angle (chi)"
+        justify="Left"
+        />
+      <label loc="8 120" size="120 24" style="Label4"
+        label="Euler Angle (psi)"
+        justify="Left"
+        />
+      <label loc="8 96" size="120 24" style="Label3"
+        label="  Asymmetry (etaq)"
+        justify="Left"
+        />
+      <label loc="8 72" size="120 24" style="Label3"
+        label="Quad coupling (cq)"
+        justify="Left"
+        />
+      <label loc="8 24" size="120 24" style="Label4"
+        label="Shift anisotropy (csa)"
+        justify="Left"
+        />
+      <label loc="8 48" size="120 24" style="Label4"
+        label="  Asymmetry (etas)"
+        justify="Left"
+        />
+      <menu loc="192 0" size="56 24" style="Label4"
+        vq="viso"
+        vc="settype('viso','frequency') parunits('set','viso','$VALUE')"
+        set="parunits('get','viso'):$VALUE"
+        show="on('viso'):$VALUE if ($VALUE=0) then $VALUE=1 endif"
+        >
+        <mlabel label="ppm" chval="ppm1"/>
+        <mlabel label="Hz" chval="Hz"/>
+        <mlabel label="kHz" chval="kHz"/>
+        <mlabel label="MHz" chval="MHz"/>
+        <mlabel />
+      </menu>
+    </group>
+  </group>
+</template>

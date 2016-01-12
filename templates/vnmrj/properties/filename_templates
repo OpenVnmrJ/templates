@@ -1,0 +1,4 @@
+notebook/sample_page_:$notebook$/$samplename$_$page$_
+date:%YR%%MOCH%%DAY%_
+notebook/sample_page_date_:$notebook$/$samplename$_$page$_%YR%%MOCH%%DAY%_
+DATE:%DATE%_

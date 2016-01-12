@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<template name="StarsSetup" element="pages" type="processing" >
+  <group size="800 203" style="Label4" label="STARS Setup"
+    vc="on('srate'):$srateon if ($srateon&gt;-1) then settype('srate','frequency') endif"
+    bg="transparent"
+    border="None"
+    side="Top"
+    justify="Left"
+    tab="yes"
+    reference="StarsSetup"
+    useref="no"
+    expanded="yes"
+    >
+    <button loc="528 176" size="80 24" style="PlainText"
+      label="Plot"
+      vc="STplotstars"
+      />
+    <group loc="616 56" size="176 144" label="mygroup"
+      bg="transparent"
+      border="None"
+      side="Top"
+      justify="Left"
+      tab="no"
+      reference="mygroup"
+      useref="no"
+      expanded="yes"
+      >
+      <button loc="89 0" size="80 24" style="Label4"
+        label="Zero SS"
+        vc="cz"
+        />
+      <button loc="89 120" size="80 24" style="PlainText"
+        label="Iterate"
+        vc="STiterate"
+        />
+      <button loc="89 96" size="80 24" style="Label4"
+        label="Edit SS"
+        vc="STviint"
+        />
+      <button loc="89 72" size="80 24" style="Label4"
+        label="Save SS"
+        vc="STgetint"
+        />
+      <button loc="89 48" size="80 24" style="Label4"
+        label="Del SS"
+        vc="STremove"
+        />
+      <button loc="1 120" size="80 24" style="PlainText"
+        label="Simulate"
+        vc="STsimulate"
+        />
+      <button loc="1 96" size="80 24" style="Label4"
+        label="Result"
+        vc="edit(curexp+'/resfile')"
+        />
+      <button loc="1 24" size="80 24" style="PlainText"
+        label="Data"
+        vc="STdata"
+        />
+      <button loc="1 0" size="80 24" style="Label4"
+        label="STARS"
+        vc="STaddstars"
+        />
+      <button loc="1 48" size="80 24" style="PlainText"
+        label="Sim"
+        vc="STsim"
+        />
+      <button loc="1 72" size="80 24" style="Label4"
+        label="Compare"
+        vc="STcompare"
+        />
+      <button loc="89 24" size="80 24" style="Label4"
+        label="Set SS"
+        vc="STsetss"
+        />
+    </group>
+    <label loc="536 104" size="40 24" style="Label4"
+      label="Exp#:"
+      justify="Left"
+      />
+    <label loc="536 80" size="40 24" style="Label4"
+      label="Exp#:"
+      justify="Left"
+      />
+    <textmessage loc="576 80" size="24 24" style="Label4"
+      label="1"
+      vq="data_exp"
+      set="on('data_exp'):$data_expon if ($data_expon&gt;0) then  $VALUE=data_exp else $VALUE='' endif"
+      />
+    <textmessage loc="576 104" size="24 24" style="Label4"
+      label="4"
+      vq="data_exp"
+      set="on('data_exp'):$data_expon if ($data_expon&gt;0) then  $VALUE=4 else $VALUE='' endif"
+      />
+    <entry loc="640 24" size="144 24" style="Label4"
+      vc="iter='$VALUE'"
+      set="$VALUE=iter"
+      show="on('iter'):$VALUE"
+      disable="Grayed out"
+      />
+    <label loc="536 24" size="104 24" style="Label4"
+      label="Iteration params: "
+      justify="Left"
+      />
+    <menu loc="528 144" size="56 24" style="Label4"
+      vq="pulse"
+      vc="pulse='$VALUE'"
+      set="$VALUE=pulse"
+      show="on('pulse'):$VALUE"
+      >
+      <mlabel label="Ideal" chval="ideal"/>
+      <mlabel label="Finite" chval="finite"/>
+      <mlabel label="Short" chval="short"/>
+      <mlabel />
+    </menu>
+    <group loc="272 0" size="248 192" bg="transparent"
+      border="None"
+      side="Top"
+      justify="Left"
+      tab="no"
+      reference="Lorentzbroadening:"
+      useref="no"
+      expanded="yes"
+      >
+      <entry loc="128 168" size="64 24" style="Label4"
+        vq="rfw sfrq reffrq"
+        vc="parunits('get','rfw'):$rfwunits $rfwval = $VALUE if (($rfwunits='ppm1') and (sfrq&lt;&gt;0)) then $rfwval = $rfwval*(reffrq/sfrq) endif vnmrunits('set','rfw',$rfwval) if (rfw&lt;0.1) then rfw='n' endif"
+        set="parunits('get','rfw'):$rfwunits vnmrunits('get','rfw'):$VALUE if (($rfwunits='ppm1') and (reffrq&lt;&gt;0)) then $VALUE = $VALUE*(sfrq/reffrq) endif "
+        show="on('rfw'):$VALUE if ($VALUE&gt;-1) then if (rfw&lt;0.1) then $VALUE=0 else $VALUE=1 endif endif"
+        disable="Grayed out"
+        />
+      <entry loc="128 96" size="64 24" style="Label4"
+        vq="lb sfrq reffrq"
+        vc="parunits('get','lb'):$lbunits $lbval = $VALUE if (($lbunits='ppm1') and (sfrq&lt;&gt;0)) then $lbval = $lbval*(reffrq/sfrq) endif vnmrunits('set','lb',$lbval) if (lb=0) then lb='n' endif"
+        set="parunits('get','lb'):$lbunits vnmrunits('get','lb'):$VALUE if (($lbunits='ppm1') and (reffrq&lt;&gt;0)) then $VALUE = $VALUE*(sfrq/reffrq) endif "
+        show="on('lb'):$VALUE"
+        disable="Grayed out"
+        />
+      <entry loc="128 120" size="64 24" style="Label4"
+        vq="gf"
+        vc="gf=$VALUE if (gf=0) then gf='n' endif"
+        set="$VALUE=gf if (gf=0) then gf='n' endif"
+        show="on('gf'):$VALUE"
+        disable="Grayed out"
+        />
+      <button loc="200 24" size="48 24" style="Label4"
+        label="All"
+        vc="STmarray"
+        />
+      <entry loc="192 48" size="56 24" style="Label4"
+        vq="mval ival array"
+        vc="mval=$VALUE"
+        set="if (array&lt;&gt;'mval') then $VALUE=mval else $VALUE='array' endif"
+        show="onparams('mval','array'):$VALUE "
+        disable="Grayed out"
+        />
+      <menu loc="128 24" size="64 24" style="Label4"
+        vq="ival mval"
+        vc="ival=$VALUE"
+        set="$VALUE=ival"
+        show="on('ival'):$VALUE"
+        >
+        <mlabel label="1/2" chval="0.5"/>
+        <mlabel label="1" chval="1"/>
+        <mlabel label="3/2" chval="1.5"/>
+        <mlabel label="2" chval="2"/>
+        <mlabel label="5/2" chval="2.5"/>
+        <mlabel label="3" chval="3"/>
+        <mlabel label="7/2" chval="3.5"/>
+        <mlabel label="4" chval="4"/>
+        <mlabel label="9/2" chval="4.5"/>
+        <mlabel />
+      </menu>
+      <menu loc="128 48" size="64 24" style="Label4"
+        vq="mval ival"
+        vc="mval=$VALUE"
+        set="$VALUE=mval"
+        show="on('mval'):$VALUE"
+        >
+        <mlabel label="1/2" chval="0.5"/>
+        <mlabel label="1" chval="1"/>
+        <mlabel label="3/2" chval="1.5"/>
+        <mlabel label="2" chval="2"/>
+        <mlabel label="5/2" chval="2.5"/>
+        <mlabel label="3" chval="3"/>
+        <mlabel label="7/2" chval="3.5"/>
+        <mlabel label="4" chval="4"/>
+        <mlabel label="9/2" chval="4.5"/>
+        <mlabel />
+      </menu>
+      <menu loc="192 144" size="56 24" style="Label4"
+        vq="pw"
+        vc="parunits('set','pw','$VALUE')"
+        set="parunits('get','pw'):$VALUE"
+        show="on('pw'):$VALUE if ($VALUE&gt;-1) then $VALUE=1 endif"
+        >
+        <mlabel label="sec" chval="sec"/>
+        <mlabel label="ms" chval="ms"/>
+        <mlabel label="us" chval="us"/>
+        <mlabel />
+      </menu>
+      <menu loc="192 168" size="56 24" style="Label4"
+        vq="rfw"
+        vc="settype('rfw','frequency') parunits('set','rfw','$VALUE')"
+        set="parunits('get','rfw'):$VALUE"
+        show="on('rfw'):$VALUE if ($VALUE&gt;-1) then $VALUE=1 endif"
+        >
+        <mlabel label="ppm" chval="ppm1"/>
+        <mlabel label="Hz" chval="Hz"/>
+        <mlabel label="kHz" chval="kHz"/>
+        <mlabel label="MHz" chval="MHz"/>
+        <mlabel />
+      </menu>
+      <menu loc="192 96" size="56 24" style="Label4"
+        vq="lb"
+        vc="settype('lb','frequency') parunits('set','lb','$VALUE')"
+        set="parunits('get','lb'):$VALUE"
+        show="on('lb'):$VALUE if ($VALUE&gt;-1) then $VALUE=1 endif"
+        >
+        <mlabel label="ppm" chval="ppm1"/>
+        <mlabel label="Hz" chval="Hz"/>
+        <mlabel label="kHz" chval="kHz"/>
+        <mlabel label="MHz" chval="MHz"/>
+        <mlabel />
+      </menu>
+      <entry loc="128 144" size="64 24" style="Label4"
+        vq="pw pulse"
+        vc="vnmrunits('set','pw',$VALUE)"
+        set="vnmrunits('get','pw'):$VALUE"
+        show="onparams('pw','pulse'):$VALUE if ($VALUE&gt;-1) then if pulse='ideal' then $VALUE=0 else $VALUE=1 endif endif"
+        disable="Grayed out"
+        />
+      <label loc="8 96" size="120 24" style="Label4"
+        label="Lorentz broadening:"
+        justify="Left"
+        />
+      <label loc="8 0" size="120 24" style="Heading4"
+        label="Spin System: "
+        justify="Left"
+        />
+      <label loc="8 72" size="120 24" style="Heading4"
+        label="Adjustments: "
+        justify="Left"
+        />
+      <label loc="8 144" size="120 24" style="Label4"
+        label="Pulse (pw) for rolloff:"
+        justify="Left"
+        />
+      <label loc="8 168" size="120 24" style="Label4"
+        label="Probe bandwidth:"
+        justify="Left"
+        />
+      <label loc="8 120" size="120 24" style="Label4"
+        label="Gauss broadening: "
+        justify="Left"
+        />
+      <label loc="8 48" size="120 24" style="Label4"
+        label="Transition "
+        justify="Left"
+        />
+      <label loc="8 24" size="120 24" style="Label4"
+        label="Spin number"
+        justify="Left"
+        />
+    </group>
+    <group loc="8 0" size="256 192" style="Label4"
+      bg="transparent"
+      border="None"
+      side="Top"
+      justify="Left"
+      tab="no"
+      useref="no"
+      >
+      <entry loc="128 72" size="64 24" style="Label4"
+        vq="srate sfrq reffrq theta"
+        vc="parunits('get','srate'):$srateunits $srateval = $VALUE if (($srateunits='ppm1') and (sfrq&lt;&gt;0)) then $srateval = $srateval*(reffrq/sfrq) endif vnmrunits('set','srate',$srateval)"
+        set="parunits('get','srate'):$srateunits vnmrunits('get','srate'):$VALUE if (($srateunits='ppm1') and (reffrq&lt;&gt;0)) then $VALUE = $VALUE*(sfrq/reffrq) endif "
+        show="onparams('srate','sfrq','reffrq','theta'):$VALUE if ($VALUE&gt;-1) then if (theta=-54.7536) then $VALUE=0 else $VALUE=1 endif endif"
+        disable="Grayed out"
+        />
+      <menu loc="192 120" size="56 24" style="Label4"
+        vq="swsim"
+        vc="settype('swsim','frequency') parunits('set','swsim','$VALUE')"
+        set="parunits('get','swsim'):$VALUE"
+        show="on('swsim'):$VALUE if ($VALUE&gt;-1) then $VALUE=1 endif"
+        >
+        <mlabel label="ppm" chval="ppm1"/>
+        <mlabel label="Hz" chval="Hz"/>
+        <mlabel label="kHz" chval="kHz"/>
+        <mlabel label="MHz" chval="MHz"/>
+        <mlabel />
+      </menu>
+      <textmessage loc="88 48" size="104 24" style="Label4"
+        label="100.4932794"
+        vq="sfrq"
+        set="$VALUE=''  format(sfrq,11,7):$VALUE"
+        />
+      <label loc="8 168" size="120 24" style="Label4"
+        label="Angles:"
+        justify="Left"
+        />
+      <entry loc="128 168" size="64 24" style="Label4"
+        vc="ant=$VALUE"
+        set="$VALUE=ant"
+        show="on('ant'):$VALUE"
+        disable="Grayed out"
+        />
+      <entry loc="128 144" size="64 24" style="Label4"
+        vc="np=$VALUE"
+        set="$VALUE=np"
+        show="on('np'):$VALUE"
+        disable="Grayed out"
+        />
+      <label loc="8 144" size="120 24" style="Label4"
+        label="Complex points:"
+        justify="Left"
+        />
+      <label loc="8 0" size="184 24" style="Heading4"
+        label="STARS Data Analysis: "
+        justify="Left"
+        />
+      <label loc="8 48" size="80 24" style="Label4"
+        label="Frequency:"
+        justify="Left"
+        />
+      <label loc="192 48" size="32 24" style="Label4"
+        label="MHz"
+        justify="Left"
+        />
+      <menu loc="192 96" size="56 24" style="Label4"
+        vq="spsim"
+        vc="settype('spsim','frequency') parunits('set','spsim','$VALUE')"
+        set="parunits('get','spsim'):$VALUE"
+        show="on('spsim'):$VALUE if ($VALUE&gt;-1) then $VALUE=1 endif"
+        >
+        <mlabel label="ppm" chval="ppm1"/>
+        <mlabel label="Hz" chval="Hz"/>
+        <mlabel label="kHz" chval="kHz"/>
+        <mlabel label="MHz" chval="MHz"/>
+        <mlabel />
+      </menu>
+      <entry loc="128 120" size="64 24" style="Label4"
+        vq="swsim sfrq reffrq"
+        vc="parunits('get','swsim'):$swsimunits $swsimval = $VALUE if (($swsimunits='ppm1') and (sfrq&lt;&gt;0)) then $swsimval = $swsimval*(reffrq/sfrq) endif vnmrunits('set','swsim',$swsimval)"
+        set="parunits('get','swsim'):$swsimunits vnmrunits('get','swsim'):$VALUE if (($swsimunits='ppm1') and (reffrq&lt;&gt;0)) then $VALUE = $VALUE*(sfrq/reffrq) endif "
+        show="on('swsim'):$VALUE"
+        disable="Grayed out"
+        />
+      <entry loc="128 96" size="64 24" style="Label4"
+        vq="spsim sfrq reffrq"
+        vc="parunits('get','spsim'):$spsimunits $spsimval = $VALUE if (($spsimunits='ppm1') and (sfrq&lt;&gt;0)) then $spsimval = $spsimval*(reffrq/sfrq) endif vnmrunits('set','spsim',$spsimval)"
+        set="parunits('get','spsim'):$spsimunits vnmrunits('get','spsim'):$VALUE if (($spsimunits='ppm1') and (reffrq&lt;&gt;0)) then $VALUE = $VALUE*(sfrq/reffrq) endif "
+        show="onparams('spsim','sfrq','reffrq'):$VALUE"
+        disable="Grayed out"
+        />
+      <label loc="8 120" size="120 24" style="Label4"
+        label="Width plot :"
+        justify="Left"
+        />
+      <label loc="8 96" size="120 24" style="Label4"
+        label="Start plot:"
+        justify="Left"
+        />
+      <entry loc="128 24" size="64 24" style="Label4"
+        vc="tn='$VALUE'"
+        set="$VALUE=tn"
+        show="on('tn'):$VALUE"
+        disable="Grayed out"
+        />
+      <label loc="8 24" size="120 24" style="Label4"
+        label="Simulated nucleus:"
+        justify="Left"
+        />
+      <label loc="8 72" size="120 24" style="Label4"
+        label="Sample rotation:"
+        justify="Left"
+        />
+      <menu loc="192 72" size="56 24" style="Label4"
+        vq="srate"
+        vc="settype('srate','frequency') parunits('set','srate','$VALUE')"
+        set="parunits('get','srate'):$VALUE"
+        show="on('srate'):$VALUE if ($VALUE&gt;-1) then $VALUE=1 endif"
+        >
+        <mlabel label="ppm" chval="ppm1"/>
+        <mlabel label="Hz" chval="Hz"/>
+        <mlabel label="kHz" chval="kHz"/>
+        <mlabel label="MHz" chval="MHz"/>
+        <mlabel />
+      </menu>
+    </group>
+    <label loc="536 0" size="168 24" style="Label4"
+      label="Use 2nd order lineshape:"
+      justify="Left"
+      />
+    <menu loc="704 0" size="80 24" style="Label4"
+      vc="lshp='$VALUE'"
+      set="$VALUE=lshp"
+      show="on('lshp'):$VALUE"
+      >
+      <mlabel label="Yes" chval="y"/>
+      <mlabel label="No" chval="n"/>
+      <mlabel />
+    </menu>
+  </group>
+</template>

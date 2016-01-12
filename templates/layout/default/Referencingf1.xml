@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<template name="Referencingf1" element="pages" type="processing" >
+  <group size="800 200" style="Label4" label="Reference F1"
+    vc="exists('Referencingf1','parameter'):$Referencingf1 if ($Referencingf1&lt;0.5) then create('Referencingf1')  Referencingf1=1 off('Referencingf1') endif"
+    vc2="exists('Referencingf1','parameter'):$Referencingf1 if ($Referencingf1&gt;0.5) then destroy('Referencingf1')  endif"
+    show="on('ni'):$VALUE if $VALUE&gt;-1 then if (ni&gt;1) then $VALUE=1 else $VALUE=0 endif else $VALUE=0 endif"
+    bg="transparent"
+    border="None"
+    side="Top"
+    justify="Left"
+    tab="yes"
+    reference="Referencingf1"
+    useref="no"
+    expanded="yes"
+    >
+    <group loc="528 72" size="256 72" bg="transparent"
+      border="None"
+      side="Top"
+      justify="Left"
+      tab="no"
+      reference="DisplayScaling:"
+      useref="no"
+      expanded="yes"
+      >
+      <textmessage loc="192 48" size="56 24" style="Label4"
+        label="Hz"
+        vq="axis"
+        set="length(axis):$axislength statuscheckbox('get','axis',2,$axislength):$axisval $VALUE='Hz' if (($axisval='p') or ($axisval='d')) then  $VALUE='ppm' endif  if ($axisval='k') then  $VALUE='kHz' endif"
+        />
+      <textmessage loc="120 48" size="72 24" style="Label4"
+        label="---"
+        vq="lsfrq1 oslsfrq1 axis reffrq1 scalesw1 refsource1"
+        set="getvalue(refsource1):$freq showfreqshift('fn1'):$VALUE  length(axis):$axislength statuscheckbox('get','axis',2,$axislength):$axisval if ((($axisval='p') or ($axisval='d')) and (reffrq1&gt;0)) then $VALUE=$VALUE/reffrq1 endif  if ($axisval='k') then  $VALUE=$VALUE/1000 endif"
+        show="onparams('reffrq1','axis'):$VALUE"
+        />
+      <label loc="8 48" size="112 24" style="Label4"
+        label="Frequency shift:"
+        justify="Left"
+        />
+      <group loc="120 24" size="136 24" vq="scalesw1"
+        show="on('scalesw1'):$VALUE if ($VALUE=0) then $VALUE=1 endif"
+        bg="transparent"
+        border="None"
+        side="Top"
+        justify="Left"
+        tab="no"
+        useref="no"
+        >
+        <entry loc="0 0" size="72 24" style="Label4"
+          vq="scalesw1"
+          vc="scalesw1=$VALUE graphis:$graph if ($graph='ds') then ds('dscale') ds('dscale') endif  if ($graph='dconi') then dconi endif    "
+          set="$VALUE=scalesw1"
+          show="on('scalesw1'):$VALUE if ($VALUE&gt;0) then if (scalesw1=0) then $VALUE=0 else $VALUE=1 endif endif"
+          digits="5"
+          disable="Grayed out"
+          />
+        <textmessage loc="104 0" size="24 24" style="Label3"
+          label="on"
+          vq="scalesw1"
+          set="on('scalesw1'):$scalesw1 if ($scalesw1&gt;=0) then if ($scalesw1&gt;0) then $VALUE='on' else $VALUE='off' endif endif"
+          show="on('scalesw1'):$VALUE if ($VALUE=0) then $VALUE=1 endif"
+          />
+        <check loc="80 0" size="24 24" style="Label4"
+          vq="scalesw1"
+          vc="scalesw1='y' graphis:$graph if ($graph='ds') then ds('dscale') ds('dscale') endif  if ($graph='dconi') then dconi endif    "
+          vc2="scalesw1='n' graphis:$graph if ($graph='ds') then ds('dscale') ds('dscale') endif  if ($graph='dconi') then dconi endif    "
+          set="on('scalesw1'):$VALUE"
+          show="on('scalesw1'):$VALUE if ($VALUE=0) then $VALUE=1 endif"
+          />
+      </group>
+      <label loc="8 0" size="120 24" style="Heading4"
+        label="Display Scaling:"
+        justify="Left"
+        />
+      <label loc="8 24" size="112 24" style="Label4"
+        label="Freq scaling factor:"
+        justify="Left"
+        />
+    </group>
+    <entry loc="112 168" size="64 24" style="Label4"
+      vq="cr1 scalesw1 axis refsource1"
+      vc="parunits('get','cr1'):$cr1units if ($cr1units = 'ppm1') then $units= 'p' else $units = 'h' endif $scale=1.0 showscale('fn1'):$scale  if (($units='p') and (reffrq1&lt;&gt;0)) then vnmrunits('set','cr1',$VALUE*(reffrq1/sfrq)/$scale) else vnmrunits('set','cr',$VALUE/$scale) endif "
+      set="parunits('get','cr1'):$cr1units if ($cr1units = 'ppm1') then $units= 'p' else $units = 'h' endif  $scale=1.0 showscale('fn1'):$scale vnmrunits('get','cr1'):$VALUE if (($units='p') and (reffrq&lt;&gt;0)) then $VALUE = $VALUE*(sfrq/reffrq1)*$scale else $VALUE = $VALUE*$scale endif "
+      show="on('cr1'):$VALUE"
+      digits="3"
+      disable="Grayed out"
+      />
+    <menu loc="416 168" size="56 24" style="Label4"
+      vq="axis"
+      vc="length(axis):$axislength statuscheckbox('set','axis',2,$axislength,'$VALUE')  $choice ='$VALUE' $crunits='Hz'  if ($choice='p') then $crunits='ppm1' endif  if ($choice='d') then $crunits='ppm2' endif  if ($choice='2') then $crunits='ppm3' endif if ($choice='k') then $crunits='kHz' endif  settype('cr1','frequency') parunits ('set','cr1',$crunits) settype('delta1','frequency') parunits('set','delta1',$crunits)"
+      set="length(axis):$axislength statuscheckbox('get','axis',2,$axislength):$VALUE"
+      show="onparams('axis','cr1','delta1'):$VALUE"
+      >
+      <mlabel label="ppm" chval="p"/>
+      <mlabel label="kHz" chval="k"/>
+      <mlabel label="Hz" chval="h"/>
+      <mlabel label="dec" chval="d"/>
+    </menu>
+    <group loc="272 0" size="256 96" style="Label4"
+      bg="transparent"
+      border="None"
+      side="Top"
+      justify="Left"
+      tab="no"
+      useref="no"
+      >
+      <label loc="8 72" size="96 24" style="Label4"
+        label="Reference:"
+        justify="Left"
+        />
+      <textmessage loc="104 72" size="104 24" style="Label4"
+        label="---"
+        vq="reffrq1"
+        set="$VALUE=reffrq1"
+        digits="7"
+        />
+      <label loc="208 72" size="40 24" style="Label4"
+        label="MHz"
+        justify="Left"
+        />
+      <entry loc="104 24" size="80 24" style="Label4"
+        vq="refsource1"
+        vc="on('refsource1'):$refon if ($refon&gt;-1) then refsource1='$VALUE' else create('refsource1','flag') refsource1='sfrq' endif parunits('get','rfp1'):$rfp1units if ($rfp1units = 'ppm1') then $units= 'p' else $units = 'h' endif  rlscale1(rfp1,$units) graphis:$graph if ($graph='ds') then ds ds('dscale') ds('dscale') endif  if ($graph='dconi') then dconi endif     "
+        set="on('refsource1'):$refon if ($refon&gt;-1) then $VALUE=refsource1 else $VALUE='' endif"
+        disable="Grayed out"
+        />
+      <label loc="208 48" size="40 24" style="Label4"
+        label="MHz"
+        justify="Left"
+        />
+      <textmessage loc="104 48" size="104 24" style="Label4"
+        label="---"
+        vq="refsource1 sfrq dfrq dfrq2 dfrq3"
+        set="getvalue(refsource1):$VALUE"
+        digits="7"
+        />
+      <label loc="8 48" size="96 24" style="Label4"
+        label="Transmitter:"
+        justify="Left"
+        />
+      <label loc="8 24" size="96 24" style="Label4"
+        label="Ref source F1:"
+        justify="Left"
+        />
+      <textmessage loc="184 0" size="64 24" style="Heading4"
+        label="none"
+        vq="refsource1 tn dn dn2 dn3"
+        set="$VALUE='none' on('refsource1'):$refon if ($refon=-1) then $VALUE=tn else if (refsource1='sfrq') then $VALUE=tn endif if (refsource1='dfrq') then $VALUE=dn endif if (refsource1='dfrq2') then $VALUE=dn2 endif if (refsource1='dfrq3') then $VALUE=dn3 endif endif"
+        />
+      <label loc="8 0" size="176 24" style="Heading4"
+        label="Reference Nucleus F1:"
+        justify="Left"
+        />
+    </group>
+    <button loc="720 168" size="72 24" style="Label4"
+      label="peak"
+      vc="nl"
+      />
+    <button loc="720 168" size="72 24" style="Label4"
+      label="peak"
+      vc="nl"
+      />
+    <label loc="192 168" size="80 24" style="Label4"
+      label="Cursor delta: "
+      justify="Left"
+      />
+    <button loc="176 168" size="8 24" style="PlainText"
+      vc="cr1=1.00005*cr1"
+      show="on('cr1'):$VALUE  if ($VALUE=0) then $VALUE=1 endif"
+      />
+    <button loc="344 168" size="8 24" style="PlainText"
+      vc="delta1=1.00005*delta1"
+      show="on('delta1'):$VALUE  if ($VALUE=0) then $VALUE=1 endif"
+      />
+    <label loc="16 168" size="96 24" style="Label4"
+      label="Cursor position : "
+      justify="Left"
+      />
+    <label loc="352 168" size="64 24" style="Label4"
+      label="Axis units: "
+      justify="Left"
+      />
+    <entry loc="272 168" size="72 24" style="Label4"
+      vq="delta1 scalesw1 axis refsource1"
+      vc="parunits('get','delta1'):$delta1units if ($delta1units = 'ppm1') then $units= 'p' else $units = 'h' endif  $scale=1.0 showscale('fn1'):$scale  if (($units='p') and (reffrq1&lt;&gt;0)) then vnmrunits('set','delta1',$VALUE*(reffrq1/sfrq)/$scale) else vnmrunits('set','delta',$VALUE/$scale) endif "
+      set="parunits('get','delta1'):$delta1units if ($delta1units = 'ppm1') then $units= 'p' else $units = 'h' endif $scale=1.0 showscale('fn1'):$scale  vnmrunits('get','delta1'):$VALUE if (($units='p') and (reffrq1&lt;&gt;0)) then  $VALUE = $VALUE*(sfrq/reffrq1)*$scale else $VALUE = $VALUE*$scale endif "
+      show="on('delta1'):$VALUE"
+      digits="3"
+      disable="Grayed out"
+      />
+    <button loc="480 168" size="72 24" style="Label4"
+      label="reference"
+      vc="cr1=rfp1"
+      />
+    <button loc="560 168" size="72 24" style="Label4"
+      label="center"
+      vc="centersw1"
+      />
+    <button loc="640 168" size="72 24" style="Label4"
+      label="split"
+      vc="delta1=delta1/2.0"
+      />
+    <group loc="8 0" size="256 168" style="Label4"
+      bg="transparent"
+      border="None"
+      side="Top"
+      justify="Left"
+      tab="no"
+      reference="referencegroup:"
+      useref="no"
+      expanded="yes"
+      >
+      <button loc="152 144" size="96 24" style="Label4"
+        label="Set Transmitter"
+        show="$VALUE=-1"
+        />
+      <button loc="128 24" size="112 24" style="Label4"
+        label="Reference at Cursor"
+        vc="parunits('get','rfp1'):$rfp1units if ($rfp1units = 'ppm1') then $units= 'p' else $units = 'h' endif  rlscale1(rfp1,$units) graphis:$graph if ($graph='ds') then ds ds('dscale') ds('dscale') endif  if ($graph='dconi') then dconi endif    "
+        />
+      <entry loc="120 72" size="72 24" style="Label4"
+        vq="rfp1 scalesw1"
+        vc="parunits('get','rfp1'):$rfp1units $units='h' if ($rfp1units='ppm1') then $units= 'p' endif showscale('fn1'):$scale if (($units='p') and (reffrq1&lt;&gt;0)) then rlscale1($VALUE*reffrq1/$scale, $units) endif if ($rfp1units = 'Hz')  then rlscale1($VALUE/$scale,$units) endif  if ($rfp1units = 'kHz') then rlscale1($VALUE*1e3/$scale,$units) endif if ($rfp1units = 'MHz') then rlscale1($VALUE*1e6/$scale,$units) endif graphis:$graph if ($graph='ds') then ds ds('dscale') ds('dscale') endif  if ($graph='dconi') then dconi endif   "
+        set="parunits('get','rfp1'):$rfp1units if ($rfp1units = 'ppm1') then $units= 'p' else $units = 'h' endif $scale=1.0 showscale('fn1'):$scale vnmrunits('get','rfp1'):$VALUE  if (($units='p') and (reffrq1&lt;&gt;0)) then $VALUE=$VALUE*(sfrq/reffrq1)*$scale else $VALUE=$VALUE*$scale endif   "
+        show="on('rfp1'):$VALUE"
+        digits="3"
+        disable="Grayed out"
+        />
+      <label loc="8 144" size="144 24" style="Heading4"
+        label="Set Transmitter F1:"
+        justify="Left"
+        />
+      <button loc="128 96" size="112 24" style="Label4"
+        label="Import  Reference"
+        vc="ref1_external(Referencingf1)"
+        show="on('Referencingf1'):$Referencingf1 if ($Referencingf1&gt;-1) then $VALUE=1 else $VALUE=0 endif"
+        />
+      <entry loc="120 120" size="72 24" style="Label4"
+        vq="Referencingf1"
+        vc="Referencingf1=$VALUE"
+        set="$VALUE=Referencingf1"
+        show="on('Referencingf1'):$VALUE"
+        disable="Grayed out"
+        />
+      <entry loc="120 48" size="72 24" style="Label4"
+        vq="rfl1 scalesw1"
+        vc="showscale('fn1'):$scale parunits('get','rfl1'):$rfl1units if ($rfl1units = 'Hz')  then $rfl1val = $VALUE/$scale endif  if ($rfl1units = 'kHz') then $rfl1val=$VALUE*1e3/$scale endif if ($rfl1units = 'MHz') then $rfl1val=$VALUE*1e6/$scale endif  calcreffrq1(rfp1,'h',$rfl1val) graphis:$graph if ($graph='ds') then ds ds('dscale') ds('dscale') endif  if ($graph='dconi') then dconi endif   "
+        set="showscale('fn1'):$scale vnmrunits('get','rfl1'):$VALUE $VALUE = $VALUE*$scale"
+        show="on('rfl1'):$VALUE"
+        digits="3"
+        disable="Grayed out"
+        />
+      <menu loc="192 48" size="56 24" style="Label4"
+        vq="rfl1"
+        vc="settype('rfl1','frequency') parunits('set','rfl1','$VALUE')"
+        set="parunits('get','rfl1'):$VALUE"
+        show="on('rfl1'):$VALUE"
+        >
+        <mlabel label="MHz" chval="MHz"/>
+        <mlabel label="kHz" chval="kHz"/>
+        <mlabel label="Hz" chval="Hz"/>
+      </menu>
+      <label loc="8 120" size="112 24" style="Label4"
+        label="  Experiment #:"
+        justify="Left"
+        />
+      <menu loc="192 72" size="56 24" style="Label4"
+        vq="rfp1"
+        vc="settype('rfp1','frequency') parunits('set','rfp1','$VALUE')"
+        set="parunits('get','rfp1'):$VALUE"
+        show="on('rfp1'):$VALUE"
+        >
+        <mlabel label="ppm" chval="ppm1"/>
+        <mlabel label="MHz" chval="MHz"/>
+        <mlabel label="kHz" chval="kHz"/>
+        <mlabel label="Hz" chval="Hz"/>
+      </menu>
+      <label loc="8 48" size="112 24" style="Label4"
+        label="  Reference point:"
+        justify="Left"
+        />
+      <label loc="8 24" size="112 24" style="Label4"
+        label="Internal reference:"
+        justify="Left"
+        />
+      <label loc="8 72" size="112 24" style="Label4"
+        label="  Reference value:"
+        justify="Left"
+        />
+      <label loc="8 96" size="112 24" style="Label4"
+        label="External reference:"
+        justify="Left"
+        />
+      <label loc="8 0" size="112 24" style="Heading4"
+        label="Referencing F1:"
+        justify="Left"
+        />
+    </group>
+  </group>
+</template>

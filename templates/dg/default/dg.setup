@@ -1,0 +1,203 @@
+set dgTemplate(rows)       16
+set dgTemplate(cols)       10
+
+set dgIJ 0,0
+set dgTemplate(type,$dgIJ)  {entry}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {2}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {Sequence:}
+set dgTemplate(value,$dgIJ)  {}
+set dgTemplate(units,$dgIJ)  {}
+set dgTemplate(color,$dgIJ)  {blue}
+set dgTemplate(width,$dgIJ)  {8}
+set dgTemplate(vnmrVar,$dgIJ)  {seqfil}
+set dgTemplate(vnmrSet,$dgIJ)  {seqfil=$VALUE}
+set dgTemplate(tclSet,$dgIJ)  {$seqfil}
+set dgTemplate(showVal,$dgIJ)  {}
+
+set dgIJ 1,0
+set dgTemplate(type,$dgIJ)  {button}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {2}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {XPOLAR1}
+set dgTemplate(color,$dgIJ)  {black}
+set dgTemplate(width,$dgIJ)  {}
+set dgTemplate(vnmrSet,$dgIJ)  {xpolar1}
+
+set dgIJ 2,0
+set dgTemplate(type,$dgIJ)  {button}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {2}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {XPWXCAL}
+set dgTemplate(color,$dgIJ)  {black}
+set dgTemplate(width,$dgIJ)  {}
+set dgTemplate(vnmrSet,$dgIJ)  {xpwxcal}
+
+set dgIJ 3,0
+set dgTemplate(type,$dgIJ)  {button}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {2}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {HETCORCP1}
+set dgTemplate(color,$dgIJ)  {black}
+set dgTemplate(width,$dgIJ)  {}
+set dgTemplate(vnmrSet,$dgIJ)  {hetcorcp1}
+
+set dgIJ 4,0
+set dgTemplate(type,$dgIJ)  {button}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {2}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {REDOR2}
+set dgTemplate(color,$dgIJ)  {black}
+set dgTemplate(width,$dgIJ)  {}
+set dgTemplate(vnmrSet,$dgIJ)  {redor2}
+
+set dgIJ 5,0
+set dgTemplate(type,$dgIJ)  {button}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {2}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {WISE1}
+set dgTemplate(color,$dgIJ)  {black}
+set dgTemplate(width,$dgIJ)  {}
+set dgTemplate(vnmrSet,$dgIJ)  {wise1}
+
+set dgIJ 6,0
+set dgTemplate(type,$dgIJ)  {button}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {2}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {MQMAS}
+set dgTemplate(color,$dgIJ)  {black}
+set dgTemplate(width,$dgIJ)  {}
+set dgTemplate(vnmrSet,$dgIJ)  {s3qmas2}
+
+set dgIJ 7,0
+set dgTemplate(type,$dgIJ)  {button}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {2}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {VACP/RAMP }
+set dgTemplate(color,$dgIJ)  {black}
+set dgTemplate(width,$dgIJ)  {}
+set dgTemplate(vnmrSet,$dgIJ)  {vacp}
+
+set dgIJ 8,0
+set dgTemplate(type,$dgIJ)  {button}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {2}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {}
+set dgTemplate(color,$dgIJ)  {black}
+set dgTemplate(width,$dgIJ)  {}
+set dgTemplate(vnmrSet,$dgIJ)  {}
+
+set dgIJ 9,0
+set dgTemplate(type,$dgIJ)  {button}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {2}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {}
+set dgTemplate(color,$dgIJ)  {black}
+set dgTemplate(width,$dgIJ)  {}
+set dgTemplate(vnmrSet,$dgIJ)  {}
+
+set dgIJ 0,3
+set dgTemplate(type,$dgIJ)  {title}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {2}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {Buffers}
+set dgTemplate(color,$dgIJ)  {blue}
+
+set dgIJ 15,6
+set dgTemplate(type,$dgIJ)  {button}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {1}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {FLIP}
+set dgTemplate(color,$dgIJ)  {blue}
+set dgTemplate(width,$dgIJ)  {}
+set dgTemplate(vnmrSet,$dgIJ)  {flip}
+
+set dgIJ 0,8
+set dgTemplate(type,$dgIJ)  {title}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {2}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {Calibration Tests}
+set dgTemplate(color,$dgIJ)  {blue}
+
+set dgIJ 1,8
+set dgTemplate(type,$dgIJ)  {button}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {2}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {Homogeneity (D2O)}
+set dgTemplate(color,$dgIJ)  {black}
+set dgTemplate(width,$dgIJ)  {}
+set dgTemplate(vnmrSet,$dgIJ)  {}
+
+set dgIJ 2,8
+set dgTemplate(type,$dgIJ)  {button}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {2}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {Homogeneity (ADM)}
+set dgTemplate(color,$dgIJ)  {black}
+set dgTemplate(width,$dgIJ)  {}
+set dgTemplate(vnmrSet,$dgIJ)  {}
+
+set dgIJ 3,8
+set dgTemplate(type,$dgIJ)  {button}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {2}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {Magic Angle}
+set dgTemplate(color,$dgIJ)  {black}
+set dgTemplate(width,$dgIJ)  {}
+set dgTemplate(vnmrSet,$dgIJ)  {}
+
+set dgIJ 4,8
+set dgTemplate(type,$dgIJ)  {button}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {2}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {Calibrate PW}
+set dgTemplate(color,$dgIJ)  {black}
+set dgTemplate(width,$dgIJ)  {}
+set dgTemplate(vnmrSet,$dgIJ)  {}
+
+set dgIJ 5,8
+set dgTemplate(type,$dgIJ)  {button}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {2}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {Hartmann Hahn}
+set dgTemplate(color,$dgIJ)  {black}
+set dgTemplate(width,$dgIJ)  {}
+set dgTemplate(vnmrSet,$dgIJ)  {}
+
+set dgIJ 6,8
+set dgTemplate(type,$dgIJ)  {button}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {2}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {Calibrate PWX}
+set dgTemplate(color,$dgIJ)  {black}
+set dgTemplate(width,$dgIJ)  {}
+set dgTemplate(vnmrSet,$dgIJ)  {}
+
+set dgIJ 7,8
+set dgTemplate(type,$dgIJ)  {button}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {2}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {Reference (4scans)}
+set dgTemplate(color,$dgIJ)  {black}
+set dgTemplate(width,$dgIJ)  {}
+set dgTemplate(vnmrSet,$dgIJ)  {}

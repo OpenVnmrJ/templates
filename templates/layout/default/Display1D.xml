@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<template name="Display1D" element="pages" type="processing" >
+  <group size="800 200" style="Heading4" label="Display"
+    bg="transparent"
+    border="None"
+    side="Top"
+    justify="Left"
+    tab="yes"
+    reference="Display1D"
+    useref="no"
+    expanded="yes"
+    >
+    <button loc="144 176" size="136 24" style="Label4"
+      label="Peak Frequencies"
+      vc="dpf"
+      />
+    <button loc="144 152" size="136 24" style="Label4"
+      label="Graphics Text"
+      vc="dtext"
+      />
+    <group loc="592 104" size="144 80" style="PlainText"
+      bg="transparent"
+      border="None"
+      side="Top"
+      justify="Left"
+      tab="no"
+      useref="no"
+      >
+      <button loc="8 48" size="104 24" style="Label3"
+        label="Zero Order"
+        vc="aph0"
+        />
+      <button loc="8 24" size="104 24" style="Label3"
+        label="Full"
+        vc="aph"
+        />
+      <label loc="8 0" size="88 24" style="Heading4"
+        label="AutoPhase:"
+        justify="Left"
+        />
+    </group>
+    <group loc="592 0" size="144 104" style="PlainText"
+      bg="transparent"
+      border="None"
+      side="Top"
+      justify="Left"
+      tab="no"
+      useref="no"
+      >
+      <menu loc="8 72" size="104 24" style="Label3"
+        vq="bcorder"
+        vc="exists('bcorder','parameter'):$e if $e&lt;0.5 then create('bcorder','real') setgroup('bcorder','processing') endif bcorder=$VALUE bc(bcorder)"
+        set="exists('bcorder','parameter'):$e if $e&gt;0.5 then $VALUE=bcorder else $VALUE='' endif"
+        >
+        <mlabel label="3rd-order" chval="3"/>
+        <mlabel label="5th-order" chval="5"/>
+        <mlabel label="7th-order" chval="7"/>
+        <mlabel label="9th-order" chval="9"/>
+        <mlabel label="11th-order" chval="11"/>
+        <mlabel label="15th-order" chval="15"/>
+        <mlabel />
+      </menu>
+      <button loc="8 48" size="104 24" style="Label3"
+        label="BC"
+        vc="exists('bcorder','parameter'):$e if $e&lt;0.5 then bc else bc(bcorder) endif"
+        />
+      <button loc="8 24" size="104 24" style="Label3"
+        label="DC"
+        vc="dc"
+        />
+      <label loc="8 0" size="128 24" style="Heading4"
+        label="Baseline Correct:"
+        justify="Left"
+        />
+    </group>
+    <group loc="464 0" size="128 184" style="PlainText"
+      bg="transparent"
+      border="None"
+      side="Top"
+      justify="Left"
+      tab="no"
+      useref="no"
+      >
+      <label loc="8 120" size="80 24" style="Label4"
+        label="Set cursor to"
+        justify="Left"
+        />
+      <menu loc="56 144" size="64 24" style="Label4"
+        label="menu"
+        vq="ref"
+        vc="parunits('set','ref','$VALUE')"
+        set="parunits('get','ref'):$VALUE"
+        >
+        <mlabel label="Hz" chval="Hz"/>
+        <mlabel label="ppm" chval="ppm1"/>
+        <mlabel />
+      </menu>
+      <label loc="8 0" size="104 24" style="Heading4"
+        label="Reference:"
+        justify="Left"
+        />
+      <button loc="8 24" size="104 24" style="Label3"
+        label="By Solvent"
+        vc="setref sp=sp-rfl ds"
+        />
+      <button loc="8 48" size="104 24" style="Label3"
+        label="By TMS"
+        vc="setref tmsref sp=sp-rfl ds"
+        />
+      <button loc="8 72" size="104 24" style="Label3"
+        label="Cancel"
+        vc="$rfl=rfl crl sp=sp + $rfl"
+        />
+      <button loc="8 96" size="104 24" style="Label3"
+        label="By Cursor"
+        vc="rl(0) ref=0"
+        />
+      <entry loc="8 144" size="48 24" style="Label4"
+        vq="ref"
+        vc="vnmrunits('set','ref',$VALUE) rl(ref) ds"
+        set="vnmrunits('get','ref'):$VALUE"
+        show="on('ref'):$VALUE"
+        digits="1"
+        disable="Grayed out"
+        />
+    </group>
+    <group loc="288 0" size="176 128" style="PlainText"
+      bg="transparent"
+      border="None"
+      side="Top"
+      justify="Left"
+      tab="no"
+      reference="Position1D"
+      useref="no"
+      expanded="yes"
+      >
+      <button loc="120 96" size="32 24" style="Label3"
+        label="/y"
+        vc="wc2=wc2-5 ds"
+        />
+      <button loc="88 96" size="32 24" style="Label3"
+        label="*y"
+        vc="wc2=wc2+5 ds"
+        />
+      <button loc="120 72" size="32 24" style="Label3"
+        label="/x"
+        vc="wc=wc-5 sc=sc+2.5 ds"
+        />
+      <button loc="88 72" size="32 24" style="Label3"
+        label="*x"
+        vc="wc=wc+5 sc=sc-2.5 ds"
+        />
+      <button loc="120 48" size="32 24" style="Label3"
+        label="-y"
+        vc="sc2=sc2-5 ds"
+        />
+      <button loc="88 48" size="32 24" style="Label3"
+        label="+y"
+        vc="sc2=sc2+5 ds"
+        />
+      <button loc="120 24" size="32 24" style="Label3"
+        label="-x"
+        vc="sc=sc+5 ds"
+        />
+      <button loc="88 24" size="32 24" style="Label3"
+        label="+x"
+        vc="sc=sc-5 ds"
+        />
+      <button loc="8 96" size="72 24" style="Label3"
+        label="Full"
+        vc="full ds"
+        />
+      <button loc="8 48" size="72 24" style="Label3"
+        label="Right"
+        vc="right ds"
+        />
+      <button loc="8 72" size="72 24" style="Label3"
+        label="Center"
+        vc="center ds"
+        />
+      <label loc="8 0" size="120 24" style="Heading4"
+        label="Screen Position:"
+        justify="Left"
+        />
+      <button loc="8 24" size="72 24" style="Label3"
+        label="Left"
+        vc="left ds"
+        />
+    </group>
+    <label loc="144 128" size="72 24" style="Heading4"
+      label="Display:"
+      justify="Left"
+      />
+    <group loc="136 80" size="152 48" style="PlainText"
+      bg="transparent"
+      border="None"
+      side="Top"
+      justify="Left"
+      tab="no"
+      useref="no"
+      >
+      <button loc="8 24" size="136 24" style="Label4"
+        label="Auto Threshhold"
+        vc="thadj ds ds('thresh')"
+        />
+      <button loc="8 0" size="88 24" style="Label4"
+        label="Autoscale"
+        vc="vsadj ds"
+        />
+      <button loc="96 0" size="24 24" style="Label4"
+        label="+"
+        vc="vs=vs*2 ds"
+        />
+      <button loc="120 0" size="24 24" style="Label4"
+        label="-"
+        vc="vs=vs/2 ds"
+        />
+    </group>
+    <group loc="136 0" size="152 80" style="Heading2"
+      label="Scaling"
+      bg="transparent"
+      border="None"
+      side="Top"
+      justify="Left"
+      tab="no"
+      useref="no"
+      >
+      <radio loc="8 48" size="80 24" style="Label4"
+        label="Absolute"
+        vq="aig"
+        vc="aig='ai'"
+        set="if (aig='ai') then $VALUE=1 else $VALUE=0 endif"
+        />
+      <radio loc="8 24" size="104 24" style="Label4"
+        label="Normalized"
+        vq="aig"
+        vc="aig='nm'"
+        set="if (aig='nm') then $VALUE=1 else $VALUE=0 endif"
+        />
+      <label loc="8 0" size="136 24" style="Heading4"
+        label="Amplitude Scaling:"
+        justify="Left"
+        />
+    </group>
+    <group loc="8 96" size="128 104" style="PlainText"
+      bg="transparent"
+      border="None"
+      side="Top"
+      justify="Left"
+      tab="no"
+      useref="no"
+      >
+      <radio loc="8 72" size="112 24" style="Label4"
+        label="kHz"
+        vq="axis"
+        vc="axis='k' $st='' graphis:$st if $st='ds' then dscale endif"
+        set="if (axis='k') then $VALUE=1 else $VALUE=0 endif"
+        />
+      <radio loc="8 48" size="112 24" style="Label4"
+        label="PPM"
+        vq="axis"
+        vc="axis='p' $st='' graphis:$st if $st='ds' then dscale endif"
+        set="if (axis='p') then $VALUE=1 else $VALUE=0 endif"
+        />
+      <radio loc="8 24" size="112 24" style="Label4"
+        label="Hertz"
+        vq="axis"
+        vc="axis='h' $st='' graphis:$st if $st='ds' then dscale endif"
+        set="if (axis='h') then $VALUE=1 else $VALUE=0 endif"
+        />
+      <label loc="8 0" size="48 24" style="Heading4"
+        label="Axis:"
+        justify="Left"
+        />
+    </group>
+    <group loc="8 0" size="128 96" style="PlainText"
+      bg="transparent"
+      border="None"
+      side="Top"
+      justify="Left"
+      tab="no"
+      useref="no"
+      >
+      <radio loc="8 72" size="72 24" style="Label4"
+        label="Power"
+        vq="dmg"
+        vc="dmg='pwr'"
+        set="if (dmg='pwr') then $VALUE=1 else $VALUE=0 endif"
+        />
+      <radio loc="8 48" size="72 24" style="Label4"
+        label="Absval"
+        vq="dmg"
+        vc="dmg='av'"
+        set="if (dmg='av') then $VALUE=1 else $VALUE=0 endif"
+        />
+      <radio loc="8 24" size="72 24" style="Label4"
+        label="Phased"
+        vq="dmg"
+        vc="dmg='ph'"
+        set="if (dmg='ph') then $VALUE=1 else $VALUE=0 endif"
+        />
+      <label loc="8 0" size="112 24" style="Heading4"
+        label="Display Mode:"
+        justify="Left"
+        />
+    </group>
+  </group>
+</template>

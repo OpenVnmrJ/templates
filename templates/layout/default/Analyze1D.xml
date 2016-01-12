@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<template name="Analyze1D" element="pages" type="processing" >
+  <group size="800 200" style="Label4" label="Analyze"
+    bg="transparent"
+    border="None"
+    side="Top"
+    justify="Left"
+    tab="yes"
+    reference="Analyze1D"
+    useref="no"
+    expanded="yes"
+    >
+    <group loc="8 0" size="256 192" style="Label4"
+      bg="transparent"
+      border="None"
+      side="Top"
+      justify="Left"
+      tab="no"
+      useref="no"
+      >
+      <entry loc="128 168" size="64 24" style="Label4"
+        disable="Grayed out"
+        />
+      <entry loc="128 144" size="64 24" style="Label4"
+        disable="Grayed out"
+        />
+      <label loc="8 168" size="120 24" style="Label4"
+        label="Angles:"
+        justify="Left"
+        />
+      <label loc="8 144" size="120 24" style="Label4"
+        label="Complex points:"
+        justify="Left"
+        />
+      <label loc="8 0" size="184 24" style="Heading4"
+        label="STARS Data Analysis: "
+        justify="Left"
+        />
+      <entry loc="88 48" size="104 24" style="Label4"
+        disable="Grayed out"
+        />
+      <label loc="8 48" size="80 24" style="Label4"
+        label="Frequency:"
+        justify="Left"
+        />
+      <label loc="192 48" size="32 24" style="Label4"
+        label="MHz"
+        justify="Left"
+        />
+      <menu loc="192 120" size="56 24" style="Label4"
+        label="menu"
+        >
+        <mlabel label="sec" chval="sec"/>
+        <mlabel label="ms" chval="ms"/>
+        <mlabel label="us" chval="us"/>
+      </menu>
+      <menu loc="192 96" size="56 24" style="Label4"
+        label="menu"
+        >
+        <mlabel label="sec" chval="sec"/>
+        <mlabel label="ms" chval="ms"/>
+        <mlabel label="us" chval="us"/>
+      </menu>
+      <entry loc="128 120" size="64 24" style="Label4"
+        disable="Grayed out"
+        />
+      <entry loc="128 96" size="64 24" style="Label4"
+        disable="Grayed out"
+        />
+      <label loc="8 120" size="120 24" style="Label4"
+        label="Width plot :"
+        justify="Left"
+        />
+      <label loc="8 96" size="120 24" style="Label4"
+        label="Start plot:"
+        justify="Left"
+        />
+      <entry loc="128 24" size="64 24" style="Label4"
+        disable="Grayed out"
+        />
+      <label loc="8 24" size="120 24" style="Label4"
+        label="Simulated nucleus:"
+        justify="Left"
+        />
+      <entry loc="128 72" size="64 24" style="Label4"
+        disable="Grayed out"
+        />
+      <label loc="8 72" size="120 24" style="Label4"
+        label="Sample rotation:"
+        justify="Left"
+        />
+      <menu loc="192 72" size="56 24" style="Label4"
+        label="menu"
+        >
+        <mlabel label="sec" chval="sec"/>
+        <mlabel label="ms" chval="ms"/>
+        <mlabel label="us" chval="us"/>
+      </menu>
+    </group>
+    <group loc="536 0" size="256 192" bg="transparent"
+      border="None"
+      side="Top"
+      justify="Left"
+      tab="no"
+      useref="no"
+      >
+      <menu loc="168 0" size="80 24" style="Label4"
+        label="menu"
+        >
+        <mlabel label="sec" chval="sec"/>
+        <mlabel label="ms" chval="ms"/>
+        <mlabel label="us" chval="us"/>
+      </menu>
+      <label loc="80 24" size="80 24" style="Label4"
+        label="Rotation:"
+        justify="Left"
+        />
+      <label loc="80 0" size="80 24" style="Label4"
+        label="Sites:"
+        justify="Left"
+        />
+      <menu loc="168 24" size="80 24" style="Label4"
+        label="menu"
+        >
+        <mlabel label="sec" chval="sec"/>
+        <mlabel label="ms" chval="ms"/>
+        <mlabel label="us" chval="us"/>
+      </menu>
+      <button loc="168 168" size="80 24" style="PlainText"
+        label="Iterate"
+        />
+      <button loc="80 168" size="80 24" style="PlainText"
+        label="Simulate"
+        />
+      <button loc="168 120" size="80 24" style="Label4"
+        label="Save SS"
+        />
+      <button loc="168 72" size="80 24" style="Label4"
+        label="Set SS"
+        />
+      <button loc="168 48" size="80 24" style="Label4"
+        label="Zero SS"
+        />
+      <button loc="168 96" size="80 24" style="Label4"
+        label="Del SS"
+        />
+      <button loc="168 144" size="80 24" style="Label4"
+        label="Edit SS"
+        />
+      <button loc="80 48" size="80 24" style="Label4"
+        label="STARS"
+        />
+      <button loc="80 72" size="80 24" style="PlainText"
+        label="Data"
+        />
+      <button loc="80 96" size="80 24" style="PlainText"
+        label="Sim"
+        />
+      <button loc="80 120" size="80 24" style="Label4"
+        label="Compare"
+        />
+      <button loc="80 144" size="80 24" style="Label4"
+        label="Result"
+        />
+    </group>
+    <group loc="272 0" size="256 192" bg="transparent"
+      border="None"
+      side="Top"
+      justify="Left"
+      tab="no"
+      useref="no"
+      >
+      <menu loc="128 24" size="56 24" style="Label4"
+        label="menu"
+        >
+        <mlabel label="sec" chval="sec"/>
+        <mlabel label="ms" chval="ms"/>
+        <mlabel label="us" chval="us"/>
+      </menu>
+      <menu loc="128 0" size="56 24" style="Label4"
+        label="menu"
+        >
+        <mlabel label="sec" chval="sec"/>
+        <mlabel label="ms" chval="ms"/>
+        <mlabel label="us" chval="us"/>
+      </menu>
+      <label loc="8 24" size="120 24" style="Label4"
+        label="Transition "
+        justify="Left"
+        />
+      <label loc="8 0" size="120 24" style="Label4"
+        label="Spin number"
+        justify="Left"
+        />
+    </group>
+  </group>
+</template>

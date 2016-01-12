@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<template name="Variables" element="pages" type="processing" >
+  <group size="800 200" style="PlainText" label="Variables"
+    bg="transparent"
+    border="None"
+    side="Top"
+    justify="Left"
+    tab="yes"
+    reference="Variables"
+    useref="no"
+    expanded="yes"
+    >
+    <group loc="0 0" size="800 200" style="PlainText"
+      bg="transparent"
+      border="None"
+      side="Top"
+      justify="Left"
+      tab="no"
+      reference="r7"
+      useref="no"
+      expanded="yes"
+      >
+      <label loc="8 168" size="24 24" style="Label4"
+        label="r7"
+        justify="Left"
+        />
+      <entry loc="40 168" size="80 24" style="Label4"
+        vq="r7"
+        vc="r7=$VALUE"
+        set="$VALUE=r7"
+        show="on('r7'):$VALUE"
+        disable="Grayed out"
+        />
+      <entry loc="160 72" size="456 24" style="Label4"
+        vq="n3"
+        vc="n3='$VALUE'"
+        set="$VALUE=n3"
+        disable="Grayed out"
+        />
+      <entry loc="160 48" size="456 24" style="Label4"
+        vq="n2"
+        vc="n2='$VALUE'"
+        set="$VALUE=n2"
+        disable="Grayed out"
+        />
+      <entry loc="160 24" size="456 24" style="Label4"
+        vq="n1"
+        vc="n1='$VALUE'"
+        set="$VALUE=n1"
+        show="exists('n1','parameter'):$VALUE if ($VALUE=0) then $VALUE=-1 endif"
+        disable="Grayed out"
+        />
+      <label loc="136 72" size="24 24" style="Label4"
+        label="n3"
+        justify="Left"
+        />
+      <label loc="136 48" size="24 24" style="Label4"
+        label="n2"
+        justify="Left"
+        />
+      <label loc="136 24" size="24 24" style="Label4"
+        label="n1"
+        justify="Left"
+        />
+      <label loc="136 0" size="208 24" style="Heading4"
+        label="Words or Strings of Words:"
+        justify="Left"
+        />
+      <entry loc="40 144" size="80 24" style="Label4"
+        vq="r6"
+        vc="r6=$VALUE"
+        set="$VALUE=r6"
+        show="on('r6'):$VALUE"
+        disable="Grayed out"
+        />
+      <entry loc="40 120" size="80 24" style="Label4"
+        vq="r5"
+        vc="r5=$VALUE"
+        set="$VALUE=r5"
+        show="on('r5'):$VALUE"
+        disable="Grayed out"
+        />
+      <entry loc="40 96" size="80 24" style="Label4"
+        vq="r4"
+        vc="r4=$VALUE"
+        set="$VALUE=r4"
+        show="on('r4'):$VALUE"
+        disable="Grayed out"
+        />
+      <entry loc="40 72" size="80 24" style="Label4"
+        vq="r3"
+        vc="r3=$VALUE"
+        set="$VALUE=r3"
+        show="on('r3'):$VALUE"
+        disable="Grayed out"
+        />
+      <entry loc="40 48" size="80 24" style="Label4"
+        vq="r2"
+        vc="r2=$VALUE"
+        set="$VALUE=r2"
+        show="on('r2'):$VALUE"
+        disable="Grayed out"
+        />
+      <entry loc="40 24" size="80 24" style="Label4"
+        vq="r1"
+        vc="r1=$VALUE"
+        set="$VALUE=r1"
+        show="on('r1'):$VALUE"
+        disable="Grayed out"
+        />
+      <label loc="8 144" size="24 24" style="Label4"
+        label="r6"
+        justify="Left"
+        />
+      <label loc="8 120" size="24 24" style="Label4"
+        label="r5"
+        justify="Left"
+        />
+      <label loc="8 96" size="24 24" style="Label4"
+        label="r4"
+        justify="Left"
+        />
+      <label loc="8 72" size="24 24" style="Label4"
+        label="r3"
+        justify="Left"
+        />
+      <label loc="8 48" size="24 24" style="Label4"
+        label="r2"
+        justify="Left"
+        />
+      <label loc="8 24" size="24 24" style="Label4"
+        label="r1"
+        justify="Left"
+        />
+      <label loc="8 0" size="112 24" style="Heading4"
+        label="Numbers:"
+        justify="Left"
+        />
+    </group>
+  </group>
+</template>

@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<template name="Standard" element="pages" type="sample" >
+  <group size="800 200" style="PlainText" label="Standard"
+    bg="transparent"
+    border="None"
+    side="Top"
+    justify="Left"
+    tab="yes"
+    reference="Standard"
+    useref="no"
+    expanded="yes"
+    >
+    <entry loc="80 48" size="232 24" style="Label4"
+      vq="page"
+      vc="page='$VALUE' setvalue('page', page,'processed')"
+      set="$VALUE=page"
+      show="exists('page','parameter'):$page if ($page=0) then $VALUE=-1 else $VALUE=1 endif"
+      disable="Grayed out"
+      />
+    <entry loc="80 24" size="232 24" style="Label4"
+      vq="samplename"
+      vc="samplename='$VALUE' setvalue('samplename', samplename,'processed')"
+      set="$VALUE=samplename"
+      show="exists('samplename','parameter'):$samplename if ($samplename=0) then $VALUE=-1 else $VALUE=1 endif"
+      disable="Grayed out"
+      />
+    <entry loc="80 0" size="232 24" style="Label4"
+      vq="notebook"
+      vc="notebook='$VALUE' setvalue('notebook', notebook,'processed')"
+      set="$VALUE=notebook"
+      show="exists('notebook','parameter'):$notebook if ($notebook=0) then $VALUE=-1 else $VALUE=1 endif"
+      disable="Grayed out"
+      />
+    <entry loc="176 72" size="136 24" style="Label4"
+      vq="solvent"
+      vc="solvent=$VALUE"
+      set="$VALUE=solvent"
+      show="exists('solvent','parameter'):$solvent if ($solvent=0) then $VALUE=-1 else $VALUE=1 endif"
+      disable="Grayed out"
+      />
+    <group loc="360 0" size="152 24" style="PlainText"
+      bg="transparent"
+      border="None"
+      side="Top"
+      justify="Left"
+      tab="no"
+      useref="no"
+      >
+      <toggle loc="0 0" size="72 24" style="Heading4"
+        label="Insert"
+        vc="insert"
+        show="$VALUE=0"
+        statpar="air"
+        statval="insert"
+        radiobutton="true"
+        />
+      <toggle loc="66 0" size="72 24" style="Heading4"
+        label="Eject"
+        vc="eject"
+        show="$VALUE=0"
+        statpar="air"
+        statval="eject"
+        radiobutton="true"
+        />
+    </group>
+    <label loc="112 72" size="72 24" style="Label4"
+      label="Solvent:"
+      justify="Left"
+      />
+    <label loc="8 24" size="72 24" style="Label4"
+      label="Sample:"
+      justify="Left"
+      />
+    <label loc="8 0" size="72 24" style="Label4"
+      label="Notebook:"
+      justify="Left"
+      />
+    <group loc="320 48" size="232 51" style="PlainText"
+      vq="system"
+      show="is_spectrometer('value'):$SHOW"
+      bg="transparent"
+      border="None"
+      side="Top"
+      justify="Left"
+      tab="no"
+      useref="no"
+      >
+      <group loc="8 0" size="216 48" bg="transparent"
+        border="None"
+        side="Top"
+        justify="Left"
+        tab="no"
+        useref="no"
+        >
+        <button loc="0 0" size="64 24" style="Heading4"
+          label="Spin"
+          vc="spin"
+          show="$VALUE=0"
+          />
+        <entry loc="88 24" size="64 24" style="Label4"
+          vq="temp"
+          vc="temp=$VALUE"
+          set="$VALUE=temp"
+          show="on('temp'):$ENABLE"
+          digits="1"
+          disable="Grayed out"
+          />
+        <entry loc="88 0" size="64 24" style="Label4"
+          vq="spin"
+          vc="spin=$VALUE"
+          set="$VALUE=spin"
+          show="on('spin'):$ENABLE $ENABLE=0"
+          digits="0"
+          disable="Grayed out"
+          />
+        <button loc="0 24" size="64 24" style="Heading4"
+          label="Temp"
+          vc="su"
+          />
+        <label loc="64 24" size="24 24" style="Label4"
+          label="at"
+          justify="Center"
+          />
+        <label loc="152 24" size="32 24" style="Label4"
+          label="C"
+          justify="Left"
+          />
+        <check loc="184 24" size="24 24" style="PlainText"
+          vq="temp"
+          vc="on('temp')"
+          vc2="off('temp')"
+          set="on('temp'):$VALUE"
+          />
+        <check loc="184 0" size="24 24" style="Label4"
+          vq="spin"
+          vc="on('spin')"
+          vc2="off('spin')"
+          set="on('spin'):$VALUE"
+          show="$VALUE=0"
+          />
+        <label loc="152 0" size="32 24" style="Label4"
+          label="Hz"
+          show="$VALUE=0"
+          justify="Left"
+          />
+        <label loc="64 0" size="24 24" style="Label4"
+          label="at"
+          vq="$VALUE=0"
+          justify="Center"
+          />
+      </group>
+    </group>
+    <textfile loc="0 96" size="312 96" style="PlainText"
+      vq="curexp"
+      set="$VALUE=curexp+'/text'"
+      editable="yes"
+      wrap="yes"
+      />
+    <group loc="352 120" size="160 72" style="PlainText"
+      vq="system"
+      show="is_spectrometer('value'):$SHOW"
+      bg="transparent"
+      border="None"
+      side="Top"
+      justify="Left"
+      tab="no"
+      useref="no"
+      >
+      <textmessage loc="64 24" size="48 24" style="Label4"
+        label="Off"
+        statpar="lock"
+        />
+      <textmessage loc="64 48" size="48 24" style="Label4"
+        label="0.4"
+        statpar="lklvl"
+        />
+      <label loc="16 48" size="48 24" style="Label4"
+        label="Level:"
+        justify="Left"
+        />
+      <label loc="16 24" size="48 24" style="Label4"
+        label="Status:"
+        justify="Left"
+        />
+      <label loc="8 0" size="80 24" style="Heading4"
+        label="Lock:"
+        justify="Left"
+        />
+    </group>
+    <label loc="8 48" size="72 24" style="Label4"
+      label="Page:"
+      justify="Left"
+      />
+    <label loc="8 72" size="104 24" style="Heading4"
+      label="Comment:"
+      justify="Left"
+      />
+    <group loc="560 0" size="232 196" vq="system"
+      show="is_spectrometer('value'):$SHOW"
+      bg="transparent"
+      border="None"
+      side="Top"
+      justify="Left"
+      tab="no"
+      useref="no"
+      >
+      <textmessage loc="104 96" size="128 24" style="Label4"
+        label=" "
+        vq="gmapname"
+        set="gmapshim('mapname',''):$VALUE"
+        />
+      <menu loc="120 24" size="104 24" style="Label4"
+        label="menu"
+        vq="alock"
+        vc="alock='$VALUE'"
+        set="$VALUE=alock"
+        show="$VALUE=0"
+        >
+        <mlabel label="Z0" chval="y"/>
+        <mlabel label="Z0 + Power" chval="a"/>
+        <mlabel label="Simple" chval="s"/>
+        <mlabel label="Unlocked" chval="u"/>
+        <mlabel label="None" chval="n"/>
+        <mlabel />
+      </menu>
+      <button loc="0 24" size="104 24" style="Heading4"
+        label="Find z0"
+        vc="exists('z0found','parameter'):$ex if $ex then destroy('z0found') endif if alock='n' then alock='y' endif gmapshim_au('findz0')"
+        show="$VALUE=0"
+        />
+      <button loc="0 48" size="104 24" style="Heading4"
+        label="Autolock"
+        vq="alock"
+        vc="lock"
+        show="$ENABLE=(alock&lt;&gt;'n' and alock&lt;&gt;'u')"
+        />
+      <button loc="0 72" size="168 24" style="Heading4"
+        label="Gradient Autoshim"
+        vc="gmapshim"
+        show="$VALUE=0"
+        />
+      <label loc="24 96" size="80 24" style="Label4"
+        label="  Mapname:"
+        show="$VALUE=0"
+        justify="Left"
+        />
+      <group loc="0 120" size="232 75" bg="transparent"
+        border="None"
+        side="Top"
+        justify="Left"
+        tab="no"
+        useref="no"
+        >
+        <button loc="0 1" size="128 24" style="Heading4"
+          label="Lock Autoshim"
+          vq="wshim"
+          vc="shim"
+          show="$ENABLE=(wshim&lt;&gt;'n' and wshim&lt;&gt;'g')"
+          />
+        <menu loc="96 25" size="128 24" style="Label4"
+          label="menu"
+          vq="wshim"
+          vc="wshim='$VALUE' prescan[8]='on'"
+          set="$VALUE=wshim"
+          show="$VALUE=0"
+          >
+          <mlabel label="Never" chval="n"/>
+          <mlabel label="Every sample" chval="s"/>
+          <mlabel label="Every expt" chval="e"/>
+          <mlabel label="Every FID" chval="f"/>
+          <mlabel />
+        </menu>
+        <menu loc="96 49" size="128 24" style="Label4"
+          vq="method wshim"
+          vc="method='$VALUE'"
+          set="shell('basename '+method):$VALUE"
+          show="$VALUE=0"
+          >
+          <mlabel label="z1z2" chval="z1z2"/>
+          <mlabel label="Low non-spins" chval="nsxy"/>
+          <mlabel label="All non-spins" chval="nsall"/>
+          <mlabel label="All z's" chval="allzs"/>
+          <mlabel label="Hi-res z's" chval="hires"/>
+          <mlabel label="Fine z1,z2" chval="fz1z2"/>
+          <mlabel label="Fine z1-z3" chval="fz123"/>
+          <mlabel />
+        </menu>
+        <label loc="0 25" size="88 24" style="Label4"
+          label="  When:"
+          show="$VALUE=0"
+          justify="Left"
+          />
+        <label loc="0 49" size="88 24" style="Label4"
+          label="  Shim method:"
+          show="$VALUE=0"
+          justify="Left"
+          />
+      </group>
+    </group>
+  </group>
+</template>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<template name="LineLists" element="pages" type="processing" >
+  <group size="800 200" style="Heading2" label="Line Lists"
+    bg="transparent"
+    border="None"
+    side="Top"
+    justify="Left"
+    tab="yes"
+    reference="LineLists"
+    useref="no"
+    expanded="yes"
+    >
+    <textfile loc="488 48" size="304 72" style="Label4"
+      vq="curexp lifrq"
+      set="$f='' $f=curexp+'/dli.out' exists($f,'file'):$e if $e&lt;0.5 then write('reset',$f) endif $VALUE=$f"
+      editable="yes"
+      wrap="yes"
+      />
+    <group loc="640 120" size="152 48" style="PlainText"
+      bg="transparent"
+      border="None"
+      side="Top"
+      justify="Left"
+      tab="no"
+      useref="no"
+      >
+      <radio loc="96 24" size="48 24" style="Label4"
+        label="Sum"
+        vq="insref"
+        vc="insref='n'"
+        set="off('insref'):$VALUE"
+        />
+      <label loc="0 0" size="120 24" style="Label4"
+        label="Normalize Area To:"
+        justify="Left"
+        />
+      <radio loc="0 24" size="88 24" style="Label4"
+        label="Single Peak"
+        vq="insref"
+        vc="insref='y'"
+        set="on('insref'):$VALUE"
+        />
+    </group>
+    <group loc="488 120" size="144 48" style="PlainText"
+      bg="transparent"
+      border="None"
+      side="Top"
+      justify="Left"
+      tab="no"
+      useref="no"
+      >
+      <label loc="0 0" size="88 24" style="Label4"
+        label="Integrate by:"
+        justify="Left"
+        />
+      <radio loc="80 24" size="64 24" style="Label4"
+        label="Index"
+        vq="intmod lifrq"
+        vc="lifrq='n'"
+        set="$i=intmod if $i='full' then $VALUE=1 else if $i='partial' then $VALUE=0 else off('lifrq'):$VALUE endif endif"
+        />
+      <radio loc="0 24" size="72 24" style="Label4"
+        label="Region"
+        vq="intmod lifrq"
+        vc="lifrq='y'"
+        set="$i=intmod if $i='partial' then $VALUE=1 else if $i='full' then $VALUE=0 else on('lifrq'):$VALUE endif endif"
+        />
+    </group>
+    <entry loc="568 176" size="64 24" style="Label4"
+      vq="ins"
+      vc="ins=$VALUE"
+      set="$VALUE=ins"
+      show="on('ins'):$VALUE"
+      disable="Grayed out"
+      />
+    <label loc="640 176" size="104 24" style="Label4"
+      label="Scale Reference:"
+      justify="Left"
+      />
+    <entry loc="744 176" size="48 24" style="Label4"
+      vq="insref"
+      vc="insref=$VALUE"
+      set="$VALUE=insref"
+      show="on('insref'):$VALUE"
+      disable="Grayed out"
+      />
+    <label loc="488 176" size="80 24" style="Label4"
+      label="Normalize to:"
+      justify="Left"
+      />
+    <textfile loc="248 24" size="224 176" style="Label4"
+      vq="curexp fptmp"
+      set="$fp=curexp+'/fp.out' exists($fp,'file'):$e if $e&lt;0.5 then write('reset',$fp) endif $VALUE=$fp"
+      editable="yes"
+      wrap="yes"
+      />
+    <textfile loc="8 24" size="232 176" style="Label4"
+      vq="curexp llfrq"
+      set="$fll=curexp+'/dll.out' exists($fll,'file'):$e if $e&lt;0.5 then write('reset',$fll) endif $VALUE=$fll"
+      editable="yes"
+      wrap="yes"
+      />
+    <button loc="504 24" size="272 24" style="Heading4"
+      label="Display Normalized Integrals"
+      vc="dlni"
+      />
+    <button loc="504 0" size="272 24" style="Heading4"
+      label="Display List of Integrals"
+      vc="dli"
+      />
+    <button loc="24 0" size="200 24" style="Heading4"
+      label="Display Line List"
+      vc="dll"
+      />
+    <button loc="264 0" size="192 24" style="Heading4"
+      label="Find Peaks in Array"
+      vc="fp exists('fptmp','parameter'):$e if $e&lt;0.5 then create('fptmp','real') else destroy('fptmp') endif"
+      />
+  </group>
+</template>

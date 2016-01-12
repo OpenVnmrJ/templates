@@ -1,0 +1,9 @@
+set dgTemplate(rows)       16
+set dgTemplate(cols)       4
+
+set dgTemplate(type,0,0)  {list}
+set dgTemplate(rows,0,0)  {18}
+set dgTemplate(cols,0,0)  {4}
+set dgTemplate(sticky,0,0)  {news}
+set dgTemplate(label,0,0)  {list}
+set dgTemplate(color,0,0)  {black}

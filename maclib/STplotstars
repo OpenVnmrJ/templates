@@ -1,0 +1,86 @@
+jexp(data_exp)
+clear(2)
+dtext
+pap
+jexp(4)
+$spplot=sp $wpplot=wp
+jexp(5)
+$wc=wc $sc=sc $vp=vp $sp=sp $wp=wp $intmod=intmod
+intmod='off'
+f full
+sp=$spplot wp=$wpplot
+exists('downsamp','parameter'):$downsamp
+if ($downsamp>0.0) then 
+   on('downsamp'):$downsampon
+   if ($downsampon >0.0) then 
+      sp=sp*downsamp
+      wp=wp*downsamp
+   endif
+endif
+wc=180 sc=0
+vp=0
+dssn dscale
+pl pscale
+wc=$wc sc=$sc vp=$vp sp=$sp wp=$wp intmod=$intmod
+write('plotter',70,10,'SPECTRUM')
+write('graphics',70,10,'SPECTRUM')
+jexp(4)
+$wc=wc $sc=sc $vp=vp $sp=sp $wp=wp $intmod=intmod
+intmod='off'
+f full
+sp=$spplot wp=$wpplot
+wc=180 sc=0
+vp=70
+dssn dscale
+pl pscale
+write('plotter',70,80,'SIMULATION')
+write('graphics',70,80,'SIMULATION')
+wc=$wc sc=$sc vp=$vp wp=$wp sp=$sp intmod=$intmod
+
+write('plotter',0,42,'SIMULATION PARAMETERS')
+write('plotter',0,39,'viso  = %7.3f ppm', viso/sfrq)
+write('plotter',0,36,'csa   = %7.3f ppm', csa)
+write('plotter',0,33,'etas  = %7.5f', etas)
+write('plotter',0,30,'cq    = %7.3f MHz', cq)
+write('plotter',0,27,'etaq  = %7.5f', etaq)
+write('plotter',0,24,'            ')
+write('plotter',0,21,'viso2 = %7.3f ppm', viso2/sfrq)
+write('plotter',0,18,'csa2  = %7.3f ppm', csa2)
+write('plotter',0,15,'etas2 = %7.5f', etas2)
+write('plotter',0,12,'cq2   = %7.3f MHz', cq2)
+write('plotter',0,9,'etaq2 = %7.5f', etaq2)
+write('plotter',0,6,'            ')
+write('plotter',0,3,'ival  = %7.1f', ival)
+write('plotter',0,0,'mval  = %7.1f', mval)
+write('plotter',0,-3,'amp    = %7.3f', amp)
+write('plotter',0,-6,'amp2   = %7.3f', amp2)
+write('plotter',0,-9,'np     = %7.0f points', np)
+write('plotter',0,-12,'ant    = %7.0f angles', ant)
+
+on('gf'):$gfon
+if ($gfon>0.5) then 
+   write('plotter',0,-15,'gf  = %7.4f', gf)
+endif
+on('lb'):$lbon
+if ($lbon>0.5) then 
+   write('plotter',0,-18,'lb  = %7.4f', lb)
+endif
+exists('mqf1val','parameter'):$mqf1val
+if ($mqf1val>0.5) then 
+   write('plotter',0,-21,'isotropic shift  = %7.1f ppm', mqf1val)
+endif
+exists('mqf1val2','parameter'):$mqf1val
+if ($mqf1val>0.5) then 
+   write('plotter',0,-24,'isotropic shift  = %7.1f ppm', mqf1val)
+endif
+
+
+write('plotter',220,170,'STARS DATA ANALYSIS')
+page
+
+write('line3','Plot Complete')
+
+
+
+
+

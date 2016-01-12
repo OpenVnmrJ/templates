@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<template name="Options" element="pages" type="acquisition" >
+  <group size="800 200" style="Heading2" label="Options"
+    bg="transparent"
+    border="None"
+    side="Top"
+    justify="Left"
+    tab="yes"
+    reference="Options"
+    useref="no"
+    expanded="yes"
+    >
+    <textmessage loc="352 0" size="112 24" style="Label3"
+      label="passv1"
+      vq="seqfil"
+      set="$VALUE=seqfil"
+      />
+    <label loc="280 0" size="64 24" style="Label3"
+      label="Sequence:"
+      justify="Left"
+      />
+  </group>
+</template>

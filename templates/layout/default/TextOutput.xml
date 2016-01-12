@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<template name="TextOutput" element="pages" type="acquisition" >
+  <group size="800 202" style="StdPar" label="Text Output"
+    bg="transparent"
+    border="None"
+    side="Top"
+    justify="Right"
+    tab="yes"
+    reference="TextOutput"
+    useref="no"
+    expanded="yes"
+    >
+    <entry loc="608 168" size="136 24" style="Label4"
+      vq="n3"
+      vc="n3='$VALUE'"
+      set="$VALUE=n3"
+      show="on('n3'):$VALUE"
+      disable="Grayed out"
+      />
+    <label loc="744 168" size="40 24" style="Label4"
+      label="n3"
+      justify="Left"
+      />
+    <label loc="744 144" size="40 24" style="Label4"
+      label="n2"
+      justify="Left"
+      />
+    <entry loc="608 144" size="136 24" style="Label4"
+      vq="n2"
+      vc="n2='$VALUE'"
+      set="$VALUE=n2"
+      show="on('n2'):$VALUE"
+      disable="Grayed out"
+      />
+    <button loc="608 96" size="136 24" style="Label4"
+      label="Load Macro"
+      vc="length(n3):$length if ($length&gt;0) then macrold(n3) else macrold(seqfil) endif"
+      />
+    <label loc="744 96" size="40 24" style="Label4"
+      label="n3"
+      justify="Left"
+      />
+    <label loc="744 72" size="40 24" style="Label4"
+      label="n2"
+      justify="Left"
+      />
+    <button loc="608 72" size="136 24" style="Label4"
+      label="Compile Sequence"
+      vc="seqgen(n2)"
+      />
+    <label loc="744 48" size="40 24" style="Label4"
+      label="n3"
+      justify="Left"
+      />
+    <label loc="744 24" size="40 24" style="Label4"
+      label="n2"
+      justify="Left"
+      />
+    <button loc="608 24" size="136 24" style="Label4"
+      label="Edit Pulse Sequence"
+      vc="editps(n2)"
+      />
+    <button loc="608 48" size="136 24" style="Label4"
+      label="Edit Macro"
+      vc="editmacro(n3)"
+      />
+    <button loc="480 0" size="128 24" style="Heading4"
+      label="Clear Display"
+      vc="clear"
+      />
+    <textfile loc="8 24" size="600 176" style="StdPar"
+      vq="alphatext"
+      set="alphatextname:$VALUE"
+      editable="yes"
+      wrap="yes"
+      />
+    <label loc="8 0" size="104 24" style="Heading4"
+      label="Text Output:"
+      justify="Left"
+      />
+  </group>
+</template>

@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<template name="SetupDefault" element="pages" type="sample" >
+  <group size="800 200" style="Label4" label="Spin/Temp"
+    vq="system"
+    vc="exists('SetupDefault1','parameter'):$SetupDefault1 if ($SetupDefault1&lt;0.5) then create('SetupDefault1') vnmrinfo('get','spinExpControl'):SetupDefault1 endif exists('SetupDefault2','parameter'):$SetupDefault2 if ($SetupDefault2&lt;0.5) then create('SetupDefault2') vnmrinfo('get','tempExpControl'):SetupDefault2 endif"
+    vc2="exists('SetupDefault1','parameter'):$SetupDefault1 if ($SetupDefault1&gt;0.5) then destroy('SetupDefault1') endif exists('SetupDefault2','parameter'):$SetupDefault2 if ($SetupDefault2&gt;0.5) then destroy('SetupDefault2') endif"
+    show="$VALUE = (system = 'spectrometer')"
+    bg="transparent"
+    border="None"
+    side="Top"
+    justify="Left"
+    tab="yes"
+    reference="SetupDefault"
+    useref="no"
+    expanded="yes"
+    >
+    <group loc="8 0" size="424 72" style="PlainText"
+      bg="transparent"
+      border="None"
+      side="Top"
+      justify="Left"
+      tab="no"
+      useref="no"
+      >
+      <textmessage loc="144 48" size="72 24" style="Label4"
+        label="Off"
+        statpar="spin"
+        />
+      <group loc="168 0" size="248 24" bg="transparent"
+        border="None"
+        side="Top"
+        justify="Left"
+        tab="no"
+        useref="no"
+        >
+        <button loc="128 0" size="112 24" style="Label4"
+          label="Spinner Off"
+          vc="sethw('spinner','off') spin='n'"
+          />
+        <button loc="0 0" size="112 24" style="Label4"
+          label="Reset Spinner"
+          vc="sethw('spin',spin)"
+          />
+      </group>
+      <button loc="232 48" size="88 24" style="Label3"
+        label="MAS: Spinner"
+        vc="spinner"
+        />
+      <button loc="328 48" size="88 24" style="Label3"
+        label="MAS: ACC "
+        vc="shell('acc &amp;')"
+        />
+      <label loc="112 48" size="24 24" style="Label4"
+        label="Hz"
+        justify="Left"
+        />
+      <textmessage loc="64 48" size="48 24" style="PlainText"
+        label="0"
+        digits="6"
+        statpar="spinval"
+        />
+      <label loc="8 48" size="56 24" style="Label4"
+        label="Current:"
+        justify="Left"
+        />
+      <slider loc="8 24" size="408 24" style="Label4"
+        vq="spin"
+        vc="spin=$VALUE"
+        set="$VALUE=spin"
+        digital="true"
+        min="0"
+        max="39"
+        incr1="1"
+        incr2="5"
+        digits="8"
+        drag="0"
+        />
+      <label loc="8 0" size="72 24" style="Heading4"
+        label="Spinning:"
+        justify="Left"
+        />
+    </group>
+    <group loc="8 96" size="424 72" style="Label4"
+      bg="transparent"
+      border="None"
+      side="Top"
+      justify="Left"
+      tab="no"
+      useref="no"
+      >
+      <slider loc="8 24" size="408 24" style="Label4"
+        vq="temp"
+        vc="setvalue('temp',$VALUE) temp='y'"
+        set="$VALUE=temp"
+        digital="true"
+        min="-150"
+        max="250"
+        incr1="1"
+        incr2="1"
+        digits="8"
+        drag="0"
+        />
+      <textmessage loc="144 48" size="72 24" style="Label4"
+        label="NotPresent"
+        statpar="vt"
+        />
+      <group loc="168 0" size="248 24" bg="transparent"
+        border="None"
+        side="Top"
+        justify="Left"
+        tab="no"
+        useref="no"
+        >
+        <button loc="128 0" size="112 24" style="Label4"
+          label="Temp Off"
+          vc="sethw('vt','off') temp='n'"
+          />
+        <button loc="0 0" size="112 24" style="Label4"
+          label="Reset Temp"
+          vc="sethw('temp',temp)"
+          />
+      </group>
+      <textmessage loc="64 48" size="48 24" style="Label1"
+        digits="6"
+        statpar="vtval"
+        />
+      <label loc="112 48" size="24 24" style="Label4"
+        label="C"
+        justify="Left"
+        />
+      <label loc="8 48" size="56 24" style="Label4"
+        label="Current:"
+        justify="Left"
+        />
+      <button loc="232 48" size="88 24" style="Label3"
+        label="Temp Panel"
+        vc="temp"
+        />
+      <button loc="328 48" size="88 24" style="Label3"
+        label="VT Reset"
+        vc="sethw('vt','reset')"
+        />
+      <label loc="8 0" size="104 24" style="Heading4"
+        label="Temperature:"
+        justify="Left"
+        />
+    </group>
+    <group loc="440 0" size="352 99" style="PlainText"
+      bg="transparent"
+      border="None"
+      side="Top"
+      justify="Left"
+      tab="no"
+      useref="no"
+      >
+      <group loc="32 24" size="312 72" vq="SetupDefault1"
+        show="vnmrinfo('get','spinExpControl'):$v1 $VALUE = ($v1=0)"
+        bg="transparent"
+        border="None"
+        side="Top"
+        justify="Left"
+        tab="no"
+        useref="no"
+        >
+        <radio loc="0 0" size="208 24" style="Label4"
+          label="Ignore if spinner is incorrect"
+          vq="in"
+          vc="substr(in,2,1,'n'):in vnmrinfo('set','spinErrorControl',0)"
+          set="vnmrinfo('get','spinErrorControl'):$v $VALUE = ($v = 0)"
+          show="$VALUE=1"
+          />
+        <radio loc="0 24" size="208 24" style="Label4"
+          label="Warn if spinner is incorrect"
+          vq="in"
+          vc="substr(in,2,1,'w'):in vnmrinfo('set','spinErrorControl',2)"
+          set="vnmrinfo('get','spinErrorControl'):$v $VALUE = ($v = 2)"
+          show="$VALUE=1"
+          />
+        <radio loc="0 48" size="208 24" style="Label4"
+          label="Abort if temperature is incorrect"
+          vq="in"
+          vc="substr(in,2,1,'y'):in vnmrinfo('set','spinErrorControl',1)"
+          set="vnmrinfo('get','spinErrorControl'):$v $VALUE = ($v = 1)"
+          show="$VALUE=1"
+          />
+      </group>
+      <check loc="8 0" size="336 24" style="Heading4"
+        label="Reset Spinner at Start of Acqusition"
+        vq="SetupDefault1"
+        vc="vnmrinfo('set','spinExpControl',1) SetupDefault1=1"
+        vc2="vnmrinfo('set','spinExpControl',0) SetupDefault1=0"
+        set="vnmrinfo('get','spinExpControl'):$VALUE"
+        />
+    </group>
+    <group loc="440 96" size="352 99" style="PlainText"
+      bg="transparent"
+      border="None"
+      side="Top"
+      justify="Left"
+      tab="no"
+      useref="no"
+      >
+      <group loc="32 24" size="312 72" vq="SetupDefault2"
+        show="vnmrinfo('get','tempExpControl'):$v1 $VALUE = ($v1=0)"
+        bg="transparent"
+        border="None"
+        side="Top"
+        justify="Left"
+        tab="no"
+        useref="no"
+        >
+        <radio loc="0 48" size="208 24" style="Label4"
+          label="Abort if temperature is incorrect"
+          vq="tin"
+          vc="tin='y' vnmrinfo('set','tempErrorControl',1)"
+          set="vnmrinfo('get','tempErrorControl'):$v $VALUE = ($v = 1)"
+          show="$VALUE=1"
+          />
+        <radio loc="0 24" size="208 24" style="Label4"
+          label="Warn if temperature is incorrect"
+          vq="tin"
+          vc="tin='w' vnmrinfo('set','tempErrorControl',2)"
+          set="vnmrinfo('get','tempErrorControl'):$v $VALUE = ($v = 2)"
+          show="$VALUE=1"
+          />
+        <radio loc="0 0" size="208 24" style="Label4"
+          label="Ignore if temperature is incorrect"
+          vq="tin"
+          vc="tin='n' vnmrinfo('set','tempErrorControl',0)"
+          set="vnmrinfo('get','tempErrorControl'):$v $VALUE = ($v = 0)"
+          show="$VALUE=1"
+          />
+      </group>
+      <check loc="8 0" size="336 24" style="Heading4"
+        label="Reset Temperature at Start of Acquisition"
+        vq="SetupDefault2"
+        vc="vnmrinfo('set','tempExpControl',1) SetupDefault2=1"
+        vc2="vnmrinfo('set','tempExpControl',0) SetupDefault2=0"
+        set="vnmrinfo('get','tempExpControl'):$VALUE"
+        />
+    </group>
+  </group>
+</template>

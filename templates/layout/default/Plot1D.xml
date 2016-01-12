@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<template name="Plot1D" element="pages" type="processing" >
+  <group size="800 200" style="PlainText" label="Plot"
+    bg="transparent"
+    border="None"
+    side="BelowTop"
+    justify="Left"
+    tab="yes"
+    reference="Plot1D"
+    useref="no"
+    expanded="yes"
+    >
+    <label loc="16 0" size="160 24" style="Heading4"
+      label="Plotting and Setup:"
+      justify="Left"
+      />
+    <group loc="16 24" size="160 120" style="Heading4"
+      bg="transparent"
+      border="None"
+      side="Top"
+      justify="Left"
+      tab="no"
+      reference="Position1D"
+      useref="no"
+      expanded="yes"
+      >
+      <label loc="0 0" size="120 24" style="Label4"
+        label="Screen position:"
+        justify="Left"
+        />
+      <button loc="112 24" size="32 24" style="Label3"
+        label="-x"
+        vc="sc=sc-5 ds"
+        />
+      <button loc="80 24" size="32 24" style="Label3"
+        label="+x"
+        vc="sc=sc+5 ds"
+        />
+      <button loc="80 48" size="32 24" style="Label3"
+        label="+y"
+        vc="sc2=sc2+5 ds"
+        />
+      <button loc="112 48" size="32 24" style="Label3"
+        label="-y"
+        vc="sc2=sc2-5 ds"
+        />
+      <button loc="112 72" size="32 24" style="Label3"
+        label="/x"
+        vc="wc=wc-5 sc=sc+2.5 ds"
+        />
+      <button loc="80 72" size="32 24" style="Label3"
+        label="*x"
+        vc="wc=wc+5 sc=sc-2.5 ds"
+        />
+      <button loc="80 96" size="32 24" style="Label3"
+        label="*y"
+        vc="wc2=wc2+5 ds"
+        />
+      <button loc="112 96" size="32 24" style="Label3"
+        label="/y"
+        vc="wc2=wc2-5 ds"
+        />
+      <button loc="0 24" size="72 24" style="Label3"
+        label="Left"
+        vc="left ds"
+        />
+      <button loc="0 48" size="72 24" style="Label3"
+        label="Right"
+        vc="right ds"
+        />
+      <button loc="0 72" size="72 24" style="Label3"
+        label="Center"
+        vc="center ds"
+        />
+      <button loc="0 96" size="72 24" style="Label3"
+        label="Full"
+        vc="full ds"
+        />
+    </group>
+    <button loc="608 0" size="160 24" style="Heading4"
+      label="Automatic Plot Page"
+      vc="plot"
+      />
+    <group loc="376 96" size="160 96" style="PlainText"
+      bg="transparent"
+      border="None"
+      side="Top"
+      justify="Left"
+      tab="no"
+      useref="no"
+      >
+      <radio loc="8 72" size="144 24" style="Label4"
+        label="None"
+        vq="pkpick"
+        vc="pkpick=''"
+        set="$VALUE=(pkpick&lt;&gt;'pir' and pkpick&lt;&gt;'pirn')"
+        />
+      <radio loc="8 48" size="144 24" style="Label4"
+        label="Normalized"
+        vq="pkpick"
+        vc="pkpick='pirn'"
+        set="$VALUE=(pkpick='pirn')"
+        />
+      <radio loc="8 24" size="144 24" style="Label4"
+        label="Scaled"
+        vq="pkpick"
+        vc="pkpick='pir'"
+        set="$VALUE=(pkpick='pir')"
+        />
+      <label loc="8 0" size="144 24" style="Label4"
+        label="Plot Integral Values:"
+        justify="Left"
+        />
+    </group>
+    <group loc="200 72" size="160 120" style="PlainText"
+      bg="transparent"
+      border="None"
+      side="Top"
+      justify="Left"
+      tab="no"
+      useref="no"
+      >
+      <radio loc="8 96" size="144 24" style="Label4"
+        label="None"
+        vq="parstyle"
+        vc="parstyle=''"
+        set="$VALUE=(parstyle='')"
+        />
+      <radio loc="8 72" size="144 24" style="Label4"
+        label="Boxed Parameters"
+        vq="parstyle"
+        vc="parstyle='bpa'"
+        set="$VALUE=(parstyle='bpa')"
+        />
+      <label loc="8 0" size="144 24" style="Label4"
+        label="Plot Parameter Template:"
+        justify="Left"
+        />
+      <radio loc="8 24" size="144 24" style="Label4"
+        label="Basic Parameters"
+        vq="parstyle"
+        vc="parstyle='ppa'"
+        set="$VALUE=(parstyle='ppa')"
+        />
+      <radio loc="8 48" size="144 24" style="Label4"
+        label="Full Parameters"
+        vq="parstyle"
+        vc="parstyle='pap'"
+        set="$VALUE=(parstyle='pap')"
+        />
+    </group>
+    <button loc="560 144" size="160 24" style="Label3"
+      label="Plot Pulse Sequence"
+      vc="pps"
+      />
+    <button loc="376 72" size="160 24" style="Label3"
+      label="Plot Integrals"
+      vq="intmod"
+      vc="$mod=intmod intmod='partial' pl('int') intmod=$mod"
+      />
+    <button loc="200 48" size="160 24" style="Label3"
+      label="Plot Spectrum Scale"
+      vc="pscale"
+      />
+    <button loc="200 24" size="160 24" style="Label3"
+      label="Plot Spectrum Array"
+      vq="arraydim"
+      vc="pl('all')"
+      show="if (arraydim&gt;1.5) then $ENABLE=1 else $ENABLE=-1 endif"
+      />
+    <button loc="200 0" size="160 24" style="Label3"
+      label="Plot Spectrum"
+      vc="pl"
+      />
+    <label loc="8 144" size="72 24" style="Label4"
+      label="Hz to mm:"
+      justify="Left"
+      />
+    <button loc="8 168" size="160 24" style="Label3"
+      label="Plot Text"
+      vc="pltext"
+      />
+    <button loc="560 120" size="160 24" style="Heading4"
+      label="Plot Page"
+      vc="if parstyle&lt;&gt;'' then exec(parstyle) endif if pkpick&lt;&gt;'' then exec(pkpick) endif page"
+      />
+    <button loc="560 96" size="160 24" style="Heading4"
+      label="Clear Plot"
+      vc="page('clear')"
+      />
+    <button loc="560 72" size="160 24" style="Label3"
+      label="Plot FID Scale"
+      vc="pscale('fid')"
+      />
+    <label loc="560 0" size="72 24" style="Label4"
+      label="FID:"
+      justify="Left"
+      />
+    <button loc="560 24" size="160 24" style="Label3"
+      label="Plot FID"
+      vc="plfid"
+      />
+    <button loc="560 48" size="160 24" style="Label3"
+      label="Plot FID Array"
+      vq="arraydim"
+      vc="plfid('all')"
+      show="if (arraydim&gt;1.5) then $ENABLE=1 else $ENABLE=-1 endif"
+      />
+    <label loc="376 0" size="152 24" style="Label4"
+      label="Plot Peak Frequencies:"
+      justify="Left"
+      />
+    <button loc="376 24" size="160 24" style="Label3"
+      label="On Peaks"
+      vc="ppf"
+      />
+    <button loc="376 48" size="160 24" style="Label3"
+      label="As a List"
+      vc="pll"
+      />
+    <textmessage loc="88 144" size="64 24" style="Label4"
+      label="20.1"
+      vq="hzmm"
+      set="$VALUE=hzmm"
+      digits="1"
+      />
+  </group>
+</template>

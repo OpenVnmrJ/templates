@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<template name="ProcessF1Data" element="pages" type="processing" >
+  <group size="800 200" style="Label4" label="Process F1"
+    vc="on('ProcessF1Data1'):$ProcessF1Data1 if ($ProcessF1Data1&lt;0.5) then create('ProcessF1Data1') endif"
+    vc2="on('ProcessF1Data1'):$ProcessF1Data1 if ($ProcessF1Data1&gt;0.5) then destroy('ProcessF1Data1') endif"
+    show="on('ni'):$VALUE if $VALUE&gt;-1 then if (ni&gt;1) then $VALUE=1 else $VALUE=0 endif else $VALUE=0 endif"
+    bg="transparent"
+    border="None"
+    side="Top"
+    justify="Left"
+    tab="yes"
+    reference="ProcessF1Data"
+    useref="no"
+    expanded="yes"
+    >
+    <group loc="536 144" size="256 48" bg="transparent"
+      border="None"
+      side="Top"
+      justify="Left"
+      tab="no"
+      useref="no"
+      >
+      <menu loc="192 24" size="56 24" style="Label4"
+        vq="lsfrq1"
+        vc="parunits('set','lsfrq1','$VALUE')"
+        set="parunits('get','lsfrq1'):$VALUE"
+        show="on('lsfrq1'):$VALUE  if ($VALUE=0) then $VALUE=1 endif"
+        >
+        <mlabel label="ppm" chval="ppm1"/>
+        <mlabel label="MHz" chval="MHz"/>
+        <mlabel label="kHz" chval="kHz"/>
+        <mlabel label="Hz" chval="Hz"/>
+        <mlabel />
+      </menu>
+      <check loc="104 24" size="16 24" style="PlainText"
+        vq="lsfrq1"
+        vc="lsfrq1='y' settype('lsfrq1','frequency')"
+        vc2="lsfrq1='n' settype('lsfrq1','frequency')"
+        set="on('lsfrq1'):$VALUE"
+        show="on('lsfrq1'):$VALUE  if ($VALUE=0) then $VALUE=1 endif"
+        />
+      <label loc="8 24" size="96 24" style="Label4"
+        label="Frequency shift:"
+        justify="Left"
+        />
+      <label loc="8 0" size="152 24" style="Heading4"
+        label="F1 Frequency:"
+        justify="Left"
+        />
+      <entry loc="120 24" size="72 24" style="Label4"
+        vq="lsfrq1"
+        vc="vnmrunits('set','lsfrq1',$VALUE)"
+        set="vnmrunits('get','lsfrq1'):$VALUE"
+        show="on('lsfrq1'):$VALUE"
+        disable="Grayed out"
+        />
+    </group>
+    <group loc="272 0" size="256 168" style="Heading4"
+      label="Linear Prediction"
+      bg="transparent"
+      border="None"
+      side="Top"
+      justify="Left"
+      tab="no"
+      reference="LinearPrediction"
+      useref="no"
+      expanded="yes"
+      >
+      <label loc="0 0" size="160 24" style="Heading4"
+        label="F1 Linear Prediction:"
+        justify="Left"
+        />
+      <entry loc="120 120" size="72 24" style="Label4"
+        vq="lpext1 proc1"
+        vc="lpext1=$VALUE"
+        set="$VALUE=lpext1"
+        show="exists('proc1','parameter'):$VALUE if ($VALUE=0) then $VALUE=-1 else on('lpext1'):$VALUE  if ($VALUE=1) then  if (proc1='lp') then $VALUE=1 else $VALUE=0 endif endif endif"
+        disable="Grayed out"
+        />
+      <entry loc="120 48" size="72 24" style="Label4"
+        vq="lpfilt1 proc1"
+        vc="lpfilt1=$VALUE"
+        set="$VALUE=lpfilt1"
+        show="exists('proc1','parameter'):$VALUE if ($VALUE=0) then $VALUE=-1 else on('lpfilt1'):$VALUE  if ($VALUE=1) then  if (proc1='lp') then $VALUE=1 else $VALUE=0 endif endif endif"
+        disable="Grayed out"
+        />
+      <entry loc="120 72" size="72 24" style="Label4"
+        vq="lpnupts1 proc1"
+        vc="lpnupts1=$VALUE"
+        set="$VALUE=lpnupts1"
+        show="exists('proc1','parameter'):$VALUE if ($VALUE=0) then $VALUE=-1 else on('lpnupts1'):$VALUE  if ($VALUE=1) then  if (proc1='lp') then $VALUE=1 else $VALUE=0 endif endif endif"
+        disable="Grayed out"
+        />
+      <label loc="8 144" size="112 24" style="Label4"
+        label="   starting at:"
+        justify="Left"
+        />
+      <entry loc="120 144" size="72 24" style="Label4"
+        vq="strtext1 proc1"
+        vc="strtext1=$VALUE"
+        set="$VALUE=strtext1"
+        show="exists('proc1','parameter'):$VALUE if ($VALUE=0) then $VALUE=-1 else on('strtext1'):$VALUE  if ($VALUE=1) then  if (proc1='lp') then $VALUE=1 else $VALUE=0 endif endif endif"
+        disable="Grayed out"
+        />
+      <check loc="168 24" size="80 24" style="Label4"
+        label="on/off"
+        vq="proc1"
+        vc="parlp(1) proc1='lp'"
+        vc2="proc1='ft'"
+        set="exists('proc1','parameter'):$VALUE if ($VALUE&gt;0) then if ( proc1 = 'lp') then $VALUE=1 else $VALUE=0 endif endif"
+        show="exists('proc1','parameter'):$VALUE if ($VALUE=0) then $VALUE=-1 endif"
+        />
+      <radio loc="88 24" size="72 24" style="Label4"
+        label="forward"
+        vq="lpopt1 proc1"
+        vc="lpopt1='f'"
+        set="if (lpopt1='f') then $VALUE=1 else $VALUE=0 endif"
+        show="exists('proc1','parameter'):$VALUE if ($VALUE=0) then $VALUE=-1 else exists('lpopt1','parameter'):$VALUE if ($VALUE=0) then $VALUE=-1 else if proc1='lp' then on('lpopt1'):$VALUE else $VALUE=0 endif  endif endif"
+        />
+      <radio loc="8 24" size="72 24" style="Label4"
+        label="back"
+        vq="lpopt1 proc1"
+        vc="lpopt1='b'"
+        set="if (lpopt1='b') then $VALUE=1 else $VALUE=0 endif"
+        show="exists('proc1','parameter'):$VALUE if ($VALUE=0) then $VALUE=-1 else exists('lpopt1','parameter'):$VALUE if ($VALUE=0) then $VALUE=-1 else if proc1='lp' then on('lpopt1'):$VALUE else $VALUE=0 endif  endif endif"
+        />
+      <entry loc="120 96" size="72 24" style="Label4"
+        vq="strtlp1 proc1"
+        vc="strtlp1=$VALUE"
+        set="$VALUE=strtlp1"
+        show="exists('proc1','parameter'):$VALUE if ($VALUE=0) then $VALUE=-1 else on('strtlp1'):$VALUE  if ($VALUE=1) then  if (proc1='lp') then $VALUE=1 else $VALUE=0 endif endif endif"
+        disable="Grayed out"
+        />
+      <label loc="8 48" size="112 24" style="Label4"
+        label="Coefficients:"
+        justify="Left"
+        />
+      <label loc="8 72" size="112 24" style="Label4"
+        label="Basis points:"
+        justify="Left"
+        />
+      <label loc="8 96" size="112 24" style="Label4"
+        label="   starting at:"
+        justify="Left"
+        />
+      <label loc="8 120" size="112 24" style="Label4"
+        label="Predicted points:"
+        justify="Left"
+        />
+    </group>
+    <group loc="8 0" size="256 195" style="Heading4"
+      label="F1 Weighting"
+      bg="transparent"
+      border="None"
+      side="Top"
+      justify="Left"
+      tab="no"
+      reference="Weighting"
+      useref="no"
+      expanded="yes"
+      >
+      <label loc="8 0" size="112 24" style="Heading4"
+        label="F1 Weighting:"
+        justify="Left"
+        />
+      <group loc="200 168" size="56 24" vq="wtfile1"
+        show="exists('wtfile1','parameter'):$VALUE  if ($VALUE=1) then if (wtfile1='trap') then $VALUE=1 else $VALUE=0 endif endif"
+        bg="transparent"
+        border="None"
+        side="Top"
+        justify="Left"
+        tab="no"
+        useref="no"
+        >
+        <entry loc="0 0" size="48 24" style="Label4"
+          vq="ProcessF1Data1"
+          vc="ProcessF1Data1=$VALUE/2.0 make_trap(ProcessF1Data1)"
+          set="$VALUE=2.0*ProcessF1Data1"
+          show="on('ProcessF1Data1'):$VALUE "
+          disable="Grayed out"
+          />
+      </group>
+      <label loc="8 168" size="112 24" style="Label4"
+        label="Custom wtfile:"
+        justify="Left"
+        />
+      <button loc="192 168" size="8 24" style="PlainText"
+        vc="exists('wtfile1','parameter'):$wtfile1 if ($wtfile1&lt;0.5) then create('wtfile1','flag') endif wtfile1='trap' "
+        />
+      <entry loc="120 168" size="72 24" style="Label4"
+        vq="wtfile1"
+        vc="wtfile1='$VALUE' "
+        set="$VALUE=wtfile1"
+        show="exists('wtfile1','parameter'):$VALUE if ($VALUE=0) then $VALUE=-1 else length(wtfile1):$VALUE if $VALUE&gt;0 then $VALUE=1 else $VALUE=0 endif endif"
+        disable="Grayed out"
+        />
+      <check loc="208 48" size="40 24" style="PlainText"
+        vq="sb1 sbs1"
+        vc="sb1='y' "
+        vc2="sb1='n'  sbs1='n'"
+        set="on('sb1'):$VALUE"
+        show="onparams('sb1','sbs1'):$VALUE if ($VALUE=0) then $VALUE=1 endif"
+        />
+      <check loc="208 72" size="40 24" style="PlainText"
+        vq="sb1 sbs1"
+        vc="sb1='y' sbs1='y'"
+        vc2="sbs1='n'"
+        set="on('sbs1'):$VALUE"
+        show="onparams('sb1','sbs1'):$VALUE if ($VALUE=0) then $VALUE=1 endif"
+        />
+      <check loc="208 96" size="40 24" style="PlainText"
+        vq="gf1 gfs1"
+        vc="gf1='y'  if (gf1=0) then gf1=1e-7 endif"
+        vc2="gf1='n' gfs1='n'"
+        set="on('gf1'):$VALUE"
+        show="onparams('gf1','gfs1'):$VALUE if ($VALUE=0) then $VALUE=1 endif"
+        />
+      <check loc="208 120" size="40 24" style="PlainText"
+        vq="gf1 gfs1"
+        vc="gf1='y'  gfs1='y' if (gf1=0) then gf1=1e-7 endif"
+        vc2="gfs1='n'"
+        set="on('gfs1'):$VALUE"
+        show="onparams('gf1','gfs1'):$VALUE if ($VALUE=0) then $VALUE=1 endif"
+        />
+      <entry loc="120 24" size="72 24" style="Label4"
+        vq="lb1"
+        vc="lb1=$VALUE"
+        set="$VALUE=lb1"
+        show="on('lb1'):$VALUE"
+        digits="1"
+        disable="Grayed out"
+        />
+      <entry loc="120 144" size="72 24" style="Label4"
+        vq="awc1"
+        vc="awc1=$VALUE"
+        set="$VALUE=awc1"
+        show="on('awc1'):$VALUE"
+        digits="7"
+        disable="Grayed out"
+        />
+      <entry loc="120 72" size="72 24" style="Label4"
+        vq="sb1 sbs1"
+        vc="sbs1=$VALUE"
+        set="$VALUE=sbs1"
+        show="onparams('sb1','sbs1'):$VALUE"
+        digits="7"
+        disable="Grayed out"
+        />
+      <check loc="208 144" size="40 24" style="PlainText"
+        vq="awc1"
+        vc="awc1='y'"
+        vc2="awc1='n'"
+        set="on('awc1'):$VALUE"
+        show="on('awc1'):$VALUE if ($VALUE=0) then $VALUE=1 endif"
+        />
+      <label loc="192 24" size="16 24" style="Label4"
+        label="Hz"
+        justify="Left"
+        />
+      <label loc="8 24" size="112 24" style="Label4"
+        label="Line broadening:"
+        justify="Left"
+        />
+      <check loc="208 24" size="40 24" style="PlainText"
+        vq="lb1"
+        vc="lb1='y'"
+        vc2="lb1='n'"
+        set="on('lb1'):$VALUE"
+        show="on('lb1'):$VALUE  if ($VALUE=0) then $VALUE=1 endif"
+        />
+      <label loc="8 144" size="112 24" style="Label4"
+        label="Additive offset:"
+        justify="Left"
+        />
+      <entry loc="120 120" size="72 24" style="Label4"
+        vq="gf1 gfs1"
+        vc="gfs1=$VALUE"
+        set="$VALUE=gfs1"
+        show="onparams('gf1','gfs1'):$VALUE"
+        digits="7"
+        disable="Grayed out"
+        />
+      <label loc="8 120" size="112 24" style="Label4"
+        label="   shift:"
+        justify="Left"
+        />
+      <entry loc="120 96" size="72 24" style="Label4"
+        vq="gf1"
+        vc="gf1=$VALUE"
+        set="$VALUE=gf1"
+        show="on('gf1'):$VALUE"
+        digits="7"
+        disable="Grayed out"
+        />
+      <label loc="8 96" size="112 24" style="Label4"
+        label="Gaussian:"
+        justify="Left"
+        />
+      <label loc="8 72" size="112 24" style="Label4"
+        label="   shift:"
+        justify="Left"
+        />
+      <entry loc="120 48" size="72 24" style="Label4"
+        vq="sb1"
+        vc="sb1=$VALUE"
+        set="$VALUE=sb1"
+        show="on('sb1'):$VALUE"
+        digits="7"
+        disable="Grayed out"
+        />
+      <label loc="8 48" size="112 24" style="Label4"
+        label="Sinebell:"
+        justify="Left"
+        />
+    </group>
+    <group loc="536 96" size="256 48" style="Heading4"
+      label="F1 Phase"
+      bg="transparent"
+      border="None"
+      side="Top"
+      justify="Left"
+      tab="no"
+      reference="Phase"
+      useref="no"
+      expanded="yes"
+      >
+      <label loc="8 0" size="80 24" style="Heading4"
+        label="F1 Phase:"
+        justify="Left"
+        />
+      <entry loc="32 24" size="48 24" style="Label4"
+        vq="phfid"
+        vc="phfid1=$VALUE"
+        set="$VALUE=phfid1"
+        show="on('phfid1'):$VALUE"
+        digits="0"
+        disable="Grayed out"
+        />
+      <label loc="8 24" size="24 24" style="Label4"
+        label="FID:"
+        justify="Left"
+        />
+      <entry loc="192 24" size="56 24" style="Label4"
+        vq="lp1"
+        vc="lp1=$VALUE"
+        set="$VALUE=lp1"
+        show="on('lp1'):$VALUE"
+        digits="0"
+        disable="Grayed out"
+        />
+      <entry loc="120 24" size="56 24" style="Label4"
+        vq="rp1"
+        vc="rp1=$VALUE"
+        set="$VALUE=rp1"
+        show="on('rp1'):$VALUE"
+        digits="0"
+        disable="Grayed out"
+        />
+      <label loc="80 24" size="40 24" style="Label4"
+        label="SPC: 0"
+        justify="Right"
+        />
+      <label loc="176 24" size="16 24" style="Label4"
+        label="1"
+        justify="Right"
+        />
+    </group>
+    <group loc="536 0" size="256 96" style="Heading4"
+      label="F1 Points"
+      bg="transparent"
+      border="None"
+      side="Top"
+      justify="Left"
+      tab="no"
+      reference="Points"
+      useref="no"
+      expanded="yes"
+      >
+      <label loc="168 24" size="24 24" style="Label4"
+        label="pts"
+        justify="Left"
+        />
+      <entry loc="112 24" size="56 24" style="Label4"
+        vq="fn1"
+        vc="fn1=$VALUE*2.0"
+        set="$VALUE=fn1/2.0"
+        show="on('fn1'):$VALUE"
+        disable="Grayed out"
+        />
+      <label loc="8 24" size="104 24" style="Label4"
+        label="Complex zerofill:"
+        justify="Left"
+        />
+      <menu loc="192 24" size="56 24" style="Label4"
+        vq="fn1"
+        vc="fn1=$VALUE*2"
+        set="$VALUE=fn1/2"
+        show="on('fn1'):$VALUE  if ($VALUE=0) then $VALUE=1 endif"
+        >
+        <mlabel label="512" chval="512"/>
+        <mlabel label="1k" chval="1024"/>
+        <mlabel label="2k" chval="2048"/>
+        <mlabel label="4k" chval="4096"/>
+        <mlabel label="8k" chval="8192"/>
+        <mlabel label="16k" chval="16384"/>
+        <mlabel label="32k" chval="32768"/>
+        <mlabel label="64k" chval="65536"/>
+        <mlabel label="128k" chval="131072"/>
+        <mlabel />
+      </menu>
+      <check loc="200 72" size="48 24" style="PlainText"
+        vq="fpmult1"
+        vc="fpmult1='y'"
+        vc2="fpmult1='n'"
+        set="on('fpmult1'):$VALUE"
+        show="on('fpmult1'):$VALUE if ($VALUE=0) then $VALUE=1 endif"
+        />
+      <check loc="200 48" size="48 24" style="PlainText"
+        vq="lsfid1"
+        vc="lsfid1='y'"
+        vc2="lsfid1='n'"
+        set="on('lsfid1'):$VALUE"
+        show="on('lsfid1'):$VALUE if ($VALUE=0) then $VALUE=1 endif"
+        />
+      <label loc="8 0" size="160 24" style="Heading4"
+        label="F1 Points:"
+        justify="Left"
+        />
+      <entry loc="120 72" size="72 24" style="Label4"
+        vq="fpmult1"
+        vc="fpmult1=$VALUE"
+        set="$VALUE=fpmult1"
+        show="on('fpmult1'):$VALUE"
+        disable="Grayed out"
+        />
+      <entry loc="120 48" size="72 24" style="Label4"
+        vq="lsfid1"
+        vc="lsfid1=$VALUE"
+        set="$VALUE=lsfid1"
+        show="on('lsfid1'):$VALUE"
+        disable="Grayed out"
+        />
+      <label loc="8 72" size="112 24" style="Label4"
+        label="First point: mult:"
+        justify="Left"
+        />
+      <label loc="8 48" size="112 24" style="Label4"
+        label="Left shift:"
+        justify="Left"
+        />
+    </group>
+  </group>
+</template>

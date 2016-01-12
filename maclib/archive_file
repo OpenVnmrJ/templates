@@ -1,0 +1,11 @@
+
+$file = $1 + '/' + $3
+exists($file, 'file'):$e1
+exists($file, 'directory'):$e2
+if (($e1 < 0.5) and ($e2 < 0.5))then 
+   write('alpha','FILE NOT FOUND: %s',$file)
+   write('line3','FILE NOT FOUND: %s',$file)
+else 
+   copy('-r',$file,$2)
+endif 
+

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<template name="mqmaszf-Analyze" element="panels" type="processing" >
+  <group loc="0 0" size="800 203" style="Label4"
+    label="STARS Setup"
+    vc="on('srate'):$srateon if ($srateon&gt;-1) then settype('srate','frequency') endif"
+    bg="transparent"
+    border="None"
+    side="Top"
+    justify="Left"
+    tab="yes"
+    reference="StarsSetup"
+    useref="yes"
+    expanded="no"
+    >
+  </group>
+  <group loc="0 0" size="800 224" style="Label4"
+    label="STARS Data"
+    bg="transparent"
+    border="None"
+    side="Top"
+    justify="Left"
+    tab="yes"
+    reference="StarsData"
+    useref="yes"
+    expanded="no"
+    >
+  </group>
+</template>

@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<template name="Receiver" element="pages" type="acquisition" >
+  <group size="800 200" style="PlainText" label="Receiver"
+    bg="transparent"
+    border="None"
+    side="Top"
+    justify="Left"
+    tab="yes"
+    reference="Receiver"
+    useref="no"
+    expanded="yes"
+    >
+    <menu loc="584 168" size="56 24" style="Label4"
+      vq="rof1"
+      vc="parunits('set','rof1','$VALUE')"
+      set="parunits('get','rof1'):$VALUE"
+      show="on('rof1'):$VALUE if ($VALUE=0) then $VALUE=1 endif"
+      >
+      <mlabel label="sec" chval="sec"/>
+      <mlabel label="ms" chval="ms"/>
+      <mlabel label="us" chval="us"/>
+    </menu>
+    <entry loc="504 168" size="80 24" style="Label4"
+      vq="rof1"
+      vc="vnmrunits('set','rof1',$VALUE)"
+      set="vnmrunits('get','rof1'):$VALUE"
+      show="on('rof1'):$VALUE"
+      digits="3"
+      disable="Grayed out"
+      />
+    <button loc="448 72" size="48 24" style="Label4"
+      label="Set ad"
+      vc="$ad = 1.0e6/(fb*2.0)  if ($ad &lt; 0) then ad=0 else ad=$ad endif"
+      show="on('ad'):$VALUE"
+      />
+    <menu loc="584 72" size="56 24" style="Label4"
+      vq="ad"
+      vc="parunits('set','ad','$VALUE')"
+      set="parunits('get','ad'):$VALUE"
+      show="on('ad'):$VALUE if ($VALUE=0) then $VALUE=1 endif"
+      >
+      <mlabel label="sec" chval="sec"/>
+      <mlabel label="ms" chval="ms"/>
+      <mlabel label="us" chval="us"/>
+    </menu>
+    <menu loc="584 48" size="56 24" style="Label4"
+      vq="rd"
+      vc="parunits('set','rd','$VALUE')"
+      set="parunits('get','rd'):$VALUE"
+      show="on('rd'):$VALUE if ($VALUE=0) then $VALUE=1 endif"
+      >
+      <mlabel label="sec" chval="sec"/>
+      <mlabel label="ms" chval="ms"/>
+      <mlabel label="us" chval="us"/>
+    </menu>
+    <entry loc="504 96" size="80 24" style="Label4"
+      vq="fb"
+      vc="fb=$VALUE"
+      set="$VALUE=fb"
+      show="on('fb'):$VALUE"
+      disable="Grayed out"
+      />
+    <entry loc="504 24" size="80 24" style="Label4"
+      vq="gain "
+      vc="gain=$VALUE"
+      set="$VALUE=gain"
+      show="on('gain'):$VALUE"
+      disable="Grayed out"
+      />
+    <entry loc="504 48" size="80 24" style="Label4"
+      vq="rd"
+      vc="vnmrunits('set','rd',$VALUE)"
+      set="vnmrunits('get','rd'):$VALUE"
+      show="on('rd'):$VALUE"
+      digits="3"
+      disable="Grayed out"
+      />
+    <entry loc="504 72" size="80 24" style="Label4"
+      vq="ad"
+      vc="vnmrunits('set','ad',$VALUE)"
+      set="vnmrunits('get','ad'):$VALUE"
+      show="on('ad'):$VALUE"
+      digits="3"
+      disable="Grayed out"
+      />
+    <label loc="320 72" size="120 24" style="Label4"
+      label="Sampling delay (ad)"
+      justify="Left"
+      />
+    <label loc="320 168" size="184 24" style="Label4"
+      label="Prepulse delay (rof1)"
+      justify="Left"
+      />
+    <label loc="320 144" size="184 24" style="Heading4"
+      label="Transmitter Unblanking:   "
+      justify="Left"
+      />
+    <label loc="320 96" size="184 24" style="Label4"
+      label="Analog filter bandwidth (fb)"
+      justify="Left"
+      />
+    <label loc="320 48" size="184 24" style="Label4"
+      label="Receiver delay (rd)"
+      justify="Left"
+      />
+    <label loc="320 24" size="184 24" style="Label4"
+      label="Receiver gain (gain) "
+      justify="Left"
+      />
+    <label loc="320 0" size="184 24" style="Heading4"
+      label="Receiver Parameters:   "
+      justify="Left"
+      />
+    <check loc="192 168" size="80 24" style="Label4"
+      label="on/off"
+      vq="fsq "
+      vc="fsq='y'"
+      vc2="fsq='n'"
+      set="if (fsq='y') then $VALUE=1 else $VALUE=0 endif"
+      />
+    <label loc="8 168" size="184 24" style="Label4"
+      label="Frequency offset detection (fsq)"
+      justify="Left"
+      />
+    <entry loc="192 144" size="80 24" style="PlainText"
+      vq="filtfile dsp"
+      vc="filtfile='$VALUE'"
+      set="$VALUE=filtfile"
+      show="exists('dsp','parameter','global'):$VALUE if ($VALUE&gt;0) then on('filtfile'):$VALUE if ($VALUE&gt;=0) then if (dsp='i') then $VALUE=1 else $VALUE=0 endif endif endif "
+      disable="Grayed out"
+      />
+    <label loc="8 144" size="184 24" style="Label4"
+      label="Custom filter (filtfile)"
+      justify="Left"
+      />
+    <entry loc="192 120" size="80 24" style="Label4"
+      vq="osfb dsp"
+      vc="osfb=$VALUE"
+      set="$VALUE=osfb"
+      show="exists('dsp','parameter','global'):$VALUE if ($VALUE&gt;0) then on('osfb'):$VALUE if ($VALUE&gt;=0) then if (dsp='i') then $VALUE=1 else $VALUE=0 endif endif endif "
+      disable="Grayed out"
+      />
+    <label loc="8 120" size="184 24" style="Label4"
+      label="Digital filter bandwidth (osfb)"
+      justify="Left"
+      />
+    <entry loc="192 96" size="80 24" style="Label4"
+      vq="oslsfrq dsp"
+      vc="oslsfrq=$VALUE"
+      set="$VALUE=oslsfrq"
+      show="exists('dsp','parameter','global'):$VALUE if ($VALUE&gt;0) then on('oslsfrq'):$VALUE if ($VALUE&gt;=0) then if (dsp='i') then $VALUE=1 else $VALUE=0 endif endif endif "
+      digits="1"
+      disable="Grayed out"
+      />
+    <label loc="8 96" size="184 24" style="Label4"
+      label="Frequency shift of filter (oslsfrq)"
+      justify="Left"
+      />
+    <entry loc="192 72" size="80 24" style="Label4"
+      vq="oscoef dsp"
+      vc="oscoef=$VALUE"
+      set="$VALUE=oscoef"
+      show="exists('dsp','parameter','global'):$VALUE if ($VALUE&gt;0) then on('oscoef'):$VALUE if ($VALUE&gt;=0) then if (dsp='i') then $VALUE=1 else $VALUE=0 endif endif endif "
+      disable="Grayed out"
+      />
+    <label loc="8 72" size="184 24" style="Label4"
+      label="Filter coefficents (oscoef)"
+      justify="Left"
+      />
+    <entry loc="192 48" size="80 24" style="Label4"
+      vq="osfilt dsp"
+      vc="osfilt='$VALUE'"
+      set="$VALUE=osfilt"
+      show="exists('dsp','parameter','global'):$VALUE if ($VALUE&gt;0) then on('osfilt'):$VALUE if ($VALUE&gt;=0) then if (dsp='r') then $VALUE=1 else $VALUE=0 endif endif endif "
+      disable="Grayed out"
+      />
+    <label loc="8 48" size="184 24" style="Label4"
+      label="Hardware filter mode (osfilt)"
+      justify="Left"
+      />
+    <entry loc="192 24" size="80 24" style="Label4"
+      vq="oversamp dsp"
+      vc="oversamp=$VALUE"
+      set="$VALUE=oversamp"
+      show="exists('dsp','parameter','global'):$VALUE if ($VALUE&gt;0) then on('oversamp'):$VALUE if ($VALUE&gt;=0) then if (dsp='n') then $VALUE=0 else $VALUE=1 endif endif endif "
+      disable="Grayed out"
+      />
+    <label loc="8 24" size="184 24" style="Label4"
+      label="Oversampling factor (oversamp)"
+      justify="Left"
+      />
+    <menu loc="192 0" size="80 24" style="Label4"
+      vq="dsp"
+      vc="dsp='$VALUE'"
+      set="$VALUE=dsp"
+      show="exists('dsp','parameter','global'):$VALUE if ($VALUE=0) then $VALUE=-1 else $VALUE=1 endif"
+      >
+      <mlabel label="Off" chval="n"/>
+      <mlabel label="On" chval="r"/>
+      <mlabel label="Inline" chval="i"/>
+    </menu>
+    <label loc="8 0" size="184 24" style="Heading4"
+      label="Digital Filters:"
+      justify="Left"
+      />
+  </group>
+</template>

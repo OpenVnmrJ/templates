@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<template name="Acquisition" element="pages" type="acquisition" >
+  <group size="800 200" style="PlainText" label="Acquisition"
+    bg="transparent"
+    border="None"
+    side="BelowBottom"
+    justify="Left"
+    tab="yes"
+    reference="Acquisition"
+    useref="no"
+    expanded="yes"
+    >
+    <group loc="272 24" size="256 96" style="Heading4"
+      label="Decoupler"
+      bg="transparent"
+      border="None"
+      side="Top"
+      justify="Left"
+      tab="no"
+      useref="no"
+      >
+      <entry loc="120 72" size="72 24" style="Label4"
+        vq="phi dm dmm"
+        vc="phi=$VALUE"
+        set="$VALUE=phi"
+        show="onparams('phi','dm','dmm'):$VALUE if ($VALUE&gt;=0) then statuscheckbox('get','dmm',3,3):$r1  statuscheckbox('get','dm',3,3):$r2 if (($r1='t') and ($r2='y')) then $VALUE=1 else $VALUE=0 endif endif"
+        digits="2"
+        disable="Grayed out"
+        />
+      <label loc="8 72" size="112 24" style="Label4"
+        label="TPPM +/-phase:"
+        justify="Left"
+        />
+      <menu loc="168 24" size="80 24" style="Label4"
+        vq="dmm"
+        vc="statuscheckbox('set','dmm',3,3,'$VALUE')"
+        set="statuscheckbox('get','dmm',3,3):$VALUE"
+        show="on('dmm'):$VALUE if ($VALUE=0) then $VALUE=1 endif"
+        >
+        <mlabel label="CW" chval="c"/>
+        <mlabel label="TPPM" chval="t"/>
+        <mlabel label="FSLG" chval="l"/>
+        <mlabel />
+      </menu>
+      <check loc="56 24" size="64 24" style="Label4"
+        label="on/off"
+        vq="dm"
+        vc="statuscheckbox('set','dm',3,3,'y')"
+        vc2="statuscheckbox('set','dm',3,3,'n')"
+        set="statuscheckbox('get','dm',3,3):$r1  if ($r1='y') then $VALUE=1 else $VALUE=0 endif"
+        show="on('dm'):$VALUE"
+        />
+      <label loc="8 48" size="112 24" style="Label4"
+        label="TPPM pulse:"
+        justify="Left"
+        />
+      <label loc="120 24" size="48 24" style="Label4"
+        label="Mod:"
+        justify="Left"
+        />
+      <menu loc="192 48" size="56 24" style="Label4"
+        vq="pwtppm"
+        vc="parunits('set','pwtppm','$VALUE')"
+        set="parunits('get','pwtppm'):$VALUE"
+        show="onparams('pwtppm','dm','dmm'):$VALUE if ($VALUE=0) then $VALUE=1 endif"
+        >
+        <mlabel label="sec" chval="sec"/>
+        <mlabel label="ms" chval="ms"/>
+        <mlabel label="us" chval="us"/>
+        <mlabel />
+      </menu>
+      <entry loc="120 48" size="72 24" style="Label4"
+        vq="pwtppm dm dmm"
+        vc="vnmrunits('set','pwtppm',$VALUE)"
+        set="vnmrunits('get','pwtppm'):$VALUE"
+        show="onparams('pwtppm','dm','dmm'):$VALUE if ($VALUE&gt;=0) then statuscheckbox('get','dmm',3,3):$r1  statuscheckbox('get','dm',3,3):$r2 if (($r1='t') and ($r2='y')) then $VALUE=1 else $VALUE=0 endif endif"
+        digits="3"
+        disable="Grayed out"
+        />
+      <label loc="8 24" size="48 24" style="Label4"
+        label="Status: "
+        justify="Left"
+        />
+      <textmessage loc="120 0" size="64 24" style="Heading4"
+        label="H1"
+        vq="dn"
+        set="$VALUE=dn"
+        />
+      <label loc="8 0" size="96 24" style="Heading4"
+        label="Decoupler:"
+        justify="Left"
+        />
+    </group>
+    <group loc="8 0" size="256 192" style="Heading4"
+      label="Acquisition"
+      bg="transparent"
+      border="None"
+      side="Top"
+      justify="Left"
+      tab="no"
+      reference="Data"
+      useref="no"
+      expanded="yes"
+      >
+      <menu loc="192 96" size="56 24" style="Label4"
+        vq="d1"
+        vc="parunits('set','d1','$VALUE')"
+        set="parunits('get','d1'):$VALUE"
+        show="on('d1'):$VALUE if ($VALUE=0) then $VALUE=1 endif"
+        >
+        <mlabel label="sec" chval="sec"/>
+        <mlabel label="ms" chval="ms"/>
+        <mlabel label="us" chval="us"/>
+        <mlabel />
+      </menu>
+      <entry loc="96 24" size="96 24" style="Label4"
+        vq="sw"
+        vc="vnmrunits('set','sw',$VALUE)"
+        set="vnmrunits('get','sw'):$VALUE"
+        show="on('sw'):$VALUE "
+        digits="4"
+        disable="Grayed out"
+        />
+      <label loc="8 24" size="88 24" style="Label4"
+        label="Spectral width:"
+        justify="Left"
+        />
+      <entry loc="112 48" size="80 24" style="Label4"
+        vq="at"
+        vc="vnmrunits('set','at',$VALUE)"
+        set="vnmrunits('get','at'):$VALUE"
+        show="on('at'):$VALUE "
+        digits="3"
+        disable="Grayed out"
+        />
+      <entry loc="112 72" size="80 24" style="Label4"
+        vq="np"
+        vc="np=$VALUE*2"
+        set="$VALUE=( np / 2)"
+        show="on('np'):$VALUE "
+        disable="Grayed out"
+        />
+      <entry loc="112 96" size="80 24" style="Label4"
+        vq="d1"
+        vc="vnmrunits('set','d1',$VALUE)"
+        set="vnmrunits('get','d1'):$VALUE"
+        show="on('d1'):$VALUE"
+        digits="3"
+        disable="Grayed out"
+        />
+      <label loc="8 96" size="104 24" style="Label4"
+        label="Recycle delay:"
+        justify="Left"
+        />
+      <label loc="8 72" size="104 24" style="Label4"
+        label="Complex points:"
+        justify="Left"
+        />
+      <label loc="8 48" size="104 24" style="Label4"
+        label="Acquisition time:"
+        justify="Left"
+        />
+      <textmessage loc="120 0" size="64 24" style="Heading4"
+        label="C13"
+        vq="tn"
+        set="$VALUE=tn"
+        />
+      <entry loc="112 168" size="56 24" style="Label4"
+        vq="ss"
+        vc="ss=$VALUE"
+        set="$VALUE=ss"
+        show="on('ss'):$VALUE"
+        disable="Grayed out"
+        />
+      <label loc="8 168" size="104 24" style="Label4"
+        label="Steady state:"
+        justify="Left"
+        />
+      <entry loc="112 144" size="56 24" style="Label4"
+        vq="bs"
+        vc="$bs =bs bs=$VALUE vs=vs*($bs/bs)"
+        set="$VALUE=bs"
+        show="on('bs'):$VALUE "
+        disable="Grayed out"
+        />
+      <label loc="8 144" size="104 24" style="Label4"
+        label="Block size:"
+        justify="Left"
+        />
+      <textmessage loc="200 120" size="48 24" style="Label4"
+        label="0"
+        vq="ct"
+        set="$VALUE=ct"
+        show="on('ct'):$VALUE"
+        />
+      <label loc="168 120" size="32 24" style="Label4"
+        label="ct::"
+        justify="Center"
+        />
+      <entry loc="112 120" size="56 24" style="Label4"
+        vq="nt"
+        vc="nt=$VALUE"
+        set="$VALUE=nt"
+        show="on('nt'):$VALUE "
+        disable="Grayed out"
+        />
+      <label loc="8 120" size="104 24" style="Label4"
+        label="Total scans:"
+        justify="Left"
+        />
+      <menu loc="192 48" size="56 24" style="Label4"
+        vq="at"
+        vc="parunits('set','at','$VALUE')"
+        set="parunits('get','at'):$VALUE"
+        show="on('at'):$VALUE if ($VALUE=0) then $VALUE=1 endif"
+        >
+        <mlabel label="sec" chval="sec"/>
+        <mlabel label="ms" chval="ms"/>
+        <mlabel label="us" chval="us"/>
+        <mlabel />
+      </menu>
+      <menu loc="192 24" size="56 24" style="Label4"
+        vq="sw"
+        vc="parunits('set','sw','$VALUE')"
+        set="parunits('get','sw'):$VALUE"
+        show="on('sw'):$VALUE if ($VALUE=0) then $VALUE=1 endif"
+        >
+        <mlabel label="ppm" chval="ppm1"/>
+        <mlabel label="MHz" chval="MHz"/>
+        <mlabel label="kHz" chval="kHz"/>
+        <mlabel label="Hz" chval="Hz"/>
+        <mlabel />
+      </menu>
+      <label loc="8 0" size="96 24" style="Heading4"
+        label="Acquisition:"
+        justify="Left"
+        />
+    </group>
+    <textmessage loc="480 144" size="48 24" style="PlainText"
+      label=" "
+      vq="gain"
+      set="on('gain'):$on if ($on=0) then $VALUE='auto on' else $VALUE='' endif"
+      />
+    <check loc="448 144" size="16 24" style="Label4"
+      vq="gain"
+      vc="on('gain')"
+      vc2="off('gain')"
+      set="on('gain'):$VALUE if ($VALUE=-1) then $VALUE=0 endif"
+      show="on('gain'):$VALUE if ($VALUE=0) then $VALUE=1 endif"
+      />
+    <check loc="448 168" size="16 24" style="Label4"
+      vq="dsp"
+      vc="dsp='r'"
+      vc2="dsp='n'"
+      set="if (dsp='r') then $VALUE=1 else $VALUE=0 endif"
+      show="on('dsp','global'):$VALUE"
+      />
+    <textmessage loc="480 168" size="48 24" style="PlainText"
+      label="dsp off"
+      vq="dsp"
+      set="on('dsp','global'):$on if ($on=1) then if (dsp='r') then $VALUE='dsp on' else $VALUE='dsp off' endif else $VALUE='' endif"
+      />
+    <entry loc="392 144" size="48 24" style="Label4"
+      vq="gain"
+      vc="gain=$VALUE"
+      set="$VALUE=gain"
+      show="on('gain'):$VALUE"
+      disable="Grayed out"
+      />
+    <label loc="280 168" size="112 24" style="Label4"
+      label="Hardware dsp:"
+      justify="Left"
+      />
+    <label loc="280 144" size="112 24" style="Label4"
+      label="Reciever gain:"
+      justify="Left"
+      />
+    <group loc="536 0" size="256 52" bg="transparent"
+      border="None"
+      side="Top"
+      justify="Left"
+      tab="no"
+      useref="no"
+      >
+      <check loc="88 26" size="32 24" style="PlainText"
+        vq="temp"
+        vc="temp='y'"
+        vc2="temp='n'"
+        set="on('temp'):$VALUE if ($VALUE=-1) then $VALUE=0 endif"
+        show="on('temp'):$VALUE if ($VALUE=0) then $VALUE=1 endif"
+        />
+      <entry loc="120 26" size="72 24" style="Label4"
+        vq="temp"
+        vc="vnmrunits('set','temp',$VALUE)"
+        set="vnmrunits('get','temp'):$VALUE"
+        show="on('temp'):$VALUE"
+        digits="1"
+        disable="Grayed out"
+        />
+      <entry loc="120 2" size="72 24" style="Label4"
+        vq="srate"
+        vc="vnmrunits('set','srate',$VALUE)"
+        set="vnmrunits('get','srate'):$VALUE"
+        show="on('srate'):$VALUE"
+        digits="3"
+        disable="Grayed out"
+        />
+      <menu loc="192 2" size="56 24" style="Label4"
+        vq="srate"
+        vc="parunits('set','srate','$VALUE')"
+        set="parunits('get','srate'):$VALUE"
+        show="on('srate'):$VALUE"
+        >
+        <mlabel label="ppm" chval="ppm1"/>
+        <mlabel label="MHz" chval="MHz"/>
+        <mlabel label="kHz" chval="kHz"/>
+        <mlabel label="Hz" chval="Hz"/>
+        <mlabel />
+      </menu>
+      <check loc="88 2" size="24 24" style="PlainText"
+        vq="hsrotor"
+        vc="settype('srate','frequency') hsrotor='y'"
+        vc2="settype('srate','frequency') hsrotor='n'"
+        set="if (hsrotor='y') then $VALUE=1 else $VALUE=0 endif "
+        show="on('hsrotor'):$VALUE"
+        />
+      <label loc="8 26" size="112 24" style="Label4"
+        label="Temperature:"
+        justify="Left"
+        />
+      <menu loc="192 26" size="56 24" style="Label4"
+        vq="temp"
+        vc="parunits('set','temp','$VALUE')"
+        set="parunits('get','temp'):$VALUE"
+        show="on('temp'):$VALUE if $VALUE=0 then $VALUE=1 endif"
+        >
+        <mlabel label="C" chval="C"/>
+        <mlabel label="K" chval="K"/>
+        <mlabel />
+      </menu>
+      <label loc="8 2" size="120 24" style="Label4"
+        label="MAS rate:"
+        justify="Left"
+        />
+    </group>
+    <group loc="536 88" size="256 104" style="Label4"
+      label="2D Increments"
+      bg="transparent"
+      border="None"
+      side="Top"
+      justify="Left"
+      tab="no"
+      reference="Data"
+      useref="no"
+      expanded="yes"
+      >
+      <label loc="8 0" size="128 24" style="Heading4"
+        label="2D Increments:"
+        justify="Left"
+        />
+      <button loc="184 0" size="64 24" style="Label4"
+        label="Add 2D"
+        vc="par2d"
+        />
+      <label loc="8 75" size="112 24" style="Label4"
+        label="Phase tables:"
+        justify="Left"
+        />
+      <label loc="8 51" size="112 24" style="Label4"
+        label="Complex points:"
+        justify="Left"
+        />
+      <label loc="8 27" size="112 24" style="Label4"
+        label="Spectral width:"
+        justify="Left"
+        />
+      <menu loc="192 27" size="56 24" style="Label4"
+        vq="sw1"
+        vc="parunits('set','sw1','$VALUE')"
+        set="parunits('get','sw1'):$VALUE"
+        show="on('sw1'):$VALUE if ($VALUE=0) then $VALUE=1 endif"
+        >
+        <mlabel label="ppm" chval="ppm1"/>
+        <mlabel label="MHz" chval="MHz"/>
+        <mlabel label="kHz" chval="kHz"/>
+        <mlabel label="Hz" chval="Hz"/>
+      </menu>
+      <entry loc="120 27" size="72 24" style="Label4"
+        vq="sw1"
+        vc="vnmrunits('set','sw1',$VALUE)"
+        set="vnmrunits('get','sw1'):$VALUE"
+        show="on('sw1'):$VALUE"
+        digits="1"
+        disable="Grayed out"
+        />
+      <entry loc="120 51" size="72 24" style="Label4"
+        vq="ni"
+        vc="ni=$VALUE"
+        set="$VALUE=ni"
+        show="on('ni'):$VALUE"
+        disable="Grayed out"
+        />
+      <entry loc="120 75" size="72 24" style="Label4"
+        vq="phase"
+        vc="phase=$VALUE"
+        set="$VALUE=phase"
+        show="on('phase'):$VALUE"
+        disable="Grayed out"
+        />
+    </group>
+    <label loc="272 0" size="64 24" style="Label3"
+      label="Sequence:"
+      justify="Left"
+      />
+    <entry loc="344 0" size="112 24" style="Label3"
+      vq="seqfil"
+      vc="seqfil='$VALUE' "
+      set="$VALUE=seqfil"
+      show="on('seqfil'):$VALUE"
+      disable="Grayed out"
+      />
+    <menu loc="464 0" size="64 24" style="Label3"
+      vq="rfchannel"
+      vc="setrfchannel($VALUE)"
+      set="showrfchannel(1):$VALUE"
+      show="on('rfchannel'):$VALUE"
+      >
+      <mlabel label="Obs1" chval="1"/>
+      <mlabel label="Obs2" chval="2"/>
+      <mlabel label="Obs3" chval="3"/>
+      <mlabel label="Obs4" chval="4"/>
+      <mlabel />
+    </menu>
+  </group>
+</template>

@@ -1,0 +1,58 @@
+"%Z%%M% %I% %G% Copyright (c) 1991-1998 Varian Assoc.,Inc. All Rights Reserved."
+"rtcmx - convert and read a cmx file into the current experiment."
+"        Call with the name of the cmx data 'file'.  The cmx file may be"
+"        specified as an absolute pathname or as one relative to the current directory."
+
+$cmxname=''
+if $# < 1 then
+   input('File name (enter name and <return>)? '):$cmxname
+   $l=0
+   length($cmxname):$l
+   if ($l < 1) then
+    write('error','No file name given, command aborted')
+    abort
+   endif
+else
+  $cmxname=$1
+endif
+exists($cmxname,'directory'):$e
+if ($e < 0.5) then
+   write('error','data directory %s does not exist',$cmxname)
+   abort
+endif
+exists($cmxname+'/acq','file'):$e
+if ($e < 0.5) then
+   write('error','file %s does not contain SpinSight data',$cmxname)
+   abort
+endif
+
+
+"Generate the basename for the converted version of the file."
+$basename = ''
+shell('basename',$cmxname):$basename
+
+"Convert the file, creating basename.cv."
+exists(curexp+'/'+$basename+'.cv','file'):$exists
+if $exists then
+   rm('-rf',curexp+'/'+$basename+'.cv')
+endif
+shell('convertcmx -cs -os --',$cmxname,curexp+'/'+$basename+'.cv'):$dum
+
+"Read it and fill in missing parameters from /parlib/cmx."
+sread(curexp+'/'+$basename+'.cv',systemdir+'/parlib/cmx')
+" rm('-rf',curexp+'/'+$basename+'.cv') "
+setvalue('file',$cmxname,'current')
+setvalue('file',$cmxname,'processed')
+fixpar
+exists('phase','parameter'):$phase
+if ($phase>0.5) then 
+   if (phase = 10) then
+     setvalue('phase',1,'processed')
+     setvalue('phase',2,2,'processed')
+     setvalue('array','phase','processed')
+     setvalue('phase',1)
+     setvalue('phase',2,2)
+     setvalue('array','phase')
+   endif
+endif
+

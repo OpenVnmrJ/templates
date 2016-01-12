@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<template name="FutureActions" element="pages" type="acquisition" >
+  <group size="800 200" style="PlainText" label="Auto Events"
+    bg="transparent"
+    border="None"
+    side="Top"
+    justify="Left"
+    tab="yes"
+    reference="FutureActions"
+    useref="no"
+    expanded="yes"
+    >
+    <entry loc="216 72" size="456 24" style="PlainText"
+      vq="wnt"
+      vc="wnt='$VALUE' wnt(wnt)"
+      set="$VALUE=wnt"
+      disable="Grayed out"
+      />
+    <entry loc="216 96" size="456 24" style="PlainText"
+      vq="werr"
+      vc="werr='$VALUE' werr(werr)"
+      set="$VALUE=werr"
+      disable="Grayed out"
+      />
+    <entry loc="216 48" size="456 24" style="PlainText"
+      vq="wbs"
+      vc="wbs='$VALUE' wbs(wbs)"
+      set="$VALUE=wbs"
+      disable="Grayed out"
+      />
+    <entry loc="216 24" size="456 24" style="PlainText"
+      vq="wexp"
+      vc="wexp='$VALUE' wexp(wexp)"
+      set="$VALUE=wexp"
+      disable="Grayed out"
+      />
+    <label loc="8 96" size="200 24" style="Label3"
+      label="When an error occurs (werr)"
+      justify="Left"
+      />
+    <label loc="8 48" size="200 24" style="Label4"
+      label="When a block finishes (wbs)"
+      justify="Left"
+      />
+    <label loc="8 72" size="200 24" style="Label4"
+      label="When a FID finishes (wnt)"
+      justify="Left"
+      />
+    <label loc="8 24" size="200 24" style="Label4"
+      label="When experiment finishes (wexp)"
+      justify="Left"
+      />
+    <label loc="8 0" size="168 24" style="Heading4"
+      label="Automatic Events:"
+      justify="Left"
+      />
+  </group>
+</template>

@@ -1,0 +1,486 @@
+set dgTemplate(rows)       16
+set dgTemplate(cols)       10
+
+set dgIJ 0,0
+set dgTemplate(type,$dgIJ)  {title}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {3}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {Reciever}
+set dgTemplate(color,$dgIJ)  {blue}
+
+set dgIJ 1,0
+set dgTemplate(type,$dgIJ)  {entry}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {2}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {Gain (gain)}
+set dgTemplate(value,$dgIJ)  {}
+set dgTemplate(units,$dgIJ)  {}
+set dgTemplate(color,$dgIJ)  {black}
+set dgTemplate(width,$dgIJ)  {7}
+set dgTemplate(vnmrVar,$dgIJ)  {gain}
+set dgTemplate(vnmrSet,$dgIJ)  {gain=$VALUE}
+set dgTemplate(tclSet,$dgIJ)  {$gain}
+set dgTemplate(showVal,$dgIJ)  {}
+
+set dgIJ 2,0
+set dgTemplate(type,$dgIJ)  {entry}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {2}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {Bandwidth}
+set dgTemplate(value,$dgIJ)  {}
+set dgTemplate(units,$dgIJ)  {}
+set dgTemplate(color,$dgIJ)  {black}
+set dgTemplate(width,$dgIJ)  {7}
+set dgTemplate(vnmrVar,$dgIJ)  {fb}
+set dgTemplate(vnmrSet,$dgIJ)  {fb=$VALUE*[vnmrUnits fb]}
+set dgTemplate(tclSet,$dgIJ)  {[expr $fb/[vnmrUnits fb]]}
+set dgTemplate(showVal,$dgIJ)  {}
+
+set dgIJ 3,0
+set dgTemplate(type,$dgIJ)  {entry}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {2}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {Gate1 (rof1)}
+set dgTemplate(value,$dgIJ)  {}
+set dgTemplate(units,$dgIJ)  {}
+set dgTemplate(color,$dgIJ)  {seagreen}
+set dgTemplate(width,$dgIJ)  {7}
+set dgTemplate(vnmrVar,$dgIJ)  {rof1}
+set dgTemplate(vnmrSet,$dgIJ)  {rof1=$VALUE*[vnmrUnits rof1]}
+set dgTemplate(tclSet,$dgIJ)  {[expr {$rof1/ [vnmrUnits rof1]}]}
+set dgTemplate(showVal,$dgIJ)  {}
+
+set dgIJ 4,0
+set dgTemplate(type,$dgIJ)  {entry}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {2}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {Gate2 (rof2)}
+set dgTemplate(value,$dgIJ)  {}
+set dgTemplate(units,$dgIJ)  {}
+set dgTemplate(color,$dgIJ)  {seagreen}
+set dgTemplate(width,$dgIJ)  {7}
+set dgTemplate(vnmrVar,$dgIJ)  {rof2}
+set dgTemplate(vnmrSet,$dgIJ)  {rof2=$VALUE*[vnmrUnits rof2]}
+set dgTemplate(tclSet,$dgIJ)  {[expr {$rof2/ [vnmrUnits rof2]}]}
+set dgTemplate(showVal,$dgIJ)  {}
+
+set dgIJ 5,0
+set dgTemplate(type,$dgIJ)  {entry}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {2}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {Delay (alfa)}
+set dgTemplate(value,$dgIJ)  {}
+set dgTemplate(units,$dgIJ)  {}
+set dgTemplate(color,$dgIJ)  {seagreen}
+set dgTemplate(width,$dgIJ)  {7}
+set dgTemplate(vnmrVar,$dgIJ)  {alfa}
+set dgTemplate(vnmrSet,$dgIJ)  {alfa=$VALUE*[vnmrUnits alfa]}
+set dgTemplate(tclSet,$dgIJ)  {[expr {$alfa/ [vnmrUnits alfa]}]}
+set dgTemplate(showVal,$dgIJ)  {}
+
+set dgIJ 6,0
+set dgTemplate(type,$dgIJ)  {title}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {3}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {Digital Filters}
+set dgTemplate(color,$dgIJ)  {blue}
+
+set dgIJ 7,0
+set dgTemplate(type,$dgIJ)  {menu2}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {2}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {Type}
+set dgTemplate(choices,$dgIJ)  {Analog Digital Inline}
+set dgTemplate(values,$dgIJ)  {n r i}
+set dgTemplate(value,$dgIJ)  {}
+set dgTemplate(color,$dgIJ)  {black}
+set dgTemplate(vnmrVar,$dgIJ)  {dsp}
+set dgTemplate(vnmrSet,$dgIJ)  {dsp='$VALUE'}
+set dgTemplate(tclSet,$dgIJ)  {$dsp}
+
+set dgIJ 8,0
+set dgTemplate(type,$dgIJ)  {menu2}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {2}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {Function}
+set dgTemplate(choices,$dgIJ)  {Plus Brickwall }
+set dgTemplate(values,$dgIJ)  {a b ""}
+set dgTemplate(value,$dgIJ)  {}
+set dgTemplate(color,$dgIJ)  {black}
+set dgTemplate(vnmrVar,$dgIJ)  {osfilt dsp}
+set dgTemplate(vnmrSet,$dgIJ)  {osfilt='$VALUE'}
+set dgTemplate(tclSet,$dgIJ)  {[expr {($dsp < "n") || ($dsp > "n") ? $osfilt : "" }]}
+
+set dgIJ 9,0
+set dgTemplate(type,$dgIJ)  {entry}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {2}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {Sample Rate}
+set dgTemplate(value,$dgIJ)  {}
+set dgTemplate(units,$dgIJ)  {}
+set dgTemplate(color,$dgIJ)  {black}
+set dgTemplate(width,$dgIJ)  {7}
+set dgTemplate(vnmrVar,$dgIJ)  {oversamp sw}
+set dgTemplate(vnmrSet,$dgIJ)  {oversamp=$VALUE*[vnmrUnits sw]/sw}
+set dgTemplate(tclSet,$dgIJ)  {[expr $oversamp*$sw/[vnmrUnits sw]]}
+set dgTemplate(showVal,$dgIJ)  {}
+
+set dgIJ 10,0
+set dgTemplate(type,$dgIJ)  {entry}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {2}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {Bandwidth}
+set dgTemplate(value,$dgIJ)  {}
+set dgTemplate(units,$dgIJ)  {}
+set dgTemplate(color,$dgIJ)  {black}
+set dgTemplate(width,$dgIJ)  {7}
+set dgTemplate(vnmrVar,$dgIJ)  {osfb dsp}
+set dgTemplate(vnmrSet,$dgIJ)  {"osfb=$VALUE*[vnmrUnits sw] if osfb=0 then osfb='n' endif"}
+set dgTemplate(tclSet,$dgIJ)  {[expr $osfb/[vnmrUnits sw]]}
+set dgTemplate(showVal,$dgIJ)  {[expr {[expr { $dsp<"n" || $dsp>"n" }] ? [vnmrOn osfb] : [expr { $dsp<"n" || $dsp>"n" }]}]       }
+
+set dgIJ 11,0
+set dgTemplate(type,$dgIJ)  {entry}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {2}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {Offset}
+set dgTemplate(value,$dgIJ)  {}
+set dgTemplate(units,$dgIJ)  {}
+set dgTemplate(color,$dgIJ)  {black}
+set dgTemplate(width,$dgIJ)  {7}
+set dgTemplate(vnmrVar,$dgIJ)  {oslsfrq}
+set dgTemplate(vnmrSet,$dgIJ)  {oslsfrq=$VALUE*[vnmrUnits sw]}
+set dgTemplate(tclSet,$dgIJ)  {[expr $oslsfrq/[vnmrUnits sw]]}
+set dgTemplate(showVal,$dgIJ)  {[expr {$dsp > "n" || $dsp < "n"}]}
+
+set dgIJ 12,0
+set dgTemplate(type,$dgIJ)  {entry}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {2}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {Coefficients}
+set dgTemplate(value,$dgIJ)  {}
+set dgTemplate(units,$dgIJ)  {}
+set dgTemplate(color,$dgIJ)  {black}
+set dgTemplate(width,$dgIJ)  {7}
+set dgTemplate(vnmrVar,$dgIJ)  {oscoef}
+set dgTemplate(vnmrSet,$dgIJ)  {oscoef=$VALUE}
+set dgTemplate(tclSet,$dgIJ)  {$oscoef}
+set dgTemplate(showVal,$dgIJ)  {[expr {$dsp > "n" || $dsp < "n"}]}
+
+set dgIJ 2,2
+set dgTemplate(type,$dgIJ)  {menu2}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {1}
+set dgTemplate(sticky,$dgIJ)  {nws}
+set dgTemplate(label,$dgIJ)  {}
+set dgTemplate(choices,$dgIJ)  {Hz kHz MHz ppm}
+set dgTemplate(values,$dgIJ)  {1 2 3 4}
+set dgTemplate(value,$dgIJ)  {}
+set dgTemplate(color,$dgIJ)  {black}
+set dgTemplate(vnmrVar,$dgIJ)  {sw}
+set dgTemplate(vnmrSet,$dgIJ)  {setdgroup('fb',$VALUE)}
+set dgTemplate(tclSet,$dgIJ)  {[vnmrDgroup fb]}
+
+set dgIJ 3,2
+set dgTemplate(type,$dgIJ)  {menu2}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {1}
+set dgTemplate(sticky,$dgIJ)  {nws}
+set dgTemplate(label,$dgIJ)  {}
+set dgTemplate(choices,$dgIJ)  {sec ms us}
+set dgTemplate(values,$dgIJ)  {3 2 1}
+set dgTemplate(value,$dgIJ)  {}
+set dgTemplate(color,$dgIJ)  {seagreen}
+set dgTemplate(vnmrVar,$dgIJ)  {rof1}
+set dgTemplate(vnmrSet,$dgIJ)  {setdgroup('rof1',$VALUE)}
+set dgTemplate(tclSet,$dgIJ)  {[vnmrDgroup rof1]}
+
+set dgIJ 4,2
+set dgTemplate(type,$dgIJ)  {menu2}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {1}
+set dgTemplate(sticky,$dgIJ)  {nws}
+set dgTemplate(label,$dgIJ)  {}
+set dgTemplate(choices,$dgIJ)  {sec ms us}
+set dgTemplate(values,$dgIJ)  {3 2 1}
+set dgTemplate(value,$dgIJ)  {}
+set dgTemplate(color,$dgIJ)  {seagreen}
+set dgTemplate(vnmrVar,$dgIJ)  {rof2}
+set dgTemplate(vnmrSet,$dgIJ)  {setdgroup('rof2',$VALUE)}
+set dgTemplate(tclSet,$dgIJ)  {[vnmrDgroup rof2]}
+
+set dgIJ 5,2
+set dgTemplate(type,$dgIJ)  {menu2}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {1}
+set dgTemplate(sticky,$dgIJ)  {nws}
+set dgTemplate(label,$dgIJ)  {}
+set dgTemplate(choices,$dgIJ)  {sec ms us}
+set dgTemplate(values,$dgIJ)  {3 2 1}
+set dgTemplate(value,$dgIJ)  {}
+set dgTemplate(color,$dgIJ)  {seagreen}
+set dgTemplate(vnmrVar,$dgIJ)  {alfa}
+set dgTemplate(vnmrSet,$dgIJ)  {setdgroup('alfa',$VALUE)}
+set dgTemplate(tclSet,$dgIJ)  {[vnmrDgroup alfa]}
+
+set dgIJ 9,2
+set dgTemplate(type,$dgIJ)  {menu2}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {1}
+set dgTemplate(sticky,$dgIJ)  {nws}
+set dgTemplate(label,$dgIJ)  {}
+set dgTemplate(choices,$dgIJ)  {Hz kHz MHz ppm}
+set dgTemplate(values,$dgIJ)  {1 2 3 4}
+set dgTemplate(value,$dgIJ)  {}
+set dgTemplate(color,$dgIJ)  {black}
+set dgTemplate(vnmrVar,$dgIJ)  {sw}
+set dgTemplate(vnmrSet,$dgIJ)  {setdgroup('sw',$VALUE)}
+set dgTemplate(tclSet,$dgIJ)  {[vnmrDgroup sw]}
+
+set dgIJ 10,2
+set dgTemplate(type,$dgIJ)  {menu2}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {1}
+set dgTemplate(sticky,$dgIJ)  {nws}
+set dgTemplate(label,$dgIJ)  {}
+set dgTemplate(choices,$dgIJ)  {Hz kHz MHz ppm}
+set dgTemplate(values,$dgIJ)  {1 2 3 4}
+set dgTemplate(value,$dgIJ)  {}
+set dgTemplate(color,$dgIJ)  {black}
+set dgTemplate(vnmrVar,$dgIJ)  {sw}
+set dgTemplate(vnmrSet,$dgIJ)  {setdgroup('sw',$VALUE)}
+set dgTemplate(tclSet,$dgIJ)  {[vnmrDgroup sw]}
+
+set dgIJ 11,2
+set dgTemplate(type,$dgIJ)  {menu2}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {1}
+set dgTemplate(sticky,$dgIJ)  {nws}
+set dgTemplate(label,$dgIJ)  {}
+set dgTemplate(choices,$dgIJ)  {Hz kHz MHz ppm}
+set dgTemplate(values,$dgIJ)  {1 2 3 4}
+set dgTemplate(value,$dgIJ)  {}
+set dgTemplate(color,$dgIJ)  {black}
+set dgTemplate(vnmrVar,$dgIJ)  {sw}
+set dgTemplate(vnmrSet,$dgIJ)  {setdgroup('sw',$VALUE)}
+set dgTemplate(tclSet,$dgIJ)  {[vnmrDgroup sw]}
+
+set dgIJ 0,3
+set dgTemplate(type,$dgIJ)  {title}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {3}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {Channels}
+set dgTemplate(color,$dgIJ)  {blue}
+
+set dgIJ 1,3
+set dgTemplate(type,$dgIJ)  {entry}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {2}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {RF channels}
+set dgTemplate(value,$dgIJ)  {}
+set dgTemplate(units,$dgIJ)  {}
+set dgTemplate(color,$dgIJ)  {black}
+set dgTemplate(width,$dgIJ)  {7}
+set dgTemplate(vnmrVar,$dgIJ)  {rfchannel}
+set dgTemplate(vnmrSet,$dgIJ)  {rfchannel='$VALUE'}
+set dgTemplate(tclSet,$dgIJ)  {$rfchannel}
+set dgTemplate(showVal,$dgIJ)  {}
+
+set dgIJ 2,3
+set dgTemplate(type,$dgIJ)  {entry}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {2}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {Amp Type}
+set dgTemplate(value,$dgIJ)  {}
+set dgTemplate(units,$dgIJ)  {}
+set dgTemplate(color,$dgIJ)  {black}
+set dgTemplate(width,$dgIJ)  {7}
+set dgTemplate(vnmrVar,$dgIJ)  {amptype}
+set dgTemplate(vnmrSet,$dgIJ)  {amptype='$VALUE'}
+set dgTemplate(tclSet,$dgIJ)  {$amptype}
+set dgTemplate(showVal,$dgIJ)  {}
+
+set dgIJ 3,3
+set dgTemplate(type,$dgIJ)  {entry}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {2}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {KW Amp type}
+set dgTemplate(value,$dgIJ)  {}
+set dgTemplate(units,$dgIJ)  {}
+set dgTemplate(color,$dgIJ)  {black}
+set dgTemplate(width,$dgIJ)  {7}
+set dgTemplate(vnmrVar,$dgIJ)  {kWamptype}
+set dgTemplate(vnmrSet,$dgIJ)  {kWamptype='$VALUE'}
+set dgTemplate(tclSet,$dgIJ)  {$kWamptype}
+set dgTemplate(showVal,$dgIJ)  {}
+
+set dgIJ 4,3
+set dgTemplate(type,$dgIJ)  {entry}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {2}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {Amp Mode}
+set dgTemplate(value,$dgIJ)  {}
+set dgTemplate(units,$dgIJ)  {}
+set dgTemplate(color,$dgIJ)  {black}
+set dgTemplate(width,$dgIJ)  {7}
+set dgTemplate(vnmrVar,$dgIJ)  {ampmode}
+set dgTemplate(vnmrSet,$dgIJ)  {ampmode='$VALUE'}
+set dgTemplate(tclSet,$dgIJ)  {$ampmode}
+set dgTemplate(showVal,$dgIJ)  {}
+
+set dgIJ 15,4
+set dgTemplate(type,$dgIJ)  {button}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {1}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {FLIP}
+set dgTemplate(color,$dgIJ)  {blue}
+set dgTemplate(width,$dgIJ)  {}
+set dgTemplate(vnmrSet,$dgIJ)  {flip}
+
+set dgIJ 11,6
+set dgTemplate(type,$dgIJ)  {title}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {4}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {Conditional AU Commands}
+set dgTemplate(color,$dgIJ)  {blue}
+
+set dgIJ 12,6
+set dgTemplate(type,$dgIJ)  {entry}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {4}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {At Block}
+set dgTemplate(value,$dgIJ)  {}
+set dgTemplate(units,$dgIJ)  {}
+set dgTemplate(color,$dgIJ)  {black}
+set dgTemplate(width,$dgIJ)  {34}
+set dgTemplate(vnmrVar,$dgIJ)  {wbs}
+set dgTemplate(vnmrSet,$dgIJ)  {wbs='$VALUE'}
+set dgTemplate(tclSet,$dgIJ)  {$wbs}
+set dgTemplate(showVal,$dgIJ)  {}
+
+set dgIJ 13,6
+set dgTemplate(type,$dgIJ)  {entry}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {4}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {At FID}
+set dgTemplate(value,$dgIJ)  {}
+set dgTemplate(units,$dgIJ)  {}
+set dgTemplate(color,$dgIJ)  {black}
+set dgTemplate(width,$dgIJ)  {34}
+set dgTemplate(vnmrVar,$dgIJ)  {wnt}
+set dgTemplate(vnmrSet,$dgIJ)  {wnt='$VALUE'}
+set dgTemplate(tclSet,$dgIJ)  {$wnt}
+set dgTemplate(showVal,$dgIJ)  {}
+
+set dgIJ 14,6
+set dgTemplate(type,$dgIJ)  {entry}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {4}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {At EXP}
+set dgTemplate(value,$dgIJ)  {}
+set dgTemplate(units,$dgIJ)  {}
+set dgTemplate(color,$dgIJ)  {black}
+set dgTemplate(width,$dgIJ)  {34}
+set dgTemplate(vnmrVar,$dgIJ)  {wexp}
+set dgTemplate(vnmrSet,$dgIJ)  {wexp='$VALUE'}
+set dgTemplate(tclSet,$dgIJ)  {$wexp}
+set dgTemplate(showVal,$dgIJ)  {}
+
+set dgIJ 15,6
+set dgTemplate(type,$dgIJ)  {entry}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {4}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {Error}
+set dgTemplate(value,$dgIJ)  {}
+set dgTemplate(units,$dgIJ)  {}
+set dgTemplate(color,$dgIJ)  {indianred}
+set dgTemplate(width,$dgIJ)  {34}
+set dgTemplate(vnmrVar,$dgIJ)  {werr}
+set dgTemplate(vnmrSet,$dgIJ)  {werr='$VALUE'}
+set dgTemplate(tclSet,$dgIJ)  {$werr}
+set dgTemplate(showVal,$dgIJ)  {}
+
+set dgIJ 0,8
+set dgTemplate(type,$dgIJ)  {title}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {2}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {Options}
+set dgTemplate(color,$dgIJ)  {blue}
+
+set dgIJ 1,8
+set dgTemplate(type,$dgIJ)  {check}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {2}
+set dgTemplate(sticky,$dgIJ)  {nws}
+set dgTemplate(label,$dgIJ)  {interleave}
+set dgTemplate(value,$dgIJ)  {}
+set dgTemplate(color,$dgIJ)  {black}
+set dgTemplate(vnmrVar,$dgIJ)  {il}
+set dgTemplate(vnmrSet,$dgIJ)  {il='y'}
+set dgTemplate(vnmrSet2,$dgIJ)  {il='n'}
+set dgTemplate(tclSet,$dgIJ)  {[expr {$il == "y"}]}
+
+set dgIJ 2,8
+set dgTemplate(type,$dgIJ)  {check}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {2}
+set dgTemplate(sticky,$dgIJ)  {nws}
+set dgTemplate(label,$dgIJ)  {interlock}
+set dgTemplate(value,$dgIJ)  {}
+set dgTemplate(color,$dgIJ)  {black}
+set dgTemplate(vnmrVar,$dgIJ)  {in}
+set dgTemplate(vnmrSet,$dgIJ)  {in='y'}
+set dgTemplate(vnmrSet2,$dgIJ)  {in='n'}
+set dgTemplate(tclSet,$dgIJ)  {[expr {$in == "y"}]}
+
+set dgIJ 3,8
+set dgTemplate(type,$dgIJ)  {check}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {2}
+set dgTemplate(sticky,$dgIJ)  {nws}
+set dgTemplate(label,$dgIJ)  {32 bit}
+set dgTemplate(value,$dgIJ)  {}
+set dgTemplate(color,$dgIJ)  {black}
+set dgTemplate(vnmrVar,$dgIJ)  {dp}
+set dgTemplate(vnmrSet,$dgIJ)  {dp='y'}
+set dgTemplate(vnmrSet2,$dgIJ)  {dp='n'}
+set dgTemplate(tclSet,$dgIJ)  {[expr {$dp == "y"}]}
+
+set dgIJ 4,8
+set dgTemplate(type,$dgIJ)  {menu2}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {2}
+set dgTemplate(sticky,$dgIJ)  {nes}
+set dgTemplate(label,$dgIJ)  {homospoil}
+set dgTemplate(choices,$dgIJ)  {nn ny yn yy}
+set dgTemplate(values,$dgIJ)  {nn ny yn yy}
+set dgTemplate(value,$dgIJ)  {}
+set dgTemplate(color,$dgIJ)  {black}
+set dgTemplate(vnmrVar,$dgIJ)  {hs}
+set dgTemplate(vnmrSet,$dgIJ)  {hs='$VALUE'}
+set dgTemplate(tclSet,$dgIJ)  {$hs}

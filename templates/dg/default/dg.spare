@@ -1,0 +1,2 @@
+set dgTemplate(rows)       16
+set dgTemplate(cols)       10

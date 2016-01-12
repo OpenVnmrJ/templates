@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!--
+ ! @(#)sample_action.xml 1.10 04/07/02 Copyright (c) 1998-2002 Varian,Inc. All Rights Reserved
+ !
+ ! Varian,Inc. All Rights Reserved.
+ ! This software contains proprietary and confidential
+ ! information of Varian, Inc. and its contributors.
+ ! Use, disclosure and reproduction is prohibited without
+ ! prior consent.
+ !
+ -->
+<actionpanel>
+  <group size="540 20" fg="PlainText" bg="transparent" border="None" side="Top"
+    justify="Left" tab="no" reference="acq_action" useref="no" >
+   <button  loc="0 0" size="90 20" value="Sequence" 
+      vc="dps" style="Plain"
+      fg="black" bg="cyan" point="12" font="Dialog" />
+   <button  loc="90 0" size="90 20" value="Hardware SU"
+      vc="su" style="Plain"
+      vq="acqmode"
+      show="$VALUE=(acqmode='') if $VALUE=0 then $VALUE=-1 endif"
+      fg="black" bg="yellow" point="12" font="Dialog" />
+   <toggle loc="180 0" size="90 20" value="FID Scan" 
+      vc2="aa acqmode=''wbs('') wnt('') wdone('') menu('main')" 
+      vc="repeat_scan"      
+      vq="acqmode"    
+      set="$VALUE=(acqmode='fidscan')"
+      show="$VALUE=(acqmode=''or acqmode='fidscan') $VALUE=$VALUE*2-1"
+      fg="black" bg="green" point="12" style="Plain" font="Dialog" />
+   <toggle loc="270 0" size="90 20" value="Acquire"
+      vc2="aa acqmode='' wbs('') wnt('') wdone('') menu('main') {wexp}"
+      vc="au_scan"
+      vq="acqmode" 
+      set="$VALUE=(acqmode='auscan')"
+      show="$VALUE=(acqmode=''or acqmode='auscan') $VALUE=$VALUE*2-1"
+      fg="black" bg="cyan" point="12" style="Plain" font="Dialog" />
+   <toggle loc="360 0" size="90 20" value="Safe On"
+      vc2="safeon='n'"
+      vc="safeon='y'"
+      vq="safeon" 
+      set="$VALUE=(safeon='y')"
+      show="$VALUE=1"
+      fg="black" bg="tan" point="12" style="Plain" font="Dialog" />
+   <toggle loc="450 0" size="90 20" value="Update On"
+      vc2="holdrs='y'clear(2) wbs('') wnt('')"
+      vc="holdrs='n' banner('') wbs('fid_display') wnt('fid_display')"
+      vq="wbs" 
+      set="$VALUE= (wbs='fid_display')"
+      show="$VALUE=1"
+      fg="black" bg="cyan" point="12" style="Plain" font="Dialog" />
+  </group>
+</actionpanel>

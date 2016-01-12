@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<template name="FilterF2Data" element="pages" type="processing" >
+  <group size="800 200" style="Heading2" label="Digital Filters"
+    bg="transparent"
+    border="None"
+    side="Top"
+    justify="Right"
+    tab="yes"
+    reference="FilterF2Data"
+    useref="no"
+    expanded="yes"
+    >
+    <group loc="264 0" size="256 128" style="PlainText"
+      vq="ssfilter"
+      bg="transparent"
+      border="None"
+      side="BelowTop"
+      justify="Left"
+      tab="no"
+      reference="polynomial"
+      useref="no"
+      expanded="yes"
+      >
+      <menu loc="192 96" size="56 24" style="Label4"
+        vq="sslsfrq ssfilter"
+        vc="parunits('set','sslsfrq','$VALUE')"
+        set="parunits('get','sslsfrq'):$VALUE"
+        show="onparams('sslsfrq','ssfilter'):$VALUE if ($VALUE=0) then $VALUE=1 endif"
+        >
+        <mlabel label="ppm" chval="ppm1"/>
+        <mlabel label="MHz" chval="MHz"/>
+        <mlabel label="kHz" chval="kHz"/>
+        <mlabel label="Hz" chval="Hz"/>
+      </menu>
+      <check loc="224 0" size="24 24" style="Label4"
+        vq="ssfilter"
+        vc="parfidss ssfilter='y'"
+        vc2="ssfilter='n'"
+        set="on('ssfilter'):$VALUE if ($VALUE=-1) then $VALUE=0 endif"
+        show="$VALUE=1"
+        />
+      <entry loc="120 48" size="72 24" style="Label4"
+        vq="ssntaps ssfilter"
+        vc="ssntaps=$VALUE"
+        set="$VALUE=ssntaps"
+        show="onparams('ssfilter','ssntaps'):$VALUE if ($VALUE&gt;=0) then on('ssfilter'):$ssfilteron if ($ssfilteron&gt;0.5) then $VALUE=1 on('ssntaps') else $VALUE=0 endif endif"
+        disable="Grayed out"
+        />
+      <menu loc="192 24" size="56 24" style="Label4"
+        vq="ssfilter"
+        vc="parunits('set','ssfilter','$VALUE')"
+        set="parunits('get','ssfilter'):$VALUE"
+        show="on('ssfilter'):$VALUE if ($VALUE=0) then $VALUE=1 endif"
+        >
+        <mlabel label="ppm" chval="ppm1"/>
+        <mlabel label="MHz" chval="MHz"/>
+        <mlabel label="kHz" chval="kHz"/>
+        <mlabel label="Hz" chval="Hz"/>
+      </menu>
+      <label loc="8 96" size="88 24" style="Label4"
+        label="Offset:"
+        justify="Left"
+        />
+      <label loc="8 72" size="88 24" style="Label4"
+        label="Polynomial:"
+        justify="Left"
+        />
+      <check loc="96 72" size="24 24" style="Label4"
+        vq="ssorder ssfilter"
+        vc="ssfilter='y' ssorder='y'"
+        vc2="ssorder='n'"
+        set="onparams('ssorder','ssfilter'):$VALUE"
+        />
+      <check loc="96 96" size="24 24" style="Label4"
+        vq="sslsfrq"
+        vc="ssfilter='y' sslsfrq='y'"
+        vc2="sslsfrq='n'"
+        set="on('sslsfrq'):$VALUE"
+        />
+      <label loc="0 0" size="216 24" style="Heading4"
+        label="Solvent and Pedestal Removal:"
+        justify="Left"
+        />
+      <entry loc="120 96" size="72 24" style="Label4"
+        vq="sslsfrq ssfilter"
+        vc="vnmrunits('set','sslsfrq',$VALUE)"
+        set="vnmrunits('get','sslsfrq'):$VALUE"
+        show="onparams('sslsfrq','ssfilter'):$VALUE  "
+        disable="Grayed out"
+        />
+      <entry loc="120 72" size="72 24" style="Label4"
+        vq="ssorder ssfilter"
+        vc="ssorder=$VALUE"
+        set="$VALUE=ssorder"
+        show="onparams('ssorder','ssfilter'):$VALUE  "
+        disable="Grayed out"
+        />
+      <label loc="8 48" size="112 24" style="Label4"
+        label="Coefficients:"
+        justify="Left"
+        />
+      <label loc="8 24" size="112 24" style="Label4"
+        label="Bandwidth:"
+        justify="Left"
+        />
+      <entry loc="120 24" size="72 24" style="Label4"
+        vq="ssfilter"
+        vc="vnmrunits('set','ssfilter',$VALUE)"
+        set="vnmrunits('get','ssfilter'):$VALUE"
+        show="on('ssfilter'):$VALUE"
+        digits="3"
+        disable="Grayed out"
+        />
+    </group>
+    <group loc="8 0" size="256 128" style="Heading4"
+      label="Downsampling"
+      bg="transparent"
+      border="None"
+      side="Top"
+      justify="Left"
+      tab="no"
+      reference="Downsampling"
+      useref="no"
+      expanded="yes"
+      >
+      <entry loc="120 24" size="72 24" style="Label4"
+        vq="downsamp"
+        vc="downsamp=$VALUE"
+        set="$VALUE=downsamp"
+        show="on('downsamp'):$VALUE"
+        disable="Grayed out"
+        />
+      <check loc="224 0" size="24 24" style="PlainText"
+        vq="downsamp"
+        vc="pards settype('dslsfrq','frequency') settype('dsfb','frequency') downsamp=1 downsamp='y'"
+        vc2="pards settype('dslsfrq','frequency') settype('dsfb','frequency') downsamp=1 downsamp='n'"
+        set="on('downsamp'):$VALUE if ($VALUE=-1) then $VALUE=0 endif"
+        show="$VALUE=1"
+        />
+      <label loc="8 0" size="136 24" style="Heading4"
+        label="Downsampling:"
+        justify="Left"
+        />
+      <menu loc="192 72" size="56 24" style="Label4"
+        vq="dslsfrq downsamp"
+        vc="parunits('set','dslsfrq','$VALUE')"
+        set="parunits('get','dslsfrq'):$VALUE"
+        show="onparams('dslsfrq','downsamp'):$VALUE if ($VALUE=0) then $VALUE=1 endif"
+        >
+        <mlabel label="ppm" chval="ppm1"/>
+        <mlabel label="MHz" chval="MHz"/>
+        <mlabel label="kHz" chval="kHz"/>
+        <mlabel label="Hz" chval="Hz"/>
+        <mlabel />
+      </menu>
+      <entry loc="120 48" size="72 24" style="Label4"
+        vq="dscoef downsamp"
+        vc="dscoef=$VALUE"
+        set="$VALUE=dscoef"
+        show="on('downsamp'):$VALUE"
+        disable="Grayed out"
+        />
+      <entry loc="120 96" size="72 24" style="Label4"
+        vq="dsfb downsamp"
+        vc="vnmrunits('set','dsfb',$VALUE)"
+        set="vnmrunits('get','dsfb'):$VALUE"
+        show="on('downsamp'):$VALUE"
+        digits="3"
+        disable="Grayed out"
+        />
+      <entry loc="120 72" size="72 24" style="Label4"
+        vq="dslsfrq downsamp"
+        vc="vnmrunits('set','dslsfrq',$VALUE)"
+        set="vnmrunits('get','dslsfrq'):$VALUE"
+        show="on('downsamp'):$VALUE"
+        digits="3"
+        disable="Grayed out"
+        />
+      <menu loc="192 96" size="56 24" style="Label4"
+        vq="dsfb downsamp"
+        vc="parunits('set','dsfb','$VALUE')"
+        set="parunits('get','dsfb'):$VALUE"
+        show="onparams('dsfb','downsamp'):$VALUE if ($VALUE=0) then $VALUE=1 endif"
+        >
+        <mlabel label="ppm" chval="ppm1"/>
+        <mlabel label="MHz" chval="MHz"/>
+        <mlabel label="kHz" chval="kHz"/>
+        <mlabel label="Hz" chval="Hz"/>
+        <mlabel />
+      </menu>
+      <label loc="8 25" size="112 24" style="Label4"
+        label="Division factor:"
+        justify="Left"
+        />
+      <label loc="8 49" size="112 24" style="Label4"
+        label="Coefficients:"
+        justify="Left"
+        />
+      <label loc="8 73" size="112 24" style="Label4"
+        label="Offset:"
+        justify="Left"
+        />
+      <label loc="8 97" size="112 24" style="Label4"
+        label="Bandwidth:"
+        justify="Left"
+        />
+    </group>
+  </group>
+</template>

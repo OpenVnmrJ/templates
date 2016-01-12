@@ -1,0 +1,704 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<template name="Channels" element="pages" type="acquisition" >
+  <group size="800 200" style="PlainText" label="Channels"
+    bg="transparent"
+    border="None"
+    side="Top"
+    justify="Left"
+    tab="yes"
+    reference="Channels"
+    useref="no"
+    expanded="yes"
+    >
+    <group loc="632 0" size="160 192" style="StdPar"
+      vq="numrfch"
+      show="if (numrfch&gt;3) then $VALUE=1 else $VALUE=0 endif"
+      bg="transparent"
+      border="None"
+      side="Top"
+      justify="Left"
+      tab="no"
+      reference="Observe"
+      useref="no"
+      expanded="yes"
+      >
+      <entry loc="56 96" size="32 24" style="Label4"
+        vq="kWamptype attenmap amplimits"
+        vc="showamplimits('set','amplimits',4,$VALUE) setrfchannel(0)"
+        set="showamplimits('get','amplimits',4):$VALUE"
+        show="onparams('attenmap','kWamptype','amplimits'):$VALUE if ($VALUE&gt;0) then showampstatus('get','kWamptype',4):$r2  if $r2='l' then $VALUE=0 endif endif"
+        disable="Grayed out"
+        />
+      <menu loc="112 0" size="40 24" style="Heading4"
+        vq="rfchval4"
+        vc="setrfchannel($VALUE,4)"
+        set="$VALUE=rfchval4"
+        >
+        <mlabel label="1" chval="1"/>
+        <mlabel label="2" chval="2"/>
+        <mlabel label="3" chval="3"/>
+        <mlabel label="4" chval="4"/>
+        <mlabel />
+      </menu>
+      <label loc="8 0" size="96 24" style="Heading4"
+        label="Decouple 3"
+        justify="Left"
+        />
+      <label loc="8 168" size="24 24" style="Label4"
+        label="On "
+        justify="Left"
+        />
+      <entry loc="40 168" size="40 24" style="Label4"
+        vq="dm3"
+        vc="dm3='$VALUE'"
+        set="$VALUE=dm3"
+        show="on('dm3'):$VALUE"
+        disable="Grayed out"
+        />
+      <entry loc="112 168" size="40 24" style="Label4"
+        vq="dmm3"
+        vc="dmm3='$VALUE'"
+        set="$VALUE=dmm3"
+        show="on('dmm3'):$VALUE"
+        disable="Grayed out"
+        />
+      <label loc="80 168" size="32 24" style="Label4"
+        label="Mod"
+        justify="Left"
+        />
+      <menu loc="96 96" size="56 24" style="Label4"
+        vq="kWamptype attenmap"
+        vc="showampstatus('set','kWamptype',4,'$VALUE')  setrfchannel(0)"
+        set="showampstatus('get','kWamptype',4):$VALUE"
+        show="on('attenmap'):$VALUE"
+        >
+        <mlabel label="on" chval="h"/>
+        <mlabel label="off" chval="l"/>
+        <mlabel />
+      </menu>
+      <label loc="8 72" size="48 24" style="Label4"
+        label="dpwr3"
+        justify="Left"
+        />
+      <label loc="8 96" size="48 24" style="Label4"
+        label="Max:"
+        justify="Left"
+        />
+      <menu loc="96 72" size="56 24" style="Label4"
+        vq="ampmode attenmap"
+        vc="showampstatus('set','ampmode',4,'$VALUE') setrfchannel(0)"
+        set="showampstatus('get','ampmode',4):$VALUE"
+        show="on('attenmap'):$VALUE"
+        >
+        <mlabel label="d" chval="d"/>
+        <mlabel label="p" chval="p"/>
+        <mlabel label="c" chval="c"/>
+        <mlabel label="z" chval="z"/>
+        <mlabel />
+      </menu>
+      <entry loc="56 72" size="32 24" style="Label4"
+        vq="dpwr3"
+        vc="dpwr3=$VALUE"
+        set="$VALUE=dpwr3"
+        show="on('dpwr3'):$VALUE"
+        disable="Grayed out"
+        />
+      <entry loc="72 120" size="48 24" style="Label4"
+        vq="dpwrm3"
+        vc="dpwrm3=$VALUE"
+        set="$VALUE=dpwrm3"
+        show="on('dpwrm3'):$VALUE"
+        disable="Grayed out"
+        />
+      <label loc="8 120" size="56 24" style="Label4"
+        label="dpwrm3"
+        justify="Left"
+        />
+      <label loc="8 144" size="32 24" style="Label4"
+        label="pwz"
+        justify="Left"
+        />
+      <menu loc="96 144" size="56 24" style="Label4"
+        vq="pwz"
+        vc="parunits('set','pwz','$VALUE')"
+        set="parunits('get','pwz'):$VALUE"
+        show="on('pwz'):$VALUE"
+        >
+        <mlabel label="sec" chval="sec"/>
+        <mlabel label="ms" chval="ms"/>
+        <mlabel label="us" chval="us"/>
+        <mlabel />
+      </menu>
+      <entry loc="40 144" size="48 24" style="Label4"
+        vq="pwz"
+        vc="vnmrunits('set','pwz',$VALUE)"
+        set="vnmrunits('get','pwz'):$VALUE"
+        show="on('pwz'):$VALUE"
+        digits="3"
+        disable="Grayed out"
+        />
+      <entry loc="48 24" size="80 24" style="Label4"
+        vq="dfrq3 dn3 dof3"
+        vc="dfrq3=$VALUE setattenmap"
+        set="$VALUE=dfrq3"
+        show="onparams('dn3','dfrq3'):$VALUE"
+        digits="7"
+        disable="Grayed out"
+        />
+      <label loc="128 24" size="32 24" style="Label4"
+        label="MHz"
+        justify="Left"
+        />
+      <entry loc="8 24" size="40 24" style="Label4"
+        vq="dn3 dfrq3"
+        vc="dn3='$VALUE'  setattenmap"
+        set="$VALUE=dn3"
+        show="onparams('dn3','dfrq3'):$VALUE"
+        disable="Grayed out"
+        />
+      <entry loc="8 48" size="80 24" style="Label4"
+        vq="dof3 dn3 dfrq3"
+        vc="vnmrunits('set','dof3',$VALUE)"
+        set="vnmrunits('get','dof3'):$VALUE"
+        show="on('dof3'):$VALUE if ($VALUE&gt;0) then if (dn3='none') then $VALUE=0 else $VALUE=1 endif endif"
+        digits="1"
+        disable="Grayed out"
+        />
+      <menu loc="90 48" size="64 24" style="Label4"
+        vq="dof3"
+        vc="parunits('set','dof3','$VALUE')"
+        set="parunits('get','dof3'):$VALUE"
+        show="on('dof3'):$VALUE"
+        >
+        <mlabel label="Hz" chval="Hz"/>
+        <mlabel label="kHz" chval="kHz"/>
+        <mlabel label="MHz" chval="MHz"/>
+        <mlabel label="ppm" chval="ppm1"/>
+        <mlabel />
+      </menu>
+    </group>
+    <group loc="312 0" size="160 192" style="StdPar"
+      bg="transparent"
+      border="None"
+      side="Top"
+      justify="Left"
+      tab="no"
+      reference="Observe"
+      useref="no"
+      expanded="yes"
+      >
+      <entry loc="56 96" size="32 24" style="Label4"
+        vq="kWamptype attenmap amplimits"
+        vc="showamplimits('set','amplimits',2,$VALUE) setrfchannel(0)"
+        set="showamplimits('get','amplimits',2):$VALUE"
+        show="onparams('attenmap','kWamptype','amplimits'):$VALUE if ($VALUE&gt;0) then showampstatus('get','kWamptype',2):$r2  if $r2='l' then $VALUE=0 endif endif"
+        disable="Grayed out"
+        />
+      <menu loc="112 0" size="40 24" style="Heading4"
+        vq="rfchval2"
+        vc="setrfchannel($VALUE,2)"
+        set="$VALUE=rfchval2"
+        >
+        <mlabel label="1" chval="1"/>
+        <mlabel label="2" chval="2"/>
+        <mlabel label="3" chval="3"/>
+        <mlabel label="4" chval="4"/>
+      </menu>
+      <label loc="8 0" size="96 24" style="Heading4"
+        label="Decouple"
+        justify="Left"
+        />
+      <label loc="8 168" size="24 24" style="Label4"
+        label="On "
+        justify="Left"
+        />
+      <label loc="80 168" size="32 24" style="Label4"
+        label="Mod"
+        justify="Left"
+        />
+      <entry loc="112 168" size="40 24" style="Label4"
+        vq="dmm"
+        vc="dmm='$VALUE'"
+        set="$VALUE=dmm"
+        show="on('dmm'):$VALUE"
+        disable="Grayed out"
+        />
+      <entry loc="40 168" size="40 24" style="Label4"
+        vq="dm"
+        vc="dm='$VALUE'"
+        set="$VALUE=dm"
+        show="on('dm'):$VALUE"
+        disable="Grayed out"
+        />
+      <menu loc="96 144" size="56 24" style="Label4"
+        vq="pw"
+        vc="parunits('set','pw','$VALUE')"
+        set="parunits('get','pw'):$VALUE"
+        show="on('pw'):$VALUE"
+        >
+        <mlabel label="sec" chval="sec"/>
+        <mlabel label="ms" chval="ms"/>
+        <mlabel label="us" chval="us"/>
+      </menu>
+      <entry loc="72 120" size="48 24" style="Label4"
+        vq="dpwrm"
+        vc="dpwrm=$VALUE"
+        set="$VALUE=dpwrm"
+        show="on('dpwrm'):$VALUE"
+        disable="Grayed out"
+        />
+      <label loc="8 120" size="56 24" style="Label4"
+        label="dpwrm"
+        justify="Left"
+        />
+      <menu loc="96 96" size="56 24" style="Label4"
+        vq="kWamptype attenmap"
+        vc="showampstatus('set','kWamptype',2,'$VALUE') setrfchannel(0)"
+        set="showampstatus('get','kWamptype',2):$VALUE"
+        show="on('attenmap'):$VALUE"
+        >
+        <mlabel label="on" chval="h"/>
+        <mlabel label="off" chval="l"/>
+      </menu>
+      <label loc="8 96" size="48 24" style="Label4"
+        label="Max:"
+        justify="Left"
+        />
+      <menu loc="96 48" size="56 24" style="Label4"
+        vq="dof"
+        vc="parunits('set','dof','$VALUE')"
+        set="parunits('get','dof'):$VALUE"
+        >
+        <mlabel label="Hz" chval="Hz"/>
+        <mlabel label="kHz" chval="kHz"/>
+        <mlabel label="MHz" chval="MHz"/>
+        <mlabel label="ppm" chval="ppm1"/>
+      </menu>
+      <menu loc="96 72" size="56 24" style="Label4"
+        vq="ampmode attenmap"
+        vc="showampstatus('set','ampmode',2,'$VALUE') setrfchannel(0)"
+        set="showampstatus('get','ampmode',2):$VALUE"
+        show="on('attenmap'):$VALUE"
+        >
+        <mlabel label="d" chval="d"/>
+        <mlabel label="p" chval="p"/>
+        <mlabel label="c" chval="c"/>
+        <mlabel label="z" chval="z"/>
+      </menu>
+      <label loc="8 72" size="48 24" style="Label4"
+        label="dpwr"
+        justify="Left"
+        />
+      <entry loc="56 72" size="32 24" style="Label4"
+        vq="dpwr"
+        vc="dpwr=$VALUE"
+        set="$VALUE=dpwr"
+        show="on('dpwr'):$VALUE"
+        disable="Grayed out"
+        />
+      <entry loc="40 144" size="48 24" style="Label4"
+        vq="pw"
+        vc="vnmrunits('set','pw',$VALUE)"
+        set="vnmrunits('get','pw'):$VALUE"
+        show="on('pw'):$VALUE"
+        digits="3"
+        disable="Grayed out"
+        />
+      <label loc="8 144" size="32 24" style="Label4"
+        label="pw"
+        justify="Left"
+        />
+      <entry loc="48 24" size="80 24" style="Label4"
+        vq="dfrq dn dof"
+        vc="dfrq=$VALUE setattenmap"
+        set="$VALUE=dfrq"
+        show="onparams('dn','dfrq'):$VALUE"
+        digits="7"
+        disable="Grayed out"
+        />
+      <label loc="128 24" size="32 24" style="Label4"
+        label="MHz"
+        justify="Left"
+        />
+      <entry loc="8 24" size="40 24" style="Label4"
+        vq="dn dfrq"
+        vc="dn='$VALUE' setattenmap"
+        set="$VALUE=dn"
+        show="onparams('dn','dfrq'):$VALUE"
+        disable="Grayed out"
+        />
+      <entry loc="8 48" size="80 24" style="Label4"
+        vq="dof dn dfrq"
+        vc="vnmrunits('set','dof',$VALUE)"
+        set="vnmrunits('get','dof'):$VALUE"
+        show="on('dof'):$VALUE if ($VALUE&gt;0) then if (dn='none') then $VALUE=0 else $VALUE=1 endif endif"
+        digits="1"
+        disable="Grayed out"
+        />
+    </group>
+    <group loc="472 0" size="160 192" style="Heading4"
+      vq="numrfch"
+      show="if (numrfch&gt;2) then $VALUE=1 else $VALUE=0 endif"
+      bg="transparent"
+      border="None"
+      side="Top"
+      justify="Left"
+      tab="no"
+      reference="Observe"
+      useref="no"
+      expanded="yes"
+      >
+      <entry loc="56 96" size="32 24" style="Label4"
+        vq="kWamptype attenmap amplimits"
+        vc="showamplimits('set','amplimits',3,$VALUE) setrfchannel(0)"
+        set="showamplimits('get','amplimits',3):$VALUE"
+        show="onparams('attenmap','kWamptype','amplimits'):$VALUE if ($VALUE&gt;0) then showampstatus('get','kWamptype',3):$r2  if $r2='l' then $VALUE=0 endif endif"
+        disable="Grayed out"
+        />
+      <menu loc="96 96" size="56 24" style="Label4"
+        vq="kWamptype attenmap"
+        vc="showampstatus('set','kWamptype',3,'$VALUE') setrfchannel(0)"
+        set="showampstatus('get','kWamptype',3):$VALUE"
+        show="on('attenmap'):$VALUE"
+        >
+        <mlabel label="on" chval="h"/>
+        <mlabel label="off" chval="l"/>
+      </menu>
+      <menu loc="96 72" size="56 24" style="Label4"
+        vq="ampmode attenmap"
+        vc="showampstatus('set','ampmode',3,'$VALUE') setrfchannel(0)"
+        set="showampstatus('get','ampmode',3):$VALUE"
+        show="on('attenmap'):$VALUE"
+        >
+        <mlabel label="d" chval="d"/>
+        <mlabel label="p" chval="p"/>
+        <mlabel label="c" chval="c"/>
+        <mlabel label="z" chval="z"/>
+      </menu>
+      <menu loc="112 0" size="40 24" style="Heading4"
+        vq="rfchval3"
+        vc="setrfchannel($VALUE,3)"
+        set="$VALUE=rfchval3"
+        >
+        <mlabel label="1" chval="1"/>
+        <mlabel label="2" chval="2"/>
+        <mlabel label="3" chval="3"/>
+        <mlabel label="4" chval="4"/>
+        <mlabel />
+      </menu>
+      <label loc="8 0" size="96 24" style="Heading4"
+        label="Decouple 2"
+        justify="Left"
+        />
+      <label loc="80 168" size="32 24" style="Label4"
+        label="Mod"
+        justify="Left"
+        />
+      <label loc="8 168" size="24 24" style="Label4"
+        label="On "
+        justify="Left"
+        />
+      <entry loc="40 168" size="40 24" style="Label4"
+        vq="dm2"
+        vc="dm2='$VALUE'"
+        set="$VALUE=dm2"
+        show="on('dm2'):$VALUE"
+        disable="Grayed out"
+        />
+      <entry loc="112 168" size="40 24" style="Label4"
+        vq="dmm2"
+        vc="dmm2='$VALUE'"
+        set="$VALUE=dmm2"
+        show="on('dmm2'):$VALUE"
+        disable="Grayed out"
+        />
+      <label loc="8 72" size="48 24" style="Label4"
+        label="dpwr2"
+        justify="Left"
+        />
+      <label loc="8 96" size="48 24" style="Label4"
+        label="Max:"
+        justify="Left"
+        />
+      <entry loc="56 72" size="32 24" style="Label4"
+        vq="dpwr2"
+        vc="dpwr2=$VALUE"
+        set="$VALUE=dpwr2"
+        show="on('dpwr2'):$VALUE"
+        disable="Grayed out"
+        />
+      <entry loc="72 120" size="48 24" style="Label4"
+        vq="dpwrm2"
+        vc="dpwrm2=$VALUE"
+        set="$VALUE=dpwrm2"
+        show="on('dpwrm2'):$VALUE"
+        disable="Grayed out"
+        />
+      <label loc="8 120" size="56 24" style="Label4"
+        label="dpwrm2"
+        justify="Left"
+        />
+      <menu loc="96 144" size="56 24" style="Label4"
+        vq="pwy"
+        vc="parunits('set','pwy','$VALUE')"
+        set="parunits('get','pwy'):$VALUE"
+        show="on('pwy'):$VALUE"
+        >
+        <mlabel label="sec" chval="sec"/>
+        <mlabel label="ms" chval="ms"/>
+        <mlabel label="us" chval="us"/>
+      </menu>
+      <entry loc="40 144" size="48 24" style="Label4"
+        vq="pwy"
+        vc="vnmrunits('set','pwy',$VALUE)"
+        set="vnmrunits('get','pwy'):$VALUE"
+        show="on('pwy'):$VALUE"
+        digits="3"
+        disable="Grayed out"
+        />
+      <label loc="8 144" size="32 24" style="Label4"
+        label="pwy"
+        justify="Left"
+        />
+      <entry loc="48 24" size="80 24" style="Label4"
+        vq="dfrq2 dn2 dof2"
+        vc="dfrq2=$VALUE setattenmap"
+        set="$VALUE=dfrq2"
+        show="onparams('dn2','dfrq2'):$VALUE"
+        digits="7"
+        disable="Grayed out"
+        />
+      <label loc="128 24" size="32 24" style="Label4"
+        label="MHz"
+        justify="Left"
+        />
+      <entry loc="8 24" size="40 24" style="Label4"
+        vq="dn2 dfrq2"
+        vc="dn2='$VALUE' setattenmap"
+        set="$VALUE=dn2"
+        show="onparams('dn2','dfrq2'):$VALUE"
+        disable="Grayed out"
+        />
+      <entry loc="8 48" size="80 24" style="Label4"
+        vq="dof2 dn2 dfrq2"
+        vc="vnmrunits('set','dof2',$VALUE)"
+        set="vnmrunits('get','dof2'):$VALUE"
+        show="on('dof2'):$VALUE if ($VALUE&gt;0) then if (dn2='none') then $VALUE=0 else $VALUE=1 endif endif"
+        digits="1"
+        disable="Grayed out"
+        />
+      <menu loc="90 48" size="64 24" style="Label4"
+        vq="dof2"
+        vc="parunits('set','dof2','$VALUE')"
+        set="parunits('get','dof2'):$VALUE"
+        show="on('dof2'):$VALUE"
+        >
+        <mlabel label="Hz" chval="Hz"/>
+        <mlabel label="kHz" chval="kHz"/>
+        <mlabel label="MHz" chval="MHz"/>
+        <mlabel label="ppm" chval="ppm1"/>
+      </menu>
+    </group>
+    <group loc="152 0" size="160 192" style="StdPar"
+      bg="transparent"
+      border="None"
+      side="Top"
+      justify="Left"
+      tab="no"
+      reference="Observe"
+      useref="no"
+      expanded="yes"
+      >
+      <entry loc="56 96" size="32 24" style="Label4"
+        vq="kWamptype attenmap amplimits"
+        vc="showamplimits('set','amplimits',1,$VALUE) setrfchannel(0)"
+        set="showamplimits('get','amplimits',1):$VALUE"
+        show="onparams('attenmap','kWamptype','amplimits'):$VALUE if ($VALUE&gt;0) then showampstatus('get','kWamptype',1):$r2  if $r2='l' then $VALUE=0 endif endif"
+        disable="Grayed out"
+        />
+      <menu loc="96 72" size="56 24" style="Label4"
+        vq="attenmap ampmode"
+        vc="showampstatus('set','ampmode',1,'$VALUE') setrfchannel(0)"
+        set="showampstatus('get','ampmode',1):$VALUE"
+        show="onparams('attenmap'):$VALUE"
+        >
+        <mlabel label="d" chval="d"/>
+        <mlabel label="p" chval="p"/>
+        <mlabel label="c" chval="c"/>
+        <mlabel label="z" chval="z"/>
+      </menu>
+      <label loc="8 0" size="96 24" style="Heading4"
+        label="Observe"
+        justify="Left"
+        />
+      <menu loc="112 0" size="40 24" style="Heading4"
+        vq="rfchval1"
+        vc="setrfchannel($VALUE,1)"
+        set="$VALUE=rfchval1"
+        >
+        <mlabel label="1" chval="1"/>
+        <mlabel label="2" chval="2"/>
+        <mlabel label="3" chval="3"/>
+        <mlabel label="4" chval="4"/>
+      </menu>
+      <entry loc="72 120" size="48 24" style="Label4"
+        vq="tpwrm "
+        vc="tpwrm=$VALUE"
+        set="$VALUE=tpwrm"
+        show="on('tpwrm'):$VALUE"
+        disable="Grayed out"
+        />
+      <label loc="8 120" size="56 24" style="Label4"
+        label="tpwrm"
+        justify="Left"
+        />
+      <entry loc="40 144" size="48 24" style="Label4"
+        vq="pwx"
+        vc="vnmrunits('set','pwx',$VALUE)"
+        set="vnmrunits('get','pwx'):$VALUE"
+        show="on('pwx'):$VALUE"
+        digits="3"
+        disable="Grayed out"
+        />
+      <entry loc="40 168" size="40 24" style="Label4"
+        vq="tm"
+        vc="tm='$VALUE'"
+        set="$VALUE=tm"
+        show="on('tm'):$VALUE"
+        disable="Grayed out"
+        />
+      <label loc="80 168" size="32 24" style="Label4"
+        label="Mod"
+        justify="Left"
+        />
+      <entry loc="112 168" size="40 24" style="Label4"
+        vq="tmm"
+        vc="tmm='$VALUE'"
+        set="$VALUE=tm"
+        show="on('tmm'):$VALUE"
+        disable="Grayed out"
+        />
+      <label loc="8 168" size="24 24" style="Label4"
+        label="On "
+        justify="Left"
+        />
+      <menu loc="96 96" size="56 24" style="Label4"
+        vq="kWamptype attenmap"
+        vc="showampstatus('set','kWamptype',1,'$VALUE') setrfchannel(0)"
+        set="showampstatus('get','kWamptype',1):$VALUE"
+        show="on('attenmap'):$VALUE"
+        >
+        <mlabel label="on" chval="h"/>
+        <mlabel label="off" chval="l"/>
+      </menu>
+      <label loc="8 96" size="48 24" style="Label4"
+        label="Max:"
+        justify="Left"
+        />
+      <menu loc="96 144" size="56 24" style="Label4"
+        vq="pwx"
+        vc="parunits('set','pwx','$VALUE')"
+        set="parunits('get','pwx'):$VALUE"
+        show="on('pwy'):$VALUE"
+        >
+        <mlabel label="sec" chval="sec"/>
+        <mlabel label="ms" chval="ms"/>
+        <mlabel label="us" chval="us"/>
+      </menu>
+      <label loc="8 144" size="32 24" style="Label4"
+        label="pwx"
+        justify="Left"
+        />
+      <menu loc="96 48" size="56 24" style="Label4"
+        vq="tof"
+        vc="parunits('set','tof','$VALUE')"
+        set="parunits('get','tof'):$VALUE"
+        >
+        <mlabel label="Hz" chval="Hz"/>
+        <mlabel label="kHz" chval="kHz"/>
+        <mlabel label="MHz" chval="MHz"/>
+        <mlabel label="ppm" chval="ppm1"/>
+      </menu>
+      <label loc="8 72" size="48 24" style="Label4"
+        label="tpwr"
+        justify="Left"
+        />
+      <entry loc="56 72" size="32 24" style="Label4"
+        vq="tpwr"
+        vc="tpwr=$VALUE"
+        set="$VALUE=tpwr"
+        show="on('tpwr'):$VALUE"
+        disable="Grayed out"
+        />
+      <entry loc="48 24" size="80 24" style="Label4"
+        vq="sfrq tn tof"
+        vc="sfrq=$VALUE setattenmap"
+        set="$sfrq=sfrq $VALUE=$sfrq"
+        show="onparams('tn','sfrq'):$VALUE"
+        digits="7"
+        disable="Grayed out"
+        />
+      <label loc="128 24" size="32 24" style="Label4"
+        label="MHz"
+        justify="Left"
+        />
+      <entry loc="8 24" size="40 24" style="Label4"
+        vq="tn sfrq"
+        vc="tn='$VALUE' setattenmap"
+        set="$VALUE=tn"
+        show="onparams('tn','sfrq'):$VALUE"
+        disable="Grayed out"
+        />
+      <entry loc="8 48" size="80 24" style="Label4"
+        vq="tof tn sfrq"
+        vc="vnmrunits('set','tof',$VALUE)"
+        set="vnmrunits('get','tof'):$VALUE"
+        show="on('tof'):$VALUE if ($VALUE&gt;0) then if ((tn='none') or (tn='')) then $VALUE=0 else $VALUE=1 endif endif"
+        digits="1"
+        disable="Grayed out"
+        />
+    </group>
+    <group loc="0 0" size="152 192" style="StdPar"
+      bg="transparent"
+      border="None"
+      side="Top"
+      justify="Left"
+      tab="no"
+      useref="no"
+      >
+      <label loc="8 0" size="136 24" style="Heading4"
+        label="Transmitters:"
+        justify="Left"
+        />
+      <label loc="8 168" size="136 24" style="Label4"
+        label="Decoupler:"
+        justify="Left"
+        />
+      <label loc="8 120" size="136 24" style="Label4"
+        label="Amplitude:"
+        justify="Left"
+        />
+      <label loc="8 96" size="136 24" style="Label4"
+        label="  Upper limit:"
+        justify="Left"
+        />
+      <label loc="8 144" size="136 24" style="Label4"
+        label="90 degree pulse:"
+        justify="Left"
+        />
+      <label loc="8 72" size="136 24" style="Label4"
+        label="Amp power/blanking:"
+        justify="Left"
+        />
+      <label loc="8 48" size="136 24" style="Label4"
+        label="   Offset:"
+        justify="Left"
+        />
+      <label loc="8 24" size="136 24" style="Label4"
+        label="Nucleus/Frequency:"
+        justify="Left"
+        />
+    </group>
+  </group>
+</template>

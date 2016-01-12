@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<template name="PulseSequence" element="pages" type="acquisition" >
+  <group size="800 200" style="Heading2" label="Sequence"
+    bg="transparent"
+    border="None"
+    side="Top"
+    justify="Left"
+    tab="yes"
+    reference="PulseSequence"
+    useref="no"
+    expanded="yes"
+    >
+    <group loc="8 0" size="256 144" style="Heading4"
+      label="Pulses and Delays"
+      bg="transparent"
+      border="None"
+      side="Top"
+      justify="Left"
+      tab="no"
+      reference="Data"
+      useref="no"
+      expanded="yes"
+      >
+      <label loc="8 120" size="120 24" style="Label4"
+        label="Recycle delay (d1)"
+        justify="Left"
+        />
+      <entry loc="128 120" size="64 24" style="Label4"
+        vq="d1"
+        vc="vnmrunits('set','d1',$VALUE)"
+        set="vnmrunits('get','d1'):$VALUE"
+        show="on('d1'):$VALUE"
+        digits="3"
+        disable="Grayed out"
+        />
+      <menu loc="192 120" size="56 24" style="Label4"
+        vq="d1"
+        vc="parunits('set','d1','$VALUE')"
+        set="parunits('get','d1'):$VALUE"
+        show="on('d1'):$VALUE  if ($VALUE=0) then $VALUE=1 endif"
+        >
+        <mlabel label="sec" chval="sec"/>
+        <mlabel label="ms" chval="ms"/>
+        <mlabel label="us" chval="us"/>
+        <mlabel />
+      </menu>
+      <label loc="8 96" size="120 24" style="Label4"
+        label="Obs pw90 CP (pwx)"
+        justify="Left"
+        />
+      <menu loc="192 96" size="56 24" style="Label4"
+        vq="pwx"
+        vc="parunits('set','pwx','$VALUE')"
+        set="parunits('get','pwx'):$VALUE"
+        show="on('pwx'):$VALUE  if ($VALUE=0) then $VALUE=1 endif"
+        >
+        <mlabel label="sec" chval="sec"/>
+        <mlabel label="ms" chval="ms"/>
+        <mlabel label="us" chval="us"/>
+        <mlabel />
+      </menu>
+      <entry loc="128 96" size="64 24" style="Label4"
+        vq="pwx"
+        vc="vnmrunits('set','pwx',$VALUE)"
+        set="vnmrunits('get','pwx'):$VALUE"
+        show="on('pwx'):$VALUE"
+        digits="3"
+        disable="Grayed out"
+        />
+      <label loc="8 72" size="120 24" style="Label4"
+        label="Prepulse delay (d2)"
+        justify="Left"
+        />
+      <entry loc="128 72" size="64 24" style="Label4"
+        vq="d2"
+        vc="vnmrunits('set','d2',$VALUE)"
+        set="vnmrunits('get','d2'):$VALUE"
+        show="on('d2'):$VALUE"
+        digits="3"
+        disable="Grayed out"
+        />
+      <menu loc="192 72" size="56 24" style="Label4"
+        vq="d2"
+        vc="parunits('set','d2','$VALUE')"
+        set="parunits('get','d2'):$VALUE"
+        show="on('d2'):$VALUE if ($VALUE=0) then $VALUE=1 endif"
+        >
+        <mlabel label="sec" chval="sec"/>
+        <mlabel label="ms" chval="ms"/>
+        <mlabel label="us" chval="us"/>
+        <mlabel />
+      </menu>
+      <menu loc="192 48" size="56 24" style="Label4"
+        vq="cntct"
+        vc="parunits('set','cntct','$VALUE')"
+        set="parunits('get','cntct'):$VALUE"
+        show="onparams('cntct'):$VALUE  if ($VALUE=0) then $VALUE=1 endif"
+        >
+        <mlabel label="sec" chval="sec"/>
+        <mlabel label="ms" chval="ms"/>
+        <mlabel label="us" chval="us"/>
+        <mlabel />
+      </menu>
+      <menu loc="192 24" size="56 24" style="Label4"
+        vq="pw"
+        vc="parunits('set','pw','$VALUE')"
+        set="parunits('get','pw'):$VALUE"
+        show="on('pw'):$VALUE  if ($VALUE=0) then $VALUE=1 endif"
+        >
+        <mlabel label="sec" chval="sec"/>
+        <mlabel label="ms" chval="ms"/>
+        <mlabel label="us" chval="us"/>
+        <mlabel />
+      </menu>
+      <entry loc="128 48" size="64 24" style="Label4"
+        vq="cntct"
+        vc="vnmrunits('set','cntct',$VALUE)"
+        set="vnmrunits('get','cntct'):$VALUE"
+        show="on('cntct'):$VALUE"
+        digits="3"
+        disable="Grayed out"
+        />
+      <label loc="8 48" size="120 24" style="Label4"
+        label="Contact time (cntct)"
+        justify="Left"
+        />
+      <entry loc="128 24" size="64 24" style="Label4"
+        vq="pw"
+        vc="vnmrunits('set','pw',$VALUE)"
+        set="vnmrunits('get','pw'):$VALUE"
+        show="on('pw'):$VALUE"
+        digits="3"
+        disable="Grayed out"
+        />
+      <label loc="8 24" size="120 24" style="Label4"
+        label="Excitation pulse (pw)"
+        justify="Left"
+        />
+      <label loc="8 0" size="168 24" style="Heading4"
+        label="Pulses and Delays:"
+        justify="Left"
+        />
+    </group>
+    <group loc="536 24" size="256 96" style="Heading4"
+      label="CP ramp"
+      bg="transparent"
+      border="None"
+      side="Top"
+      justify="Left"
+      tab="no"
+      useref="no"
+      >
+      <menu loc="160 24" size="88 24" style="Label4"
+        vq="vacpflag"
+        vc="vacpflag='$VALUE'"
+        set="$VALUE=vacpflag"
+        show="on('vacpflag'):$VALUE  if ($VALUE=0) then $VALUE=1 endif"
+        >
+        <mlabel label="constant" chval="c"/>
+        <mlabel label="linear" chval="l"/>
+        <mlabel label="tangent" chval="t"/>
+        <mlabel />
+      </menu>
+      <entry loc="176 72" size="72 24" style="Label4"
+        vq="curve vacpflag"
+        vc="curve = $VALUE"
+        set="$VALUE=curve"
+        show="onparams('curve','vacpflag'):$VALUE if ($VALUE&gt;=0) then if (vacpflag='t') then $VALUE=1 else $VALUE=0 endif endif"
+        digits="0"
+        disable="Grayed out"
+        />
+      <label loc="128 72" size="48 24" style="Label4"
+        label="(curve)"
+        justify="Left"
+        />
+      <label loc="8 0" size="168 24" style="Heading4"
+        label="CP RAMP:"
+        justify="Left"
+        />
+      <menu loc="160 48" size="88 24" style="Label4"
+        vq="chnlflag"
+        vc="chnlflag='$VALUE'"
+        set="$VALUE=chnlflag"
+        show="on('chnlflag'):$VALUE  if ($VALUE=0) then $VALUE=1 endif"
+        >
+        <mlabel label="observe" chval="o"/>
+        <mlabel label="decouple" chval="h"/>
+        <mlabel />
+      </menu>
+      <label loc="8 24" size="152 24" style="Label4"
+        label="Ramp type (vacpflag)"
+        justify="Left"
+        />
+      <label loc="8 48" size="152 24" style="Label4"
+        label="Ramp channel (chnlflag)"
+        justify="Left"
+        />
+      <label loc="8 72" size="40 24" style="Label4"
+        label="(width)"
+        justify="Left"
+        />
+      <entry loc="48 72" size="72 24" style="Label4"
+        vq="width vacpflag"
+        vc="width = $VALUE"
+        set="$VALUE=width"
+        show="onparams('width','vacpflag'):$VALUE if ($VALUE&gt;=0) then if ((vacpflag='l') or (vacpflag='t')) then $VALUE=1 else $VALUE=0 endif endif"
+        digits="0"
+        disable="Grayed out"
+        />
+    </group>
+    <group loc="272 24" size="256 120" style="Heading4"
+      label="Amplitudes"
+      bg="transparent"
+      border="None"
+      side="Top"
+      justify="Left"
+      tab="no"
+      reference="Amplitudes"
+      useref="no"
+      expanded="yes"
+      >
+      <check loc="208 96" size="24 24" style="Label4"
+        vq="dm"
+        vc="statuscheckbox('set','dm',3,3,'y')"
+        vc2="statuscheckbox('set','dm',3,3,'n')"
+        set="statuscheckbox('get','dm',3,3):$dmon  if ($dmon='y') then $VALUE=1 else $VALUE=0 endif"
+        show="exists('dm','parameter'):$VALUE if ($VALUE=0) then $VALUE=-1 endif"
+        />
+      <textmessage loc="232 96" size="24 24" style="PlainText"
+        label="t"
+        vq="dm dmm"
+        set="onparams('dm','dmm'):$on if ($on=1) then statuscheckbox('get','dm',3,3):$dmy if ($dmy='y') then statuscheckbox('get','dmm',3,3):$VALUE else $VALUE='' endif else $VALUE='' endif"
+        />
+      <entry loc="136 48" size="64 24" style="Label4"
+        vq="dpwrm"
+        vc="dpwrm=$VALUE"
+        set="$VALUE=dpwrm"
+        show="on('dpwrm'):$VALUE"
+        disable="Grayed out"
+        />
+      <entry loc="208 48" size="32 24" style="Label4"
+        vq="dpwr"
+        vc="dpwr=$VALUE"
+        set="$VALUE=dpwr"
+        show="on('dpwr'):$VALUE "
+        disable="Grayed out"
+        />
+      <entry loc="136 96" size="64 24" style="Label4"
+        vq="dipolr dm"
+        vc="dipolr=$VALUE"
+        set="$VALUE=dipolr"
+        show="onparams('dipolr','dm'):$VALUE  if ($VALUE&gt;=0) then statuscheckbox('get','dm',3,3):$dmon if ($dmon='y') then $VALUE=1 else $VALUE=0 endif endif"
+        disable="Grayed out"
+        />
+      <label loc="8 96" size="128 24" style="Label4"
+        label="Dec ACQ level (dipolr)"
+        justify="Left"
+        />
+      <entry loc="208 24" size="32 24" style="Label4"
+        vq="tpwr"
+        vc="tpwr=$VALUE"
+        set="$VALUE=tpwr"
+        show="on('tpwr'):$VALUE"
+        disable="Grayed out"
+        />
+      <entry loc="136 72" size="64 24" style="Label4"
+        vq="crossp"
+        vc="crossp=$VALUE"
+        set="$VALUE=crossp"
+        show="on('crossp'):$VALUE "
+        disable="Grayed out"
+        />
+      <entry loc="136 24" size="64 24" style="Label4"
+        vq="tpwrm"
+        vc="tpwrm=$VALUE"
+        set="$VALUE=tpwrm"
+        show="on('tpwrm'):$VALUE"
+        disable="Grayed out"
+        />
+      <label loc="8 72" size="128 24" style="Label4"
+        label="Dec CP level (crossp)"
+        justify="Left"
+        />
+      <label loc="8 48" size="128 24" style="Label4"
+        label="Dec pw level (dpwrm)"
+        justify="Left"
+        />
+      <label loc="8 24" size="128 24" style="Label4"
+        label="Obs level (tpwrm)"
+        justify="Left"
+        />
+      <label loc="8 0" size="128 24" style="Heading4"
+        label="Amplitudes:"
+        justify="Left"
+        />
+    </group>
+    <textmessage loc="352 0" size="112 24" style="Label3"
+      label="xvpwxcal"
+      vq="seqfil"
+      set="$VALUE=seqfil"
+      />
+    <label loc="280 0" size="64 24" style="Label3"
+      label="Sequence:"
+      justify="Left"
+      />
+  </group>
+</template>

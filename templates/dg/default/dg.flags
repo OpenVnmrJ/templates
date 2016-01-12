@@ -1,0 +1,225 @@
+set dgTemplate(rows)       16
+set dgTemplate(cols)       10
+
+set dgIJ 0,0
+set dgTemplate(type,$dgIJ)  {title}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {5}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {Acquisition}
+set dgTemplate(color,$dgIJ)  {Blue}
+
+set dgIJ 2,0
+set dgTemplate(type,$dgIJ)  {title}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {1}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {Autolock:}
+set dgTemplate(color,$dgIJ)  {black}
+
+set dgIJ 6,0
+set dgTemplate(type,$dgIJ)  {title}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {1}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {Autoshim:}
+set dgTemplate(color,$dgIJ)  {black}
+
+set dgIJ 9,0
+set dgTemplate(type,$dgIJ)  {entry}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {3}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {Shim Method}
+set dgTemplate(value,$dgIJ)  {}
+set dgTemplate(units,$dgIJ)  {}
+set dgTemplate(color,$dgIJ)  {black}
+set dgTemplate(width,$dgIJ)  {128}
+set dgTemplate(vnmrVar,$dgIJ)  {method}
+set dgTemplate(vnmrSet,$dgIJ)  {method='$VALUE'}
+set dgTemplate(tclSet,$dgIJ)  {[file tail $method]}
+set dgTemplate(showVal,$dgIJ)  {}
+
+set dgIJ 2,1
+set dgTemplate(type,$dgIJ)  {radio}
+set dgTemplate(rows,$dgIJ)  {4}
+set dgTemplate(cols,$dgIJ)  {2}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {No OnInsert Always NonOptimized}
+set dgTemplate(values,$dgIJ)  {n s a y}
+set dgTemplate(value,$dgIJ)  {}
+set dgTemplate(color,$dgIJ)  {black}
+set dgTemplate(vnmrVar,$dgIJ)  {alock}
+set dgTemplate(vnmrSet,$dgIJ)  {alock='$VALUE'}
+set dgTemplate(tclSet,$dgIJ)  {$alock}
+
+set dgIJ 6,1
+set dgTemplate(type,$dgIJ)  {radio}
+set dgTemplate(rows,$dgIJ)  {3}
+set dgTemplate(cols,$dgIJ)  {2}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {No OnInsert Always }
+set dgTemplate(values,$dgIJ)  {n s e}
+set dgTemplate(value,$dgIJ)  {}
+set dgTemplate(color,$dgIJ)  {black}
+set dgTemplate(vnmrVar,$dgIJ)  {wshim}
+set dgTemplate(vnmrSet,$dgIJ)  {wshim='$VALUE'}
+set dgTemplate(tclSet,$dgIJ)  {$wshim}
+
+set dgIJ 10,2
+set dgTemplate(type,$dgIJ)  {title}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {4}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {Actions}
+set dgTemplate(color,$dgIJ)  {blue}
+
+set dgIJ 11,2
+set dgTemplate(type,$dgIJ)  {entry}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {7}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {When exp completes}
+set dgTemplate(value,$dgIJ)  {}
+set dgTemplate(units,$dgIJ)  {}
+set dgTemplate(color,$dgIJ)  {black}
+set dgTemplate(width,$dgIJ)  {58}
+set dgTemplate(vnmrVar,$dgIJ)  {wexp}
+set dgTemplate(vnmrSet,$dgIJ)  {wexp='$VALUE'}
+set dgTemplate(tclSet,$dgIJ)  {$wexp}
+set dgTemplate(showVal,$dgIJ)  {}
+
+set dgIJ 12,2
+set dgTemplate(type,$dgIJ)  {entry}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {7}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {At each blocksize}
+set dgTemplate(value,$dgIJ)  {}
+set dgTemplate(units,$dgIJ)  {}
+set dgTemplate(color,$dgIJ)  {black}
+set dgTemplate(width,$dgIJ)  {58}
+set dgTemplate(vnmrVar,$dgIJ)  {wbs}
+set dgTemplate(vnmrSet,$dgIJ)  {wbs='$VALUE'}
+set dgTemplate(tclSet,$dgIJ)  {$wbs}
+set dgTemplate(showVal,$dgIJ)  {}
+
+set dgIJ 13,2
+set dgTemplate(type,$dgIJ)  {entry}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {7}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {After each fid}
+set dgTemplate(value,$dgIJ)  {}
+set dgTemplate(units,$dgIJ)  {}
+set dgTemplate(color,$dgIJ)  {black}
+set dgTemplate(width,$dgIJ)  {58}
+set dgTemplate(vnmrVar,$dgIJ)  {wnt}
+set dgTemplate(vnmrSet,$dgIJ)  {wnt=$value}
+set dgTemplate(tclSet,$dgIJ)  {$wnt}
+set dgTemplate(showVal,$dgIJ)  {}
+
+set dgIJ 14,2
+set dgTemplate(type,$dgIJ)  {entry}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {7}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {When error occurs}
+set dgTemplate(value,$dgIJ)  {}
+set dgTemplate(units,$dgIJ)  {}
+set dgTemplate(color,$dgIJ)  {black}
+set dgTemplate(width,$dgIJ)  {58}
+set dgTemplate(vnmrVar,$dgIJ)  {werr}
+set dgTemplate(vnmrSet,$dgIJ)  {werr=$value}
+set dgTemplate(tclSet,$dgIJ)  {$werr}
+set dgTemplate(showVal,$dgIJ)  {}
+
+set dgIJ 2,3
+set dgTemplate(type,$dgIJ)  {entry}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {2}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {Rcvr Gain:}
+set dgTemplate(value,$dgIJ)  {}
+set dgTemplate(units,$dgIJ)  {}
+set dgTemplate(color,$dgIJ)  {black}
+set dgTemplate(width,$dgIJ)  {7}
+set dgTemplate(vnmrVar,$dgIJ)  {gain}
+set dgTemplate(vnmrSet,$dgIJ)  {gain=$VALUE}
+set dgTemplate(tclSet,$dgIJ)  {$gain}
+set dgTemplate(showVal,$dgIJ)  {[vnmrOn gain]}
+
+set dgIJ 3,3
+set dgTemplate(type,$dgIJ)  {check}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {2}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  { No Autogain}
+set dgTemplate(value,$dgIJ)  {}
+set dgTemplate(color,$dgIJ)  {black}
+set dgTemplate(vnmrVar,$dgIJ)  {gain}
+set dgTemplate(vnmrSet,$dgIJ)  {gain='y'}
+set dgTemplate(vnmrSet2,$dgIJ)  {gain='n'}
+set dgTemplate(tclSet,$dgIJ)  {[vnmrOn gain]}
+
+set dgIJ 5,3
+set dgTemplate(type,$dgIJ)  {entry}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {2}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {Blocksize}
+set dgTemplate(value,$dgIJ)  {}
+set dgTemplate(units,$dgIJ)  {}
+set dgTemplate(color,$dgIJ)  {black}
+set dgTemplate(width,$dgIJ)  {7}
+set dgTemplate(vnmrVar,$dgIJ)  {bs}
+set dgTemplate(vnmrSet,$dgIJ)  {bs=$VALUE}
+set dgTemplate(tclSet,$dgIJ)  {$bs}
+set dgTemplate(showVal,$dgIJ)  {}
+
+set dgIJ 0,6
+set dgTemplate(type,$dgIJ)  {title}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {3}
+set dgTemplate(sticky,$dgIJ)  {news}
+set dgTemplate(label,$dgIJ)  {Conditional Settings}
+set dgTemplate(color,$dgIJ)  {blue}
+
+set dgIJ 2,6
+set dgTemplate(type,$dgIJ)  {check}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {2}
+set dgTemplate(sticky,$dgIJ)  {nws}
+set dgTemplate(label,$dgIJ)  {Interleave}
+set dgTemplate(value,$dgIJ)  {}
+set dgTemplate(color,$dgIJ)  {black}
+set dgTemplate(vnmrVar,$dgIJ)  {il}
+set dgTemplate(vnmrSet,$dgIJ)  {il='y'}
+set dgTemplate(vnmrSet2,$dgIJ)  {il='n'}
+set dgTemplate(tclSet,$dgIJ)  {[expr {$il == "y"}]}
+
+set dgIJ 3,6
+set dgTemplate(type,$dgIJ)  {check}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {3}
+set dgTemplate(sticky,$dgIJ)  {nws}
+set dgTemplate(label,$dgIJ)  {Double Precision}
+set dgTemplate(value,$dgIJ)  {}
+set dgTemplate(color,$dgIJ)  {black}
+set dgTemplate(vnmrVar,$dgIJ)  {dp}
+set dgTemplate(vnmrSet,$dgIJ)  {dp='y'}
+set dgTemplate(vnmrSet2,$dgIJ)  {dp='n'}
+set dgTemplate(tclSet,$dgIJ)  {[expr {$dp == "y"}]}
+
+set dgIJ 4,6
+set dgTemplate(type,$dgIJ)  {check}
+set dgTemplate(rows,$dgIJ)  {1}
+set dgTemplate(cols,$dgIJ)  {2}
+set dgTemplate(sticky,$dgIJ)  {nws}
+set dgTemplate(label,$dgIJ)  {Check for lock}
+set dgTemplate(value,$dgIJ)  {}
+set dgTemplate(color,$dgIJ)  {black}
+set dgTemplate(vnmrVar,$dgIJ)  {in}
+set dgTemplate(vnmrSet,$dgIJ)  {in='y'}
+set dgTemplate(vnmrSet2,$dgIJ)  {in='n'}
+set dgTemplate(tclSet,$dgIJ)  {[expr {$in == "y"}]}
